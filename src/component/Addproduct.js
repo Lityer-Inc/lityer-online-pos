@@ -1,0 +1,129 @@
+import React, { useState } from "react";
+
+function Addproduct() {
+  const [showForm, setShowForm] = useState(false);
+  const [field1, setField1] = useState("");
+
+  const handleEdit = () => {
+    setShowForm(true);
+  };
+
+  const handleCancel = () => {
+    setShowForm(false);
+    setField1("");
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Code to handle form submission
+  };
+
+  if (showForm) {
+    return (
+      <div id="dash" className="col-md-8">
+        <h2>
+          Stability Pool <span id="stabpool">6,453,747 LQTY remaining</span>
+        </h2>
+
+        <div className="maincard">
+          <div className="stake">
+            <label id="stake-lqty-label" className="css-1owdu0o">
+              <div className="css-zkfaav">Deposit</div>
+            </label>
+
+            <div className="col-md-12 mb-3">
+              <div className="form-group">
+                <input
+                  type="email"
+                  className="form-control"
+                  placeholder="0.00 SOLT"
+                  value={field1}
+                  onChange={(e) => setField1(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="css-jwa8lq">
+            <label className="css-1owdu0o">
+              <div className="css-zkfaav">Pool share</div>
+            </label>
+            <div id="stake-share" className="css-t8geth">
+              <div className="css-zkfaav">
+                <span className="css-8mokm4">0.000000</span>&nbsp;
+                <span className="css-x2c3dj">%</span>
+              </div>
+            </div>
+          </div>
+
+          <p>Enter the amount of SUSD you'd like to deposit.</p>
+          <div className="col-md-12 text-center">
+            <button
+              id="cancelbut"
+              onClick={handleCancel}
+              type="button" // Change to "button" instead of "submit"
+              className="button button-a button-big button-rounded"
+            >
+              Cancel
+            </button>
+
+            <button
+              onClick={handleSubmit}
+              id="submitbut"
+              type="submit" // Change to "button" instead of "submit"
+              className="button button-a button-big button-rounded"
+            >
+              Confirm
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <div className="pagetitle">
+        <h1>Dashboard</h1>
+        <nav>
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="index.html">Home</a>
+            </li>
+            <li className="breadcrumb-item active">Dashboard</li>
+          </ol>
+        </nav>
+      </div>
+      <div className="col-lg-12">
+        <div id="dash" className="col-md-8">
+          <div id="content">
+            <h2>
+              Stability Pool <span id="stabpool">6,453,747 LQTY remaining</span>
+            </h2>
+            <p>
+              <b>You have no SUSD in the Stability Pool.</b>
+            </p>
+            <p>
+              You can earn SOLT rewards and buy ETH at a discount by depositing
+              SUSD.
+            </p>
+
+            <div className="col-md-12 text-center">
+              <button
+                id="submitbut"
+                onClick={handleEdit}
+                type="button" // Change to "button" instead of "submit"
+                className="button button-a button-big button-rounded"
+              >
+                Deposit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default Addproduct;
