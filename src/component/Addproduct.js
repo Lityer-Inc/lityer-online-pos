@@ -20,7 +20,7 @@ function Addproduct() {
 
   if (showForm) {
     return (
-      <div id="dash" className="col-md-8">
+      <div id="dash" className="col-md-12">
         <h2>
           Stability Pool <span id="stabpool">6,453,747 LQTY remaining</span>
         </h2>
@@ -96,7 +96,7 @@ function Addproduct() {
         </nav>
       </div>
       <div className="col-lg-12">
-        <div id="dash" className="col-md-8">
+        <div id="dash" className="col-md-12">
           <div id="content">
             <h2>
               Stability Pool <span id="stabpool">6,453,747 LQTY remaining</span>

@@ -87,7 +87,7 @@ function Home() {
                     <i className="bi bi-cart"></i>
                   </div>
                   <div className="ps-3">
-                    <h6>145</h6>
+                    <h6>0</h6>
                     <span className="text-success small pt-1 fw-bold">
                       12%
                     </span>{" "}
@@ -139,7 +139,7 @@ function Home() {
                     <i className="bi bi-currency-dollar"></i>
                   </div>
                   <div className="ps-3">
-                    <h6>$3,264</h6>
+                    <h6>$0</h6>
                     <span className="text-success small pt-1 fw-bold">
                       8%
                     </span>{" "}
@@ -187,7 +187,7 @@ function Home() {
                     <i className="bi bi-people"></i>
                   </div>
                   <div className="ps-3">
-                    <h6>1244</h6>
+                    <h6>0</h6>
                     <span className="text-danger small pt-1 fw-bold">
                       12%
                     </span>{" "}
@@ -248,10 +248,10 @@ function Home() {
                       <td>Brandon Jacob</td>
                       <td>
                         <a href="#" className="text-primary">
-                          At praesentium minu
+                          product1
                         </a>
                       </td>
-                      <td>$64</td>
+                      <td>$0</td>
                       <td>
                         <span className="badge bg-success">Approved</span>
                       </td>
@@ -263,10 +263,10 @@ function Home() {
                       <td>Bridie Kessler</td>
                       <td>
                         <a href="#" className="text-primary">
-                          Blanditiis dolor omnis similique
+                        product2
                         </a>
                       </td>
-                      <td>$47</td>
+                      <td>$0</td>
                       <td>
                         <span className="badge bg-warning">Pending</span>
                       </td>
@@ -278,10 +278,10 @@ function Home() {
                       <td>Ashleigh Langosh</td>
                       <td>
                         <a href="#" className="text-primary">
-                          At recusandae consectetur
+                        product3
                         </a>
                       </td>
-                      <td>$147</td>
+                      <td>$0</td>
                       <td>
                         <span className="badge bg-success">Approved</span>
                       </td>
@@ -293,10 +293,10 @@ function Home() {
                       <td>Angus Grady</td>
                       <td>
                         <a href="#" className="text-primar">
-                          Ut voluptatem id earum et
+                        product4
                         </a>
                       </td>
-                      <td>$67</td>
+                      <td>$0</td>
                       <td>
                         <span className="badge bg-danger">Rejected</span>
                       </td>
@@ -308,10 +308,10 @@ function Home() {
                       <td>Raheem Lehner</td>
                       <td>
                         <a href="#" className="text-primary">
-                          Sunt similique distinctio
+                        product5
                         </a>
                       </td>
-                      <td>$165</td>
+                      <td>$0</td>
                       <td>
                         <span className="badge bg-success">Approved</span>
                       </td>

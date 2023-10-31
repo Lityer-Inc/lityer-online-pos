@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import logo from "../assets/images/logo-lit.png";
+import profile from "../assets/images/warehouse.png";
 
 function Headnav() {
   const [isSearchBarVisible, setSearchBarVisible] = useState(false);
@@ -11,7 +13,7 @@ function Headnav() {
     <header className="header fixed-top d-flex align-items-center">
       <div className="d-flex align-items-center justify-content-between">
         <a href="index.html" className="logo d-flex align-items-center">
-          <img src="assets/img/logo.png" alt="" />
+          <img src={logo} alt="logo" />
           <span className="d-none d-lg-block">Lityer</span>
         </a>
         <i className="bi bi-list toggle-sidebar-btn"></i>
@@ -36,7 +38,7 @@ function Headnav() {
 
           <li className="nav-item pe-3">
             <a className="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <img src="assets/img/profile-img.jpg" alt="Profile" className="rounded-circle" />
+              <img src={profile} alt="Profile" className="rounded-circle" />
               <span className="d-none d-md-block ps-2">Tolujohn</span>
             </a>
           </li>

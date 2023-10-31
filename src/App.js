@@ -28,7 +28,7 @@ function App() {
             <div className="row">
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/allproducts" element={<Addproduct />} />
+                <Route path="/addproducts" element={<Addproduct />} />
               </Routes>
             </div>
           </section>
