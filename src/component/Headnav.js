@@ -12,7 +12,7 @@ function Headnav() {
   return (
     <header className="header fixed-top d-flex align-items-center">
       <div className="d-flex align-items-center justify-content-between">
-        <a href="index.html" className="logo d-flex align-items-center">
+        <a href="/" className="logo d-flex align-items-center">
           <img src={logo} alt="logo" />
           <span className="d-none d-lg-block">Lityer</span>
         </a>
@@ -39,7 +39,7 @@ function Headnav() {
           <li className="nav-item pe-3">
             <a className="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
               <img src={profile} alt="Profile" className="rounded-circle" />
-              <span className="d-none d-md-block ps-2">Tolujohn</span>
+              <span className="d-none d-md-block ps-2">Username</span>
             </a>
           </li>
 

@@ -149,6 +149,7 @@ function Home() {
               </div>
             </div>
           </div>
+          
           {/* End Revenue Card */}
           {/* Customers Card */}
           <div className="col-xxl-4 col-xl-12">
@@ -197,6 +198,7 @@ function Home() {
               </div>
             </div>
           </div>
+
           {/* End Customers Card */}
           {/* Recent Sales */}
           <div className="col-12">
@@ -253,7 +255,7 @@ function Home() {
                       </td>
                       <td>$0</td>
                       <td>
-                        <span className="badge bg-success">Approved</span>
+                        <span className="badge bg-success">Received</span>
                       </td>
                     </tr>
                     <tr>
@@ -268,7 +270,7 @@ function Home() {
                       </td>
                       <td>$0</td>
                       <td>
-                        <span className="badge bg-warning">Pending</span>
+                        <span className="badge bg-warning">Delivered</span>
                       </td>
                     </tr>
                     <tr>
@@ -283,7 +285,7 @@ function Home() {
                       </td>
                       <td>$0</td>
                       <td>
-                        <span className="badge bg-success">Approved</span>
+                        <span className="badge bg-success">Received</span>
                       </td>
                     </tr>
                     <tr>
@@ -298,7 +300,7 @@ function Home() {
                       </td>
                       <td>$0</td>
                       <td>
-                        <span className="badge bg-danger">Rejected</span>
+                        <span className="badge bg-danger">Sent</span>
                       </td>
                     </tr>
                     <tr>
@@ -313,7 +315,7 @@ function Home() {
                       </td>
                       <td>$0</td>
                       <td>
-                        <span className="badge bg-success">Approved</span>
+                      <span className="badge bg-warning">Received(WA)</span>
                       </td>
                     </tr>
                   </tbody>
