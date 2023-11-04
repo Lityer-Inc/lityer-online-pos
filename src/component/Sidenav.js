@@ -7,14 +7,14 @@ const Sidenav = () => {
       <ul className="sidebar-nav" id="sidebar-nav">
         <li className="nav-item">
           <NavLink to="/" className="nav-link">
-            <i className="bi bi-grid"></i>
+            <i className="bi bi-house"></i>
             <span>Home</span>
           </NavLink>
         </li>
 
         <li className="nav-item">
           <Link
-            to="/"
+            to="/draft"
             className="nav-link collapsed"
             data-target="#Orders-nav"
             data-toggle="collapse"
@@ -25,7 +25,7 @@ const Sidenav = () => {
           </Link>
           <ul id="Orders-nav" className="nav-content collapse" data-parent="#sidebar-nav">
             <li>
-              <NavLink to="/draft">
+              <NavLink to="/drafted">
                 <i className="bi bi-circle"></i>
                 <span>Draft</span>
               </NavLink>
@@ -41,7 +41,7 @@ const Sidenav = () => {
 
         <li className="nav-item">
           <Link
-            to="/"
+            to="/products"
             className="nav-link collapsed"
             data-target="#Products-nav"
             data-toggle="collapse"
@@ -52,9 +52,9 @@ const Sidenav = () => {
           </Link>
           <ul id="Products-nav" className="nav-content collapse" data-parent="#sidebar-nav">
             <li>
-              <NavLink to="/addproducts">
+              <NavLink to="/purchase">
                 <i className="bi bi-circle"></i>
-                <span>Add product</span>
+                <span>Purchase Orders</span>
               </NavLink>
             </li>
             <li>
@@ -79,7 +79,7 @@ const Sidenav = () => {
             data-target="#Customers-nav"
             data-toggle="collapse"
           >
-            <i className="bi bi-person"></i>
+            <i className="bi bi-people"></i>
             <span>Customers</span>
             <i className="bi bi-chevron-down ms-auto"></i>
           </Link>
@@ -99,6 +99,18 @@ const Sidenav = () => {
           <NavLink to="/contact" className="nav-link collapsed">
             <i className="bi bi-envelope"></i>
             <span>Contact</span>
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink to="/general" className="nav-link collapsed">
+            <i className="bi bi-grid"></i>
+            <span>General</span>
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink to="/security" className="nav-link collapsed">
+            <i className="bi bi-gear"></i>
+            <span>Security</span>
           </NavLink>
         </li>
       </ul>

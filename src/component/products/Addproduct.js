@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import uploadicon from "../../assets/images/uploadpic.png";
 
 function Addproduct() {
   const [showForm, setShowForm] = useState(false);
   const [productDetails, setProductDetails] = useState({
     productName: "",
     productPrice: "",
+    productimgs: "",
     productQuantity: "",
     productDescription: "",
     barcode: "",
+    thumbnailImage: null, // Include thumbnailImage in the productDetails object
   });
 
   const handleEdit = () => {
@@ -21,33 +24,59 @@ function Addproduct() {
     setProductDetails({
       productName: "",
       productPrice: "",
+      productimgs: "",
       productQuantity: "",
       productDescription: "",
       barcode: "",
+      thumbnailImage: null, // Reset thumbnailImage
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Code to handle form submission
+    // Your code to send the product details and thumbnail image to the server
+    // Example: You can use fetch or Axios to send a POST request to your server
+    // with productDetails and thumbnailImage data.
+  };
+
+  const handleThumbnailImageSelect = () => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.onchange = (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        setProductDetails({
+          ...productDetails,
+          thumbnailImage: file,
+        });
+        // Display a preview of the selected image (optional)
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = document.getElementById("uploadimg");
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+    input.click();
   };
 
   if (showForm) {
     return (
-      <div className="col-lg-12">
-        <div className="row">
-          <div className="col-xxl-4 col-xl-12">
-            <div className="card info-card product-details-card">
-              <div className="card-body">
-                <h5 className="card-title">Add Product</h5>
-                <form onSubmit={handleSubmit}>
+      <>
+        <div className="col-xl-12">
+          <div className="card p-4">
+            <form onSubmit={handleSubmit}>
+              <div className="row gy-4">
+                <div className="col-md-6">
                   <div className="form-group">
                     <label htmlFor="productName">Product Name</label>
                     <input
                       type="text"
                       className="form-control"
                       id="productName"
-                      placeholder="Enter product name"
+                      placeholder="Enter product Name"
                       value={productDetails.productName}
                       onChange={(e) =>
                         setProductDetails({
@@ -61,7 +90,7 @@ function Addproduct() {
                   <div className="form-group">
                     <label htmlFor="productPrice">Product Price</label>
                     <input
-                      type="text"
+                      type="number"
                       className="form-control"
                       id="productPrice"
                       placeholder="Enter product price"
@@ -93,9 +122,33 @@ function Addproduct() {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor="productDescription">
-                      Product Description
-                    </label>
+                    <label htmlFor="productimgs">Products Images</label>
+                    <input
+                      type="file"
+                      className="form-control"
+                      id="productimgs"
+                      placeholder="All product images"
+                      value={productDetails.productimgs}
+                      onChange={(e) =>
+                        setProductDetails({
+                          ...productDetails,
+                          productimgs: e.target.value,
+                        })
+                      }
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div id="uploadpic" className="form-group" onClick={handleThumbnailImageSelect}>
+                    <img src={productDetails.thumbnailImage ? URL.createObjectURL(productDetails.thumbnailImage) : uploadicon} alt="Profile" id="uploadimg" />
+                    <br></br>
+                    <span><i>Upload Thumbnail</i></span>
+                  </div>
+                </div>
+                <div className="col-md-12">
+                  <div className="form-group">
+                    <label htmlFor="productDescription">Product Description</label>
                     <ReactQuill
                       id="productDescription"
                       value={productDetails.productDescription}
@@ -107,6 +160,8 @@ function Addproduct() {
                       }
                     />
                   </div>
+                </div>
+                <div className="col-md-12">
                   <div className="form-group">
                     <label htmlFor="barcode">Barcode</label>
                     <input
@@ -123,49 +178,47 @@ function Addproduct() {
                       }
                     />
                   </div>
-                  <div className="text-center">
-                    <button
-                      id="cancelbut"
-                      type="button"
-                      onClick={handleCancel}
-                      className="button button-a button-big button-rounded"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      id="submitbut"
-                      type="submit"
-                      className="button button-a button-big button-rounded"
-                    >
-                      Confirm
-                    </button>
-                  </div>
-                </form>
+                </div>
+                <div className="text-center">
+                  <button
+                    id="cancelbut"
+                    type="button"
+                    onClick={handleCancel}
+                    className="button button-a button-big button-rounded"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    id="submitbut"
+                    type="submit"
+                    className="button button-a button-big button-rounded"
+                  >
+                    Confirm
+                  </button>
+                </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
   return (
     <>
       <div className="pagetitle">
-        <h1>Dashboard</h1>
+        <h1>Add Product</h1>
         <nav>
           <ol className="breadcrumb">
             <li className="breadcrumb-item">
-              <a href="index.html">Home</a>
+              <a href="/">Home</a>
             </li>
-            <li className="breadcrumb-item active">Dashboard</li>
+            <li className="breadcrumb-item active">Add product</li>
           </ol>
         </nav>
       </div>
-
       <div className="col-lg-12">
         <div className="row">
-          {/* Customers Card */}
           <div className="col-xxl-4 col-xl-12">
             <div className="card info-card customers-card">
               <div className="card-body">
@@ -175,12 +228,11 @@ function Addproduct() {
                     Write a description, add photos, and set pricing for the
                     product you plan to sell
                   </p>
-
                   <div className="col-md-12 text-center">
                     <button
                       id="submitbut"
                       onClick={handleEdit}
-                      type="button" // Change to "button" instead of "submit"
+                      type="button"
                       className="button button-a button-big button-rounded"
                     >
                       Add product

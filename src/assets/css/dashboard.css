@@ -27,8 +27,9 @@ input[type='radio'] {
 }
 
 #submitbut {
-    color: black;
+    color: whitesmoke;
     height: 50px;
+    font-size: large;
     width: 150px;
     border-radius: 10px;
     background-color: rgb(47, 141, 248);
@@ -46,6 +47,7 @@ input[type='radio'] {
 #cancelbut {
     color: rgb(29, 27, 27);
     height: 50px;
+    font-size: large;
     width: 150px;
     border-radius: 10px;
     background-color: rgb(129, 128, 125);
@@ -61,7 +63,30 @@ input[type='radio'] {
     background-color: rgb(204, 114, 72);
     margin-right: 10px;
 }
-
+.collection {
+  max-height: 300px;
+  overflow: scroll;
+  background-color: #dde1e4;
+  padding-top: 10px;
+}
+#tableimg {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+#uploadimg {
+  height: 40%;
+  width: 40%;
+}
+#uploadpic {
+  border: 1px solid rgb(202, 190, 190);
+  border-radius: 5px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  cursor: pointer;
+}
 /* Login and signup styles */
 #boxit {
   margin-top: 6%;

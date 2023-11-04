@@ -6,7 +6,12 @@ import Headnav from "./component/Headnav";
 import Sidenav from "./component/Sidenav";
 import Home from "./component/Home";
 import Register from "./component/Register";
+import Contact from "./component/Contact";
 import Login from "./component/Login";
+import Products from "./component/products/Products";
+import Draft from "./component/orders/Draft";
+import Collections from "./component/products/Collections";
+import Createcollection from "./component/products/Createcollection";
 // Css files
 import "./assets/vendor/simple-datatables/style.css";
 import "./assets/vendor/remixicon/remixicon.css";
@@ -33,6 +38,11 @@ function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/addproducts" element={<Addproduct />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/products" element={<Products />} />
+                  <Route path="/collections" element={<Collections />} />
+                  <Route path="/createcollection" element={<Createcollection />} />
+                  <Route path="/draft" element={<Draft />} />
                 </Routes>
               </div>
             </section>

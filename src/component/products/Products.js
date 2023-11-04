@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import product from "../../assets/images/bluewallet.png";
 
 
-function Collections() {
+function Products() {
   const [filter, setFilter] = useState("Today"); // Default filter
 
   const handleFilterChange = (newFilter) => {
@@ -26,8 +26,8 @@ function Collections() {
       <div className="col-lg-12">
         <div className="row">
           <div className="col-12 text-right mb-3">
-            <Link to="/createcollection">
-              <button id="submitbut" className="btn btn-primary">Create&nbsp;Collection</button>
+            <Link to="/addproducts">
+              <button id="submitbut" className="btn btn-primary">Add Product</button>
             </Link>
           </div>
 
@@ -66,11 +66,13 @@ function Collections() {
                 <table className="table datatable">
                   <thead>
                     <tr>
-                      <th scope="col">Select</th>
-                      <th scope="col">Title</th>
+                      <th scope="col"><input type="checkbox" /></th>
                       <th scope="col">Product</th>
-                      <th scope="col">Product Condition</th>
-                      
+                      <th scope="col">Inventory</th>
+                      <th scope="col">Category</th>
+                      <th scope="col">Vendor</th>
+                      <th scope="col">Price</th>
+                      <th scope="col">Status</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -85,13 +87,17 @@ function Collections() {
                           id="tableimg"
                         />
                         <a href="#" className="text-primary">
-                          Litprod
+                          product1
                         </a>
                       </td>
                       
-                      <td>5</td>
-                      <td>Damaged</td>
-                      
+                      <td>5 in stock</td>
+                      <td>Product Category</td>
+                      <td>Vendor Name</td>
+                      <td>$0</td>
+                      <td>
+                        <span className="badge bg-success">Received</span>
+                      </td>
                     </tr>
 
                     <tr>
@@ -105,12 +111,17 @@ function Collections() {
                           id="tableimg"
                         />
                         <a href="#" className="text-primary">
-                          Catprod
+                          product1
                         </a>
                       </td>
-                     
-                      <td>5</td>
-                      <td>Quantity control</td>
+                      
+                      <td>5 in stock</td>
+                      <td>Product Category</td>
+                      <td>Vendor Name</td>
+                      <td>$0</td>
+                      <td>
+                        <span className="badge bg-success">Received</span>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -124,4 +135,4 @@ function Collections() {
   );
 }
 
-export default Collections;
+export default Products;

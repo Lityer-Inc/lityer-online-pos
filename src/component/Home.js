@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import product from "../assets/images/bluewallet.png";
+
 
 function Home() {
   const [filter, setFilter] = useState("Today"); // Default filter
@@ -22,30 +24,6 @@ function Home() {
       </div>
       <div className="col-lg-12">
         <div className="row">
-          {/* Filter Dropdown */}
-          <div className="col-12 mb-3">
-            <div className="dropdown">
-              <button
-                className="btn btn-secondary dropdown-toggle"
-                type="button"
-                id="filterDropdown"
-                data-bs-toggle="dropdown"
-              >
-                Filter: {filter}
-              </button>
-              <ul className="dropdown-menu" aria-labelledby="filterDropdown">
-                <li onClick={() => handleFilterChange("Today")}>
-                  <a className="dropdown-item">Today</a>
-                </li>
-                <li onClick={() => handleFilterChange("This Month")}>
-                  <a className="dropdown-item">This Month</a>
-                </li>
-                <li onClick={() => handleFilterChange("This Year")}>
-                  <a className="dropdown-item">This Year</a>
-                </li>
-              </ul>
-            </div>
-          </div>
 
           {/* Sales Card */}
           <div className="col-xxl-4 col-md-6">
@@ -232,12 +210,12 @@ function Home() {
                 <h5 className="card-title">
                   Recent Sales <span>| Today</span>
                 </h5>
-                <table className="table table-borderless datatable">
+                <table className="table datatable">
                   <thead>
                     <tr>
                       <th scope="col">No</th>
-                      <th scope="col">Customer</th>
                       <th scope="col">Product</th>
+                      <th scope="col">Customer</th>
                       <th scope="col">Price</th>
                       <th scope="col">Status</th>
                     </tr>
@@ -247,12 +225,18 @@ function Home() {
                       <th scope="row">
                         <a href="#">1</a>
                       </th>
-                      <td>Brandon Jacob</td>
                       <td>
+                        <img
+                          src={product}
+                          alt="Product"
+                          id="tableimg"
+                        />
                         <a href="#" className="text-primary">
                           product1
                         </a>
                       </td>
+                      <td>Brandon Jacob</td>
+                      
                       <td>$0</td>
                       <td>
                         <span className="badge bg-success">Received</span>
@@ -262,62 +246,46 @@ function Home() {
                       <th scope="row">
                         <a href="#">2</a>
                       </th>
-                      <td>Bridie Kessler</td>
                       <td>
+                        <img
+                          src={product}
+                          alt="Product"
+                          id="tableimg"
+                        />
                         <a href="#" className="text-primary">
-                        product2
+                          product1
                         </a>
                       </td>
+                      <td>Bridie Kessler</td>
+                      
                       <td>$0</td>
                       <td>
                         <span className="badge bg-warning">Delivered</span>
                       </td>
                     </tr>
+                    
                     <tr>
                       <th scope="row">
                         <a href="#">3</a>
                       </th>
-                      <td>Ashleigh Langosh</td>
                       <td>
+                        <img
+                          src={product}
+                          alt="Product"
+                          id="tableimg"
+                        />
                         <a href="#" className="text-primary">
-                        product3
+                          product1
                         </a>
                       </td>
-                      <td>$0</td>
-                      <td>
-                        <span className="badge bg-success">Received</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">
-                        <a href="#">4</a>
-                      </th>
                       <td>Angus Grady</td>
-                      <td>
-                        <a href="#" className="text-primar">
-                        product4
-                        </a>
-                      </td>
+                      
                       <td>$0</td>
                       <td>
                         <span className="badge bg-danger">Sent</span>
                       </td>
                     </tr>
-                    <tr>
-                      <th scope="row">
-                        <a href="#">5</a>
-                      </th>
-                      <td>Raheem Lehner</td>
-                      <td>
-                        <a href="#" className="text-primary">
-                        product5
-                        </a>
-                      </td>
-                      <td>$0</td>
-                      <td>
-                      <span className="badge bg-warning">Received(WA)</span>
-                      </td>
-                    </tr>
+                    
                   </tbody>
                 </table>
               </div>
