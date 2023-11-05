@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import product from "../assets/images/bluewallet.png";
-
+import { Link } from "react-router-dom";
 
 function Home() {
   const [filter, setFilter] = useState("Today"); // Default filter
@@ -22,9 +22,65 @@ function Home() {
           </ol>
         </nav>
       </div>
+
+      <div className="col-lg-12">
+            <div className="row">
+              <div className="col-xxl-4 col-xl-12">
+                <div className="card info-card customers-card">
+                  <div className="card-body">
+                    <h5 className="card-title">Set your store information</h5>
+                    <div id="content">
+                      <p>
+                        Write the name, discription, and set pricing for the
+                        product you plan to sell
+                      </p>
+                      <div className="col-md-12 text-center">
+                        <Link to="/addproducts">
+                          <button
+                            id="submitbut"
+                            type="button"
+                            className="button button-a button-big button-rounded"
+                          >
+                            Set store
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-12">
+            <div className="row">
+              <div className="col-xxl-4 col-xl-12">
+                <div className="card info-card customers-card">
+                  <div className="card-body">
+                    <h5 className="card-title">Add product</h5>
+                    <div id="content">
+                      <p>
+                        Write a description, add photos, and set pricing for the
+                        product you plan to sell
+                      </p>
+                      <div className="col-md-12 text-center">
+                        <Link to="/addproducts">
+                          <button
+                            id="submitbut"
+                            type="button"
+                            className="button button-a button-big button-rounded"
+                          >
+                            Add product
+                          </button>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
       <div className="col-lg-12">
         <div className="row">
-
           {/* Sales Card */}
           <div className="col-xxl-4 col-md-6">
             <div className="card info-card sales-card">
@@ -127,7 +183,7 @@ function Home() {
               </div>
             </div>
           </div>
-          
+
           {/* End Revenue Card */}
           {/* Customers Card */}
           <div className="col-xxl-4 col-xl-12">
@@ -226,17 +282,13 @@ function Home() {
                         <a href="#">1</a>
                       </th>
                       <td>
-                        <img
-                          src={product}
-                          alt="Product"
-                          id="tableimg"
-                        />
+                        <img src={product} alt="Product" id="tableimg" />
                         <a href="#" className="text-primary">
                           product1
                         </a>
                       </td>
                       <td>Brandon Jacob</td>
-                      
+
                       <td>$0</td>
                       <td>
                         <span className="badge bg-success">Received</span>
@@ -247,45 +299,36 @@ function Home() {
                         <a href="#">2</a>
                       </th>
                       <td>
-                        <img
-                          src={product}
-                          alt="Product"
-                          id="tableimg"
-                        />
+                        <img src={product} alt="Product" id="tableimg" />
                         <a href="#" className="text-primary">
                           product1
                         </a>
                       </td>
                       <td>Bridie Kessler</td>
-                      
+
                       <td>$0</td>
                       <td>
                         <span className="badge bg-warning">Delivered</span>
                       </td>
                     </tr>
-                    
+
                     <tr>
                       <th scope="row">
                         <a href="#">3</a>
                       </th>
                       <td>
-                        <img
-                          src={product}
-                          alt="Product"
-                          id="tableimg"
-                        />
+                        <img src={product} alt="Product" id="tableimg" />
                         <a href="#" className="text-primary">
                           product1
                         </a>
                       </td>
                       <td>Angus Grady</td>
-                      
+
                       <td>$0</td>
                       <td>
                         <span className="badge bg-danger">Sent</span>
                       </td>
                     </tr>
-                    
                   </tbody>
                 </table>
               </div>

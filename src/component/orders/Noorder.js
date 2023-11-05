@@ -3,7 +3,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import nocustomer from "../../assets/images/insurance.png";
 
-function Noproduct() {
+function Noorder() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Sending code to backend
@@ -19,7 +19,7 @@ function Noproduct() {
                 <div className="text-center">
                   <img src={nocustomer} alt="" id="noimg" />
                 </div>
-                <h5 className="card-title">No product</h5>
+                <h5 className="card-title">No Order</h5>
                 <div id="content">
                   <p>
                     Write a description, add photos, and set pricing for the
@@ -32,7 +32,7 @@ function Noproduct() {
                       type="button"
                       className="button button-a button-big button-rounded"
                     >
-                      Add product
+                      Add Order
                     </button>
                   </div>
                 </div>
@@ -45,4 +45,4 @@ function Noproduct() {
   );
 }
 
-export default Noproduct;
+export default Noorder;

@@ -12,6 +12,12 @@ import Products from "./component/products/Products";
 import Draft from "./component/orders/Draft";
 import Collections from "./component/products/Collections";
 import Createcollection from "./component/products/Createcollection";
+import Nocustomer from "./component/customers/Nocustomer";
+import Nodriver from "./component/driver/Nodriver";
+import Noorder from "./component/orders/Noorder";
+import Noproduct from "./component/products/Noproduct";
+
+
 // Css files
 import "./assets/vendor/simple-datatables/style.css";
 import "./assets/vendor/remixicon/remixicon.css";
@@ -43,6 +49,10 @@ function App() {
                   <Route path="/collections" element={<Collections />} />
                   <Route path="/createcollection" element={<Createcollection />} />
                   <Route path="/draft" element={<Draft />} />
+                  <Route path="/nocustomer" element={<Nocustomer />} />
+                  <Route path="/nodriver" element={<Nodriver />} />
+                  <Route path="/noorder" element={<Noorder />} />
+                  <Route path="/noproduct" element={<Noproduct />} />
                 </Routes>
               </div>
             </section>

@@ -4,6 +4,7 @@ import "react-quill/dist/quill.snow.css";
 import uploadicon from "../../assets/images/uploadpic.png";
 
 function Addproduct() {
+  const [showForm, setShowForm] = useState(false);
   const [productDetails, setProductDetails] = useState({
     productName: "",
     productPrice: "",
@@ -11,8 +12,25 @@ function Addproduct() {
     productQuantity: "",
     productDescription: "",
     barcode: "",
-    thumbnailImage: null,
+    thumbnailImage: null, // Include thumbnailImage in the productDetails object
   });
+
+  const handleEdit = () => {
+    setShowForm(true);
+  };
+
+  const handleCancel = () => {
+    setShowForm(false);
+    setProductDetails({
+      productName: "",
+      productPrice: "",
+      productimgs: "",
+      productQuantity: "",
+      productDescription: "",
+      barcode: "",
+      thumbnailImage: null, // Reset thumbnailImage
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +60,7 @@ function Addproduct() {
     input.click();
   };
 
-
+  if (showForm) {
     return (
       <>
         <div className="col-xl-12">
@@ -161,6 +179,14 @@ function Addproduct() {
                 </div>
                 <div className="text-center">
                   <button
+                    id="cancelbut"
+                    type="button"
+                    onClick={handleCancel}
+                    className="button button-a button-big button-rounded"
+                  >
+                    Cancel
+                  </button>
+                  <button
                     id="submitbut"
                     type="submit"
                     className="button button-a button-big button-rounded"
@@ -174,6 +200,50 @@ function Addproduct() {
         </div>
       </>
     );
+  }
+
+  return (
+    <>
+      <div className="pagetitle">
+        <h1>Add Product</h1>
+        <nav>
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="/">Home</a>
+            </li>
+            <li className="breadcrumb-item active">Add product</li>
+          </ol>
+        </nav>
+      </div>
+      <div className="col-lg-12">
+        <div className="row">
+          <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card customers-card">
+              <div className="card-body">
+                <h5 className="card-title">Add product</h5>
+                <div id="content">
+                  <p>
+                    Write a description, add photos, and set pricing for the
+                    product you plan to sell
+                  </p>
+                  <div className="col-md-12 text-center">
+                    <button
+                      id="submitbut"
+                      onClick={handleEdit}
+                      type="button"
+                      className="button button-a button-big button-rounded"
+                    >
+                      Add product
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default Addproduct;
