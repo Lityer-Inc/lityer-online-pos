@@ -16,6 +16,7 @@ import Nocustomer from "./component/customers/Nocustomer";
 import Nodriver from "./component/driver/Nodriver";
 import Noorder from "./component/orders/Noorder";
 import Noproduct from "./component/products/Noproduct";
+import Createsore from "./component/settings/Createsore";
 
 
 // Css files
@@ -43,6 +44,7 @@ function App() {
               <div className="row">
                 <Routes>
                   <Route path="/" element={<Home />} />
+                  <Route path="/createsore" element={<Createsore />} />
                   <Route path="/addproducts" element={<Addproduct />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/products" element={<Products />} />
@@ -64,7 +66,7 @@ function App() {
       {!loggedIn && (
         <Router>
           <Routes>
-            <Route path="/" element={<Login />} />
+            {/* <Route path="/" element={<Login />} /> */}
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>

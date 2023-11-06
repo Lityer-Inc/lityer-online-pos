@@ -48,7 +48,7 @@ function Createcollection() {
               </div>
 
               <div className="form-group">
-                <label htmlFor="productimgs">Products Images</label>
+                <label htmlFor="productimgs">Collection Thumbnail</label>
                 <input
                   type="file"
                   className="form-control"
