@@ -9,7 +9,7 @@ import Register from "./component/Register";
 import Contact from "./component/Contact";
 import Login from "./component/Login";
 import Products from "./component/products/Products";
-import Draft from "./component/orders/Draft";
+import Purchaseorder from "./component/orders/Purchaseorder";
 import Collections from "./component/products/Collections";
 import Createcollection from "./component/products/Createcollection";
 import Nocustomer from "./component/customers/Nocustomer";
@@ -50,7 +50,7 @@ function App() {
                   <Route path="/products" element={<Products />} />
                   <Route path="/collections" element={<Collections />} />
                   <Route path="/createcollection" element={<Createcollection />} />
-                  <Route path="/draft" element={<Draft />} />
+                  <Route path="/purchaseorder" element={<Purchaseorder />} />
                   <Route path="/nocustomer" element={<Nocustomer />} />
                   <Route path="/nodriver" element={<Nodriver />} />
                   <Route path="/noorder" element={<Noorder />} />

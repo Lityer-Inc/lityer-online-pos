@@ -120,7 +120,7 @@ function Products() {
                       <td>Vendor Name</td>
                       <td>$0</td>
                       <td>
-                        <span className="badge bg-success">Received</span>
+                        <span className="badge bg-warning">Paid</span>
                       </td>
                     </tr>
                   </tbody>

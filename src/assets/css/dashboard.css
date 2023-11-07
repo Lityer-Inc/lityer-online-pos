@@ -180,4 +180,56 @@ input[type='radio'] {
   color: #012970;
   font-size: 16px;
 }
+/* Status CSS */
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  background-color: #fff;
+  border-radius: 4px;
+}
+
+.custom-dropdown .dropdown-toggle {
+  text-decoration: none;
+  color: #333;
+  display: block;
+}
+
+.custom-dropdown .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+}
+
+.custom-dropdown.active .dropdown-menu {
+  display: block;
+}
+
+.custom-dropdown .dropdown-item {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #ccc;
+  transition: background-color 0.2s;
+}
+
+.custom-dropdown .dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.custom-dropdown .dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+.custom-dropdown.active .dropdown-toggle:after {
+  content: "\25B2";
+}
 

@@ -14,7 +14,7 @@ const Sidenav = () => {
 
         <li className="nav-item">
           <Link
-            to="/draft"
+            to="/purchaseorder"
             className="nav-link collapsed"
             data-target="#Orders-nav"
             data-toggle="collapse"
@@ -25,9 +25,9 @@ const Sidenav = () => {
           </Link>
           <ul id="Orders-nav" className="nav-content collapse" data-parent="#sidebar-nav">
             <li>
-              <NavLink to="/drafted">
+              <NavLink to="/purchaseorder">
                 <i className="bi bi-circle"></i>
-                <span>Draft</span>
+                <span>Purchase Orders</span>
               </NavLink>
             </li>
             <li>
@@ -51,12 +51,7 @@ const Sidenav = () => {
             <i className="bi bi-chevron-down ms-auto"></i>
           </Link>
           <ul id="Products-nav" className="nav-content collapse" data-parent="#sidebar-nav">
-            <li>
-              <NavLink to="/purchase">
-                <i className="bi bi-circle"></i>
-                <span>Purchase Orders</span>
-              </NavLink>
-            </li>
+            
             <li>
               <NavLink to="/collections">
                 <i className="bi bi-circle"></i>
