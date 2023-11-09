@@ -31,7 +31,7 @@ function Purchaseorder() {
   return (
     <div>
       <div className="pagetitle">
-        <h1>Drafts</h1>
+        <h1>Purchase orders</h1>
       </div>
       <div className="col-lg-12">
         <div className="row">

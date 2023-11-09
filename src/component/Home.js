@@ -24,61 +24,90 @@ function Home() {
       </div>
 
       <div className="col-lg-12">
-            <div className="row">
-              <div className="col-xxl-4 col-xl-12">
-                <div className="card info-card customers-card">
-                  <div className="card-body">
-                    <h5 className="card-title">Set your store information</h5>
-                    <div id="content">
-                      <p>
-                        Write the name, discription, and set pricing for the
-                        product you plan to sell
-                      </p>
-                      <div className="col-md-12 text-center">
-                        <Link to="/createsore">
-                          <button
-                            id="submitbut"
-                            type="button"cd
-                            className="button button-a button-big button-rounded"
-                          >
-                            Name store
-                          </button>
-                        </Link>
-                      </div>
-                    </div>
+        <div className="row">
+          <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card customers-card">
+              <div className="card-body">
+                <h5 className="card-title">Set your Profile information</h5>
+                <div id="content">
+                  <p>
+                    Set your name, contact information, and address.
+                  </p>
+                  <div className="col-md-12 text-center">
+                    <Link to="/createprofile">
+                      <button
+                        id="submitbut"
+                        type="button"
+                        cd
+                        className="button button-a button-big button-rounded"
+                      >
+                        Create profile
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-lg-12">
-            <div className="row">
-              <div className="col-xxl-4 col-xl-12">
-                <div className="card info-card customers-card">
-                  <div className="card-body">
-                    <h5 className="card-title">Add product</h5>
-                    <div id="content">
-                      <p>
-                        Write a description, add photos, and set pricing for the
-                        product you plan to sell
-                      </p>
-                      <div className="col-md-12 text-center">
-                        <Link to="/addproducts">
-                          <button
-                            id="submitbut"
-                            type="button"
-                            className="button button-a button-big button-rounded"
-                          >
-                            Add product
-                          </button>
-                        </Link>
-                      </div>
-                    </div>
+        </div>
+      </div>
+      <div className="col-lg-12">
+        <div className="row">
+          <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card customers-card">
+              <div className="card-body">
+                <h5 className="card-title">Set your store information</h5>
+                <div id="content">
+                  <p>
+                    Write the name, discription, and set pricing for the product
+                    you plan to sell
+                  </p>
+                  <div className="col-md-12 text-center">
+                    <Link to="/createsore">
+                      <button
+                        id="submitbut"
+                        type="button"
+                        cd
+                        className="button button-a button-big button-rounded"
+                      >
+                        Name store
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div className="col-lg-12">
+        <div className="row">
+          <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card customers-card">
+              <div className="card-body">
+                <h5 className="card-title">Add product</h5>
+                <div id="content">
+                  <p>
+                    Write a description, add photos, and set pricing for the
+                    product you plan to sell
+                  </p>
+                  <div className="col-md-12 text-center">
+                    <Link to="/addproducts">
+                      <button
+                        id="submitbut"
+                        type="button"
+                        className="button button-a button-big button-rounded"
+                      >
+                        Add product
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="col-lg-12">
         <div className="row">
           {/* Sales Card */}

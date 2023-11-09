@@ -17,7 +17,11 @@ import Nodriver from "./component/driver/Nodriver";
 import Noorder from "./component/orders/Noorder";
 import Noproduct from "./component/products/Noproduct";
 import Createsore from "./component/settings/Createsore";
-
+import Profile from "./component/Profile/Profile";
+import Security from "./component/settings/Security";
+import Createprofile from "./component/Profile/Createprofile";
+import Notifications from "./component/notification/Notifications";
+import Messages from "./component/message/Messages";
 
 // Css files
 import "./assets/vendor/simple-datatables/style.css";
@@ -46,11 +50,19 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/createsore" element={<Createsore />} />
                   <Route path="/addproducts" element={<Addproduct />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/createprofile" element={<Createprofile />} />
+                  <Route path="/security" element={<Security />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/products" element={<Products />} />
                   <Route path="/collections" element={<Collections />} />
-                  <Route path="/createcollection" element={<Createcollection />} />
+                  <Route
+                    path="/createcollection"
+                    element={<Createcollection />}
+                  />
                   <Route path="/purchaseorder" element={<Purchaseorder />} />
+                  <Route path="/notifications" element={<Notifications />} />
+                  <Route path="/messages" element={<Messages />} />
                   <Route path="/nocustomer" element={<Nocustomer />} />
                   <Route path="/nodriver" element={<Nodriver />} />
                   <Route path="/noorder" element={<Noorder />} />

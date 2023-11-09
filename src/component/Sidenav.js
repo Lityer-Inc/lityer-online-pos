@@ -87,6 +87,18 @@ const Sidenav = () => {
             </li>
           </ul>
         </li>
+        <li className="nav-item">
+          <NavLink to="/messages" className="nav-link collapsed">
+            <i className="bi bi-chat-left-text"></i>
+            <span>Messages</span>
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink to="/notifications" className="nav-link collapsed">
+            <i className="bi bi-bell"></i>
+            <span>Notification</span>
+          </NavLink>
+        </li>
 
         <li className="nav-heading">Pages</li>
 
@@ -97,15 +109,15 @@ const Sidenav = () => {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/general" className="nav-link collapsed">
-            <i className="bi bi-grid"></i>
-            <span>General</span>
+          <NavLink to="/profile" className="nav-link collapsed">
+            <i className="bi bi-person"></i>
+            <span>Profile</span>
           </NavLink>
         </li>
         <li className="nav-item">
           <NavLink to="/security" className="nav-link collapsed">
             <i className="bi bi-gear"></i>
-            <span>Security</span>
+            <span>Settings</span>
           </NavLink>
         </li>
       </ul>
