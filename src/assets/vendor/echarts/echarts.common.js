@@ -1,4 +1,6 @@
-
+/* eslint-disable no-undef */
+/* eslint-disable no-restricted-globals */
+/* eslint-disable no-unused-expressions */
 /*
 * Licensed to the Apache Software Foundation (ASF) under one
 * or more contributor license agreements.  See the NOTICE file

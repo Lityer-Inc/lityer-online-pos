@@ -30,12 +30,12 @@ const Sidenav = () => {
                 <span>Purchase Orders</span>
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/abandoned-checkout">
+            {/* <li>
+              <NavLink to="/abandoncheck">
                 <i className="bi bi-circle"></i>
                 <span>Abandoned Checkout</span>
               </NavLink>
-            </li>
+            </li> */}
           </ul>
         </li>
 
@@ -67,7 +67,7 @@ const Sidenav = () => {
           </ul>
         </li>
 
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link
             to="/"
             className="nav-link collapsed"
@@ -86,7 +86,15 @@ const Sidenav = () => {
               </NavLink>
             </li>
           </ul>
+        </li> */}
+
+        <li className="nav-item">
+          <NavLink to="/pos" className="nav-link collapsed">
+            <i className="bi bi-file-post"></i>
+            <span>POS</span>
+          </NavLink>
         </li>
+
         <li className="nav-item">
           <NavLink to="/messages" className="nav-link collapsed">
             <i className="bi bi-chat-left-text"></i>

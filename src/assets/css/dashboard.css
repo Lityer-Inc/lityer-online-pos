@@ -29,8 +29,9 @@ input[type='radio'] {
 #submitbut {
     color: whitesmoke;
     height: 50px;
+    padding-left: 1rem;
+    padding-right: 1rem;
     font-size: large;
-    width: 150px;
     border-radius: 10px;
     background-color: rgb(47, 141, 248);
     transition: background-color 0.3s, color 0.3s;
@@ -38,8 +39,6 @@ input[type='radio'] {
 
 #submitbut:hover {
     color: rgb(255, 255, 255);
-    height: 50px;
-    width: 150px;
     border-radius: 10px;
     background-color: #012970;
 }

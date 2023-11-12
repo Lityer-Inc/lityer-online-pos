@@ -1,5 +1,6 @@
 import React from "react";
 import profile from "../../assets/images/bitcoin.png";
+import { Link } from "react-router-dom";
 
 function Profile() {
   return (
@@ -19,6 +20,20 @@ function Profile() {
 
         <section className="section profile">
           <div className="row">
+            <div className="col-md-12 text-right mb-4">
+              <Link to="/createprofile">
+                <button
+                  id="submitbut"
+                  type="button"
+                  className="button button-a button-big button-rounded"
+                >
+                  Edit Profie
+                </button>
+                
+              </Link>
+            </div>
+            
+
             <div className="col-xl-12">
               <div className="card">
                 <div className="card-body profile-card pt-4 d-flex flex-column align-items-center">

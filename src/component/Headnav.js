@@ -15,7 +15,7 @@ function Headnav() {
       <div className="d-flex align-items-center justify-content-between">
         <Link to="/" className="logo d-flex align-items-center">
           <img src={logo} alt="logo" />
-          <span className="d-none d-lg-block">Lityer</span>
+          <span className="d-none d-lg-block">Allsats</span>
         </Link>
         <i className="bi bi-list toggle-sidebar-btn"></i>
       </div>

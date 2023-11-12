@@ -22,6 +22,13 @@ import Security from "./component/settings/Security";
 import Createprofile from "./component/Profile/Createprofile";
 import Notifications from "./component/notification/Notifications";
 import Messages from "./component/message/Messages";
+import Abandoncheck from "./component/orders/Abandoncheck.js";
+import Editcollection from "./component/products/Editcollection.js";
+import Inventory from "./component/products/Inventory.js";
+import Editproduct from "./component/products/Editproduct.js";
+import Pos from "./component/pos/Pos.js";
+import Shipment from "./component/orders/Shipment.js";
+
 
 // Css files
 import "./assets/vendor/simple-datatables/style.css";
@@ -34,11 +41,14 @@ import "./assets/vendor/bootstrap/css/bootstrap.min.css";
 import "./assets/css/style.css";
 import "./assets/css/dashboard.css";
 
+// js
+import "./assets/js/main.js";
+
 function App() {
   const loggedIn = true;
 
   return (
-    <div className="">
+    <div className="just">
       {loggedIn && (
         <Router>
           <Headnav />
@@ -48,19 +58,25 @@ function App() {
               <div className="row">
                 <Routes>
                   <Route path="/" element={<Home />} />
+                  <Route path="/pos" element={<Pos />} />
+                  <Route path="/shipment" element={<Shipment />} />
                   <Route path="/createsore" element={<Createsore />} />
                   <Route path="/addproducts" element={<Addproduct />} />
+                  <Route path="/editproduct" element={<Editproduct />} />
+                  <Route path="/inventory" element={<Inventory />} />
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/createprofile" element={<Createprofile />} />
                   <Route path="/security" element={<Security />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/products" element={<Products />} />
                   <Route path="/collections" element={<Collections />} />
+                  <Route path="/editcollection" element={<Editcollection />} />
                   <Route
                     path="/createcollection"
                     element={<Createcollection />}
                   />
                   <Route path="/purchaseorder" element={<Purchaseorder />} />
+                  <Route path="/abandoncheck" element={<Abandoncheck />} />
                   <Route path="/notifications" element={<Notifications />} />
                   <Route path="/messages" element={<Messages />} />
                   <Route path="/nocustomer" element={<Nocustomer />} />

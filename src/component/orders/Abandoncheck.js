@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Purchaseorder() {
+function Abandoncheck() {
   const [selectAll, setSelectAll] = useState(false);
 
   const toggleSelectAll = () => {
@@ -14,20 +14,9 @@ function Purchaseorder() {
 
   return (
     <div>
-
       <div className="pagetitle">
-          <h1>Purchase orders</h1>
-          <nav>
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <a href="/">Home</a>
-              </li>
-              <li className="breadcrumb-item active">Purchase orders</li>
-            </ol>
-          </nav>
-        </div>
-
-      
+        <h1>Purchase orders</h1>
+      </div>
       <div className="col-lg-12">
         <div className="row">
           <div className="col-12">
@@ -75,7 +64,7 @@ function Purchaseorder() {
                       <th scope="col">Date</th>
                       <th scope="col">Customer</th>
                       <th scope="col">Channel</th>
-                      <th scope="col">Products</th>
+                      <th scope="col">Product</th>
                       <th scope="col">Total</th>
                       <th scope="col">Status</th>
                     </tr>
@@ -96,8 +85,8 @@ function Purchaseorder() {
                       <td>Brandon Jacob</td>
                       <td>Website</td>
                       <td>
-                        <a href="/shipment" className="text-primary">
-                          product1, product2, product3, product4, produst5
+                        <a href="#" className="text-primary">
+                          product1
                         </a>
                       </td>
                       <td>$234.00</td>
@@ -123,4 +112,4 @@ function Purchaseorder() {
   );
 }
 
-export default Purchaseorder;
+export default Abandoncheck;

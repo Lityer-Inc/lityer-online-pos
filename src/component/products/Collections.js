@@ -2,12 +2,17 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import product from "../../assets/images/bluewallet.png";
 
-
 function Collections() {
-  const [filter, setFilter] = useState("Today"); // Default filter
+  const [filter, setFilter] = useState("Today");
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
+  };
+
+  const handleDelete = (rowId) => {
+    // Implement the logic to delete the row
+    // use the rowId to identify the row you want to delete
+    // API call to delete the data
   };
 
   return (
@@ -27,11 +32,12 @@ function Collections() {
         <div className="row">
           <div className="col-12 text-right mb-3">
             <Link to="/createcollection">
-              <button id="submitbut" className="btn btn-primary">Create&nbsp;Collection</button>
+              <button id="submitbut" className="btn btn-primary">
+                Create&nbsp;Collection
+              </button>
             </Link>
           </div>
 
-          {/* Recent Sales */}
           <div className="col-12">
             <div className="card recent-sales overflow-auto">
               <div className="filter">
@@ -70,7 +76,7 @@ function Collections() {
                       <th scope="col">Title</th>
                       <th scope="col">Product</th>
                       <th scope="col">Product Condition</th>
-                      
+                      <th scope="col"></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -79,19 +85,37 @@ function Collections() {
                         <input type="checkbox" />
                       </td>
                       <td>
-                        <img
-                          src={product}
-                          alt="Product"
-                          id="tableimg"
-                        />
+                        <img src={product} alt="Product" id="tableimg" />
                         <a href="#" className="text-primary">
                           Litprod
                         </a>
                       </td>
-                      
+
                       <td>5</td>
-                      <td>Damaged</td>
-                      
+                      <td>
+                        <div style={{ width: "60%" }}>
+                          <select id="inputState" class="form-select">
+                            <option selected>...</option>
+                            <option>Quantity control</option>
+                            <option>Damaged</option>
+                          </select>
+                        </div>
+                      </td>
+                      <td>
+                        <a href="/editcollection">
+                          <i
+                            style={{ marginRight: "20px", cursor: "pointer" }}
+                            className="bi bi-pencil"
+                            title="Edit"
+                          ></i>
+                        </a>
+                        <i
+                          style={{ cursor: "pointer" }}
+                          className="bi bi-trash"
+                          title="Delete"
+                          onClick={() => handleDelete(1)}
+                        ></i>
+                      </td>
                     </tr>
 
                     <tr>
@@ -99,25 +123,43 @@ function Collections() {
                         <input type="checkbox" />
                       </td>
                       <td>
-                        <img
-                          src={product}
-                          alt="Product"
-                          id="tableimg"
-                        />
+                        <img src={product} alt="Product" id="tableimg" />
                         <a href="#" className="text-primary">
                           Catprod
                         </a>
                       </td>
-                     
+
                       <td>5</td>
-                      <td>Quantity control</td>
+                      <td>
+                        <div style={{ width: "60%" }}>
+                          <select id="inputState" class="form-select">
+                            <option selected>...</option>
+                            <option>Quantity control</option>
+                            <option>Damaged</option>
+                          </select>
+                        </div>
+                      </td>
+                      <td>
+                        <a href="/editcollection">
+                          <i
+                            style={{ marginRight: "20px", cursor: "pointer" }}
+                            className="bi bi-pencil"
+                            title="Edit"
+                          ></i>
+                        </a>
+                        <i
+                          style={{ cursor: "pointer" }}
+                          className="bi bi-trash"
+                          title="Delete"
+                          onClick={() => handleDelete(2)}
+                        ></i>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
-          {/* End Recent Sales */}
         </div>
       </div>
     </>

@@ -65,7 +65,7 @@ function Contact() {
             <div className="col-xl-6">
               <div className="card p-4">
                 <form
-                  action="forms/contact.php"
+                  action=""
                   method="post"
                   className="php-email-form"
                 >

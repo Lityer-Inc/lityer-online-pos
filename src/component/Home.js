@@ -38,10 +38,9 @@ function Home() {
                       <button
                         id="submitbut"
                         type="button"
-                        cd
                         className="button button-a button-big button-rounded"
                       >
-                        Create profile
+                        Set profile
                       </button>
                     </Link>
                   </div>
@@ -67,7 +66,6 @@ function Home() {
                       <button
                         id="submitbut"
                         type="button"
-                        cd
                         className="button button-a button-big button-rounded"
                       >
                         Name store
@@ -355,7 +353,7 @@ function Home() {
 
                       <td>$0</td>
                       <td>
-                        <span className="badge bg-danger">Sent</span>
+                        <span className="badge bg-danger">Shipped</span>
                       </td>
                     </tr>
                   </tbody>
