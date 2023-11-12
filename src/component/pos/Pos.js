@@ -1,4 +1,6 @@
 import React from "react";
+import category from "../../assets/images/category.jpg";
+import posprod from "../../assets/images/pos-products.jpg";
 
 function Pos() {
   return (
@@ -19,40 +21,40 @@ function Pos() {
         <section className="section contact">
           <div className="col-xl-12">
             <div className="row">
-              <div className="col-lg-2">
-                <div className="info-box card">
-                  <i className="bi bi-geo-alt"></i>
-                  <p>Address</p>
+              <div className="col-lg-2 col-sm-2">
+                <div className="cat-box">
+                  <img src={category} alt="" id="poscat" />
+                  <p>Fruit</p>
                 </div>
               </div>
-              <div className="col-lg-2">
-                <div className="info-box card">
-                  <i className="bi bi-telephone"></i>
-                  <p>Call Us</p>
+              <div className="col-lg-2 col-sm-2">
+                <div className="cat-box">
+                  <img src={category} alt="" id="poscat" />
+                  <p>Juice</p>
                 </div>
               </div>
-              <div className="col-lg-2">
-                <div className="info-box card">
-                  <i className="bi bi-envelope"></i>
-                  <p>Email Us</p>
+              <div className="col-lg-2 col-sm-2">
+                <div className="cat-box">
+                  <img src={category} alt="" id="poscat" />
+                  <p>vegetables</p>
                 </div>
               </div>
-              <div className="col-lg-2">
-                <div className="info-box card">
-                  <i className="bi bi-envelope"></i>
-                  <p>Email Us</p>
+              <div className="col-lg-2 col-sm-2">
+                <div className="cat-box">
+                  <img src={category} alt="" id="poscat" />
+                  <p>pepper</p>
                 </div>
               </div>
-              <div className="col-lg-2">
-                <div className="info-box card">
-                  <i className="bi bi-envelope"></i>
-                  <p>Email Us</p>
+              <div className="col-lg-2 col-sm-2">
+                <div className="cat-box">
+                  <img src={category} alt="" id="poscat" />
+                  <p>Milks</p>
                 </div>
               </div>
-              <div className="col-lg-2">
-                <div className="info-box card">
-                  <i className="bi bi-clock"></i>
-                  <p>Open Hours</p>
+              <div className="col-lg-2 col-sm-2">
+                <div className="cat-box">
+                  <img src={category} alt="" id="poscat" />
+                  <p>sweats</p>
                 </div>
               </div>
             </div>
@@ -61,40 +63,52 @@ function Pos() {
           <div className="row gy-4">
             <div className="col-xl-8">
               <div className="row">
-                <div className="col-lg-4">
-                  <div className="info-box card">
-                    <i className="bi bi-geo-alt"></i>
-                    <h3>Address</h3>
-                    <p>
-                      A108 Adam Street,<br></br>United state, NY 535022
-                    </p>
+                <div className="col-lg-4 col-sm-4">
+                  <div className="prod-box">
+                    <div className="hover-overlay">
+                      <p>ADD</p>
+                    </div>
+                    <img src={posprod} alt="" id="posprod" />
+                    <br />
+                    <span>Fruits</span>
+                    <h3>Water Melon</h3>
+                    <p>$100.00</p>
                   </div>
                 </div>
-                <div className="col-lg-4">
-                  <div className="info-box card">
-                    <i className="bi bi-telephone"></i>
-                    <h3>Call Us</h3>
-                    <p>
-                      +1 5589 55488 55<br></br>+1 6678 254445 41
-                    </p>
+                <div className="col-lg-4 col-sm-4">
+                  <div className="prod-box">
+                    <div className="hover-overlay">
+                      <p>ADD</p>
+                    </div>
+                    <img src={posprod} alt="" id="posprod" />
+                    <br></br>
+                    <span>Fruits</span>
+                    <h3>Water Melon</h3>
+                    <p>$100.00</p>
                   </div>
                 </div>
-                <div className="col-lg-4">
-                  <div className="info-box card">
-                    <i className="bi bi-envelope"></i>
-                    <h3>Email Us</h3>
-                    <p>
-                      info@example.com<br></br>contact@example.com
-                    </p>
+                <div className="col-lg-4 col-sm-4">
+                  <div className="prod-box">
+                    <div className="hover-overlay">
+                      <p>ADD</p>
+                    </div>
+                    <img src={posprod} alt="" id="posprod" />
+                    <br></br>
+                    <span>Fruits</span>
+                    <h3>Water Melon</h3>
+                    <p>$100.00</p>
                   </div>
                 </div>
-                <div className="col-lg-4">
-                  <div className="info-box card">
-                    <i className="bi bi-clock"></i>
-                    <h3>Open Hours</h3>
-                    <p>
-                      Monday - Friday<br></br>9:00AM - 05:00PM
-                    </p>
+                <div className="col-lg-4 col-sm-4">
+                  <div className="prod-box">
+                    <div className="hover-overlay">
+                      <p>ADD</p>
+                    </div>
+                    <img src={posprod} alt="" id="posprod" />
+                    <br></br>
+                    <span>Fruits</span>
+                    <h3>Water Melon</h3>
+                    <p>$100.00</p>
                   </div>
                 </div>
               </div>

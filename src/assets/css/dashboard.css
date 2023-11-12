@@ -20,7 +20,115 @@ input[type='radio'] {
   padding: 10px;
 }
 
-/* Additional styles for paragraph text */
+/* Pos styling */
+#poscat {
+  height: 50px;
+  width: 50px;
+  border-radius: 5px;
+  
+}
+
+.cat-box {
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+  background-color: #fff;
+  color: #798eb3;
+  transition: 0.3;
+}
+.cat-box:hover {
+  background-color: #012970;
+  color: #fff;
+  cursor: pointer;
+}
+
+.cat-box i {
+  font-size: 38px;
+  line-height: 0;
+  color: #4154f1;
+}
+
+.cat-box h3 {
+  font-size: 20px;
+  color: #012970;
+  font-weight: 700;
+  margin: 20px 0 10px 0;
+}
+
+.cat-box p {
+  padding: 0;
+  line-height: 24px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+#posprod {
+  height: 100px;
+  width: 100%;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.prod-box {
+  position: relative;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 30px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
+  background-color: #fff;
+  color: #798eb3;
+}
+
+.prod-box:hover {
+  border: 1px solid #012970;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* New styles for the overlay */
+.prod-box:hover .hover-overlay {
+  display: block;
+}
+
+.hover-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #4154f1;
+  padding: 5px;
+  display: none;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.hover-overlay p {
+  font-size: 14px;
+  color: #fff;
+  margin: 0;
+}
+
+.prod-box:hover #posprod {
+  transform: scale(1.1);
+}
+
+.prod-box h3 {
+  font-size: 20px;
+  color: #012970;
+  font-weight: 700;
+  margin: 20px 0 10px 0;
+}
+
+.prod-box p {
+  padding: 0;
+  line-height: 10px;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
 .paragraph-container p {
   font-size: 16px;
   font-weight: bold;
