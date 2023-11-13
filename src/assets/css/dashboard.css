@@ -30,11 +30,16 @@ input[type='radio'] {
 }
 
 .scan-barcode-btn {
+  text-align: center;
   background-color: #007bff;
   color: #fff;
+  border-radius: 5px;
+  margin-bottom: 10px;
   padding: 10px;
   border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center; /* Align text and icon vertically */
 }
 
 .pos-total {
@@ -43,18 +48,27 @@ input[type='radio'] {
 }
 
 .clear-all-btn {
-  background-color: #dc3545;
-  color: #fff;
+  background: transparent;
+  text-align: right;
+  color: rgb(168, 7, 7);
   border: none;
   padding: 10px;
   cursor: pointer;
   margin-left: 10px;
+  display: flex;
+  align-items: center;
 }
 
+/* Overflow Styles */
+
 .pos-overflow {
-  max-height: 200px;
+  max-height: 20rem;
   overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 5px;
 }
+
+/* Product Styles */
 
 .pos-product {
   border-bottom: 1px solid #ddd;
@@ -63,7 +77,6 @@ input[type='radio'] {
 
 .pos-product-details {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -71,34 +84,61 @@ input[type='radio'] {
   width: 50px;
   height: 50px;
   margin-right: 10px;
+  border-radius: 5px;
 }
 
 .pos-product-info {
   flex-grow: 1;
 }
-
+.pos-product-info strong {
+  color: #012970;
+  font-size: 14px;
+}
+.pos-product-info span {
+  color: #899bbd;
+}
+.pos-product button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.pos-product-info {
+  flex-grow: 1;
+}
 .pos-summary {
   margin-top: 10px;
   border-top: 1px solid #ddd;
   padding-top: 10px;
 }
 
-.pos-summary-item {
+.pos-summary-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.pos-summary-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pos-summary-cell {
   margin-bottom: 5px;
 }
+
+.pos-summary-cell-right {
+  text-align: right;
+}
+
 
 .pos-checkout {
   margin-top: 20px;
   text-align: center;
 }
 
-.checkout-btn {
-  background-color: #28a745;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-}
 
 
 #poscat {

@@ -3,39 +3,76 @@ import category from "../../assets/images/category.jpg";
 import posprod from "../../assets/images/pos-products.jpg";
 
 function Pos() {
-  const [products, setProducts] = useState([
+  const [products, setProducts] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  // Dummy data for testing
+  const dummyProducts = [
     {
-      name: "Product 1",
+      name: "Water Melon",
+      category: "fruits",
       image: posprod,
-      quantity: 2,
-      price: 10,
+      price: 100.0,
     },
     {
-      name: "Product 2",
+      name: "Apple",
+      category: "fruits",
       image: posprod,
-      quantity: 1,
-      price: 20,
+      price: 50.0,
     },
-    // Add more products as needed
-  ]);
+    {
+      name: "Orange",
+      category: "fruits",
+      image: posprod,
+      price: 30.0,
+    },
+    {
+      name: "Mango",
+      category: "fruits",
+      image: posprod,
+      price: 6.0,
+    },
+    {
+      name: "Pawpaw",
+      category: "fruits",
+      image: posprod,
+      price: 8.0,
+    },
+    // Add more dummy products as needed
+  ];
 
-  // const [products, setProducts] = useState([]);
+  const categories = [
+    { id: 1, name: "Fruit", img: category },
+    { id: 2, name: "Juice", img: category },
+    { id: 3, name: "Vegetables", img: category },
+    { id: 4, name: "Pepper", img: category },
+    { id: 5, name: "Milks", img: category },
+    { id: 6, name: "Sweats", img: category },
+  ];
 
-  // Function to handle quantity change
+  const handleAddProduct = () => {
+    if (selectedProduct) {
+      setProducts((prevProducts) => [
+        ...prevProducts,
+        { ...selectedProduct, quantity: 1 },
+      ]);
+      setSelectedProduct(null); // Reset selectedProduct after adding to overflow
+    }
+  };
+
   const handleQuantityChange = (index, newQuantity) => {
     const updatedProducts = [...products];
     updatedProducts[index].quantity = newQuantity;
     setProducts(updatedProducts);
   };
 
-  // Function to handle product removal
   const handleRemoveProduct = (index) => {
     const updatedProducts = [...products];
     updatedProducts.splice(index, 1);
     setProducts(updatedProducts);
   };
 
-  // Function to calculate total price
   const calculateTotalPrice = () => {
     return products.reduce(
       (total, product) => total + product.price * product.quantity,
@@ -43,10 +80,30 @@ function Pos() {
     );
   };
 
-  // Function to clear all products
   const handleClearAll = () => {
     setProducts([]);
   };
+
+  const openModal = (product) => {
+    setSelectedProduct(product);
+    // Add logic to open your modal here
+  };
+
+  const closeModal = () => {
+    setSelectedProduct(null);
+    // Add logic to close your modal here
+  };
+
+  const filterProductsByCategory = (categoryName) => {
+    setSelectedCategory(categoryName);
+  };
+
+  const filteredProducts =
+    selectedCategory === null
+      ? dummyProducts
+      : dummyProducts.filter(
+          (product) => product.category === selectedCategory
+        );
 
   return (
     <>
@@ -66,96 +123,54 @@ function Pos() {
         <section className="section contact">
           <div className="col-xl-12">
             <div className="row">
-              <div className="col-lg-2 col-sm-2">
-                <div className="cat-box">
-                  <img src={category} alt="" id="poscat" />
-                  <p>Fruit</p>
+              {categories.map((cat) => (
+                <div key={cat.id} className="col-lg-2 col-sm-2">
+                  <div className="cat-box">
+                    <img src={cat.img} alt="" id="poscat" />
+                    <p>{cat.name}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="col-lg-2 col-sm-2">
-                <div className="cat-box">
-                  <img src={category} alt="" id="poscat" />
-                  <p>Juice</p>
-                </div>
-              </div>
-              <div className="col-lg-2 col-sm-2">
-                <div className="cat-box">
-                  <img src={category} alt="" id="poscat" />
-                  <p>vegetables</p>
-                </div>
-              </div>
-              <div className="col-lg-2 col-sm-2">
-                <div className="cat-box">
-                  <img src={category} alt="" id="poscat" />
-                  <p>pepper</p>
-                </div>
-              </div>
-              <div className="col-lg-2 col-sm-2">
-                <div className="cat-box">
-                  <img src={category} alt="" id="poscat" />
-                  <p>Milks</p>
-                </div>
-              </div>
-              <div className="col-lg-2 col-sm-2">
-                <div className="cat-box">
-                  <img src={category} alt="" id="poscat" />
-                  <p>sweats</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
           <div className="row gy-4">
             <div className="col-xl-8">
               <div className="row">
-                <div className="col-lg-4 col-sm-4">
-                  <div className="prod-box">
-                    <div className="hover-overlay">
-                      <p>ADD</p>
+                {filteredProducts.map((product, index) => (
+                  <div key={index} className="col-lg-4 col-sm-4">
+                    <div
+                      className="prod-box"
+                      onClick={() => {
+                        openModal(product);
+                      }}
+                    >
+                      <div className="hover-overlay">
+                        <p onClick={handleAddProduct}>ADD</p>
+                      </div>
+                      <img src={product.image} alt="" id="posprod" />
+                      <br />
+                      <span>{product.category}</span>
+                      <h3>{product.name}</h3>
+                      <p>${product.price.toFixed(2)}</p>
                     </div>
-                    <img src={posprod} alt="" id="posprod" />
-                    <br />
-                    <span>Fruits</span>
-                    <h3>Water Melon</h3>
-                    <p>$100.00</p>
                   </div>
-                </div>
-                <div className="col-lg-4 col-sm-4">
-                  <div className="prod-box">
-                    <div className="hover-overlay">
-                      <p>ADD</p>
+                ))}
+
+                {/* Modal for displaying product details */}
+                {selectedProduct && (
+                  <div className="modal">
+                    <div className="modal-content">
+                      {/* Dynamic content based on selectedProduct */}
+                      <h3>{selectedProduct.name}</h3>
+                      <p>${selectedProduct.price.toFixed(2)}</p>
+                      <button onClick={handleAddProduct}>
+                        Add to Overflow
+                      </button>
+                      <button onClick={closeModal}>Close</button>
                     </div>
-                    <img src={posprod} alt="" id="posprod" />
-                    <br></br>
-                    <span>Fruits</span>
-                    <h3>Water Melon</h3>
-                    <p>$100.00</p>
                   </div>
-                </div>
-                <div className="col-lg-4 col-sm-4">
-                  <div className="prod-box">
-                    <div className="hover-overlay">
-                      <p>ADD</p>
-                    </div>
-                    <img src={posprod} alt="" id="posprod" />
-                    <br></br>
-                    <span>Fruits</span>
-                    <h3>Water Melon</h3>
-                    <p>$100.00</p>
-                  </div>
-                </div>
-                <div className="col-lg-4 col-sm-4">
-                  <div className="prod-box">
-                    <div className="hover-overlay">
-                      <p>ADD</p>
-                    </div>
-                    <img src={posprod} alt="" id="posprod" />
-                    <br></br>
-                    <span>Fruits</span>
-                    <h3>Water Melon</h3>
-                    <p>$100.00</p>
-                  </div>
-                </div>
+                )}
               </div>
             </div>
 
@@ -174,9 +189,10 @@ function Pos() {
                       </button>
                     </div>
                   </div>
-                  <div className="pos-column">
+                  <div className="text-center">
                     <button type="button" className="scan-barcode-btn">
-                      <i className="fas fa-barcode"></i> Scan Barcode
+                      <i className="bi bi-upc-scan"></i> &nbsp; &nbsp;Scan
+                      Barcode
                     </button>
                   </div>
 
@@ -191,21 +207,10 @@ function Pos() {
                           />
                           <div className="pos-product-info">
                             <div>
-                              {product.name} x {product.quantity}
+                              <strong>{product.name}</strong>
                             </div>
                             <div>
-                              ${product.price * product.quantity}
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  handleQuantityChange(
-                                    index,
-                                    product.quantity + 1
-                                  )
-                                }
-                              >
-                                +
-                              </button>
+                              <span>${product.price * product.quantity}</span>
                               <button
                                 type="button"
                                 onClick={() =>
@@ -215,13 +220,37 @@ function Pos() {
                                   )
                                 }
                               >
-                                -
+                                <i className="fas fa-minus">-</i>
                               </button>
+                              <span> {product.quantity}</span>
+
                               <button
+                                type="button"
+                                onClick={() =>
+                                  handleQuantityChange(
+                                    index,
+                                    product.quantity + 1
+                                  )
+                                }
+                              >
+                                <i className="fas fa-plus">+</i>
+                              </button>
+
+                              <button
+                                style={{
+                                  background: "transparent",
+                                  textAlign: "right",
+                                }}
                                 type="button"
                                 onClick={() => handleRemoveProduct(index)}
                               >
-                                Delete
+                                <i
+                                  className="bi bi-trash"
+                                  style={{
+                                    color: "#dc3545",
+                                    fontWeight: "12px",
+                                  }}
+                                ></i>
                               </button>
                             </div>
                           </div>
@@ -231,22 +260,36 @@ function Pos() {
                   </div>
 
                   <div className="pos-summary">
-                    <div className="pos-summary-item">
-                      Total Items: {products.length}
-                    </div>
-                    <div className="pos-summary-item">
-                      Subtotal: ${calculateTotalPrice()}
-                    </div>
-                    <div className="pos-summary-item">Tax: $5</div>
-                    <div className="pos-summary-item">
-                      Total: ${calculateTotalPrice() + 5}
+                    <div className="pos-summary-table">
+                      <div className="pos-summary-row">
+                        <div className="pos-summary-cell">Total Items:</div>
+                        <div className="pos-summary-cell pos-summary-cell-right">
+                          {products.length}
+                        </div>
+                      </div>
+                      <div className="pos-summary-row">
+                        <div className="pos-summary-cell">Subtotal:</div>
+                        <div className="pos-summary-cell pos-summary-cell-right">
+                          ${calculateTotalPrice()}
+                        </div>
+                      </div>
+                      <div className="pos-summary-row">
+                        <div className="pos-summary-cell">Tax:</div>
+                        <div className="pos-summary-cell pos-summary-cell-right">
+                          $5
+                        </div>
+                      </div>
+                      <div className="pos-summary-row">
+                        <div className="pos-summary-cell">Total:</div>
+                        <div className="pos-summary-cell pos-summary-cell-right">
+                          ${calculateTotalPrice() + 5}
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="pos-row pos-checkout">
-                    <button type="submit" className="checkout-btn">
-                      Checkout
-                    </button>
+                  <div className="text-center">
+                    <button type="submit">Checkout</button>
                   </div>
                 </form>
               </div>
