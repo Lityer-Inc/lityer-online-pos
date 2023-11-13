@@ -21,6 +21,86 @@ input[type='radio'] {
 }
 
 /* Pos styling */
+
+
+.pos-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.scan-barcode-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.pos-total {
+  display: flex;
+  align-items: center;
+}
+
+.clear-all-btn {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.pos-overflow {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.pos-product {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.pos-product-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pos-product-image {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.pos-product-info {
+  flex-grow: 1;
+}
+
+.pos-summary {
+  margin-top: 10px;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+}
+
+.pos-summary-item {
+  margin-bottom: 5px;
+}
+
+.pos-checkout {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.checkout-btn {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+
 #poscat {
   height: 50px;
   width: 50px;
