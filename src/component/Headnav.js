@@ -1,14 +1,24 @@
 import React, { useState } from "react";
 import logo from "../assets/images/logo-lit.png";
 import profile from "../assets/images/warehouse.png";
+import { MdClose, MdOutlineMenu } from "react-icons/md";
+import { IoMdClose } from "react-icons/io";
 import { Link } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { sidebarState } from "../atoms/atom/sidebarState";
 
 function Headnav() {
   const [isSearchBarVisible, setSearchBarVisible] = useState(false);
+  const [sidebar, setSidebar] = useRecoilState(sidebarState);
+
 
   const toggleSearchBar = () => {
     setSearchBarVisible(!isSearchBarVisible);
   };
+
+  const toggleSidebar = () => {
+    setSidebar((prev)=> !prev);
+  }
 
   return (
     <header className="header fixed-top d-flex align-items-center">
@@ -17,7 +27,14 @@ function Headnav() {
           <img src={logo} alt="logo" />
           <span className="d-none d-lg-block">Allsats</span>
         </Link>
-        <i className="bi bi-list toggle-sidebar-btn"></i>
+        {sidebar ? (
+          <MdClose onClick={toggleSidebar}
+          className={`text-[2rem] lg:hidden`} />
+        ) : (
+          <MdOutlineMenu onClick={toggleSidebar}
+          className={`text-[2rem] lg:hidden`} />
+        )}
+        
       </div>
 
       <div
