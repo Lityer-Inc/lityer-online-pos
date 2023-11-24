@@ -15,33 +15,48 @@ function Addproduct() {
     thumbnailImage: null,
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Sending code to backend
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+ 
+  const productData = {
+  name: productDetails.productName,
+  price: productDetails.productPrice,
+  quantity: productDetails.productQuantity,
+  category: productDetails.productcategory,
+  description: productDetails.productDescription,
+  barcode: productDetails.barcode
+};
+ 
+// Convert to FormData for sending
+const formData = new FormData();
+for (const key in productData) {
+  formData.append(key, productData[key]);
+}
 
-  const handleThumbnailImageSelect = () => {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.accept = "image/*";
-    input.onchange = (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        setProductDetails({
-          ...productDetails,
-          thumbnailImage: file,
-        });
-        // Display a preview of the selected image (optional)
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          const img = document.getElementById("uploadimg");
-          img.src = e.target.result;
-        };
-        reader.readAsDataURL(file);
-      }
-    };
-    input.click();
-  };
+
+ if (productDetails.thumbnailImage) {
+    formData.append('image', productDetails.thumbnailImage);
+  }
+  
+  
+  try {
+    const response = await fetch('http://localhost:8000/products/add_product', {
+      method: 'POST',
+      body: formData,
+    });
+
+    if (response.ok) {
+      const responseData = await response.json();
+      alert("Product added to the database.");
+    } else {
+    const errorResponse = await response.json();
+      alert("Failed to add product. Error: " + JSON.stringify(errorResponse));
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+ 
 
   return (
     <>
@@ -118,7 +133,7 @@ function Addproduct() {
                 <div
                   id="uploadpic"
                   className="form-group"
-                  onClick={handleThumbnailImageSelect}
+                  
                 >
                   <img
                     src={
@@ -136,25 +151,29 @@ function Addproduct() {
                 </div>
               </div>
 
-              <div className="col-md-6">
-                <div className="form-group">
-                  <label htmlFor="productimgs">Products Images</label>
-                  <input
-                    type="file"
-                    className="form-control"
-                    id="productimgs"
-                    placeholder="All product images"
-                    value={productDetails.productimgs}
-                    onChange={(e) =>
-                      setProductDetails({
-                        ...productDetails,
-                        productimgs: e.target.value,
-                      })
-                    }
-                    required
-                  />
-                </div>
-              </div>
+         <div className="col-md-6">
+  <div className="form-group">
+    <label htmlFor="productimgs">Products Images</label>
+    <input
+      type="file"
+      className="form-control"
+      id="productimgs"
+      onChange={(e) => {
+        // Handle the file selection
+        const file = e.target.files[0];
+        if (file) {
+          setProductDetails({
+            ...productDetails,
+            thumbnailImage: file, // Set the file object directly
+          });
+          // Optionally, update productimgs to display the file name or similar
+        }
+      }}
+      required
+    />
+  </div>
+</div>
+
               <div className="col-md-6">
                 <div className="form-group">
                   <label htmlFor="productcategory">Products Category</label>
@@ -171,6 +190,7 @@ function Addproduct() {
                       })
                     }
                     required
+                    readOnly
                   />
                 </div>
               </div>
