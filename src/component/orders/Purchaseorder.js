@@ -1,16 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function Purchaseorder() {
-  const [selectAll, setSelectAll] = useState(false);
+  const [selectAll, setSelectAll] = useState(false); 
+  const [orders, setOrders] = useState([]);  
 
   const toggleSelectAll = () => {
     setSelectAll(!selectAll);
   };
-
+ 
 
   const handleSelectRow = () => {
     // Implement row selection logic here
   };
+  
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/orders/all_orders');  
+        if (!response.ok) {
+          throw new Error('Network response has error.');
+        }
+       const data =  await response.json();  
+       setOrders(data); 
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+      }
+    };
+
+    fetchOrders();
+  }, []);
 
   return (
     <div>
@@ -80,39 +98,36 @@ function Purchaseorder() {
                       <th scope="col">Status</th>
                     </tr>
                   </thead>
+                  
+                  
+                  
+                  
                   <tbody>
-                    <tr>
-                      <td>
-                        <input
-                          type="checkbox"
-                          checked={selectAll}
-                          onChange={handleSelectRow}
-                        />
-                      </td>
-                      <th scope="row">
-                        <a href="#">#1</a>
-                      </th>
-                      <td>Jan 23, 2023</td>
-                      <td>Brandon Jacob</td>
-                      <td>Website</td>
-                      <td>
-                        <a href="/shipment" className="text-primary">
-                          product1, product2, product3, product4, produst5
-                        </a>
-                      </td>
-                      <td>$234.00</td>
-                      <td>
-                        <div style={{width: "70%"}}>
-                          <select id="inputState" class="form-select">
-                            <option selected>Paid</option>
-                            <option>Await Shipping</option>
-                            <option>Shipped</option>
-                          </select>
-                        </div>
-                      </td>
-                    </tr>
-                    {/* More rows */}
-                  </tbody>
+            {orders.map((order, index) => (
+              <tr key={index}>
+                <td><input type="checkbox" checked={selectAll} onChange={handleSelectRow} /></td>
+                <th scope="row"><a href="#">#{order.id}</a></th>
+                <td>{new Date(order.createdAt).toLocaleDateString()}</td>
+                <td>{order.customerId}</td>
+                <td>{order.channel}</td>
+                <td>
+                  <a href="/shipment" className="text-primary">
+                    {order.products.join(', ')}
+                  </a>
+                </td>
+                <td>${order.amount}</td>
+                <td>
+                  <div style={{width: "70%"}}>
+                    <select id={`status-${index}`} className="form-select">
+                      <option selected={order.status === 'Paid'}>Paid</option>
+                      <option selected={order.status === 'Await Shipping'}>Await Shipping</option>
+                      <option selected={order.status === 'Shipped'}>Shipped</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
                 </table>
               </div>
             </div>
