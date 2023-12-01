@@ -287,6 +287,43 @@ function Pos() {
                       </div>
                     </div>
                   </div>
+                  <div className="col-xl-12">
+                    <div className="row">
+                      <div className="col-lg-4 col-sm-4">
+                        <div className="cat-box">
+                          <i
+                            className="bi bi-cash"
+                            style={{
+                              fontWeight: "12px",
+                            }}
+                          ></i>
+                          <p>Cash</p>
+                        </div>
+                      </div>
+                      <div className="col-lg-4 col-sm-4">
+                        <div className="cat-box">
+                          <i
+                            className="bi bi-credit-card"
+                            style={{
+                              fontWeight: "12px",
+                            }}
+                          ></i>
+                          <p>Debit</p>
+                        </div>
+                      </div>
+                      <div className="col-lg-4 col-sm-4">
+                        <div className="cat-box">
+                          <i
+                            className="bi bi-qr-code-scan"
+                            style={{
+                              fontWeight: "12px",
+                            }}
+                          ></i>
+                          <p>Scan</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
                   <div className="text-center">
                     <button type="submit">Checkout</button>
