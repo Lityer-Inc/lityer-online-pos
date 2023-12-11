@@ -16,6 +16,7 @@ import Nocustomer from "./component/customers/Nocustomer";
 import Noorder from "./component/orders/Noorder";
 import Noproduct from "./component/products/Noproduct";
 import Createsore from "./component/settings/Createsore";
+import Storelist from "./component/settings/Storelist";
 import Profile from "./component/Profile/Profile";
 import Security from "./component/settings/Security";
 import Createprofile from "./component/Profile/Createprofile";
@@ -28,7 +29,6 @@ import Editproduct from "./component/products/Editproduct.js";
 import Pos from "./component/pos/Pos.js";
 import Shipment from "./component/orders/Shipment.js";
 import Onboard from "./component/products/Onboard.js";
-
 
 // Css files
 import "./assets/vendor/simple-datatables/style.css";
@@ -60,7 +60,6 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/pos" element={<Pos />} />
                   <Route path="/shipment" element={<Shipment />} />
-                  <Route path="/createsore" element={<Createsore />} />
                   <Route path="/addproducts" element={<Addproduct />} />
                   <Route path="/editproduct" element={<Editproduct />} />
                   <Route path="/inventory" element={<Inventory />} />
@@ -97,6 +96,8 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/createsore" element={<Createsore />} />
+            <Route path="/storelist" element={<Storelist />} />
           </Routes>
         </Router>
       )}
