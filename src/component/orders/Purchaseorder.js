@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Purchaseorder() {
   const [selectAll, setSelectAll] = useState(false);
@@ -7,32 +8,29 @@ function Purchaseorder() {
     setSelectAll(!selectAll);
   };
 
-
   const handleSelectRow = () => {
     // Implement row selection logic here
   };
 
   return (
     <div>
-
       <div className="pagetitle">
-          <h1>Purchase orders</h1>
-          <nav>
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <a href="/">Home</a>
-              </li>
-              <li className="breadcrumb-item active">Purchase orders</li>
-            </ol>
-          </nav>
-        </div>
+        <h1>Purchase orders</h1>
+        <nav>
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
+              <a href="/">Home</a>
+            </li>
+            <li className="breadcrumb-item active">Purchase orders</li>
+          </ol>
+        </nav>
+      </div>
 
-      
       <div className="col-lg-12">
         <div className="row">
           <div className="col-12">
             <div className="card recent-sales overflow-auto">
-            <div className="filter">
+              <div className="filter">
                 <a className="icon" href="#" data-bs-toggle="dropdown">
                   <i className="bi bi-three-dots"></i>
                 </a>
@@ -96,13 +94,13 @@ function Purchaseorder() {
                       <td>Brandon Jacob</td>
                       <td>Website</td>
                       <td>
-                        <a href="/shipment" className="text-primary">
-                          product1, product2, product3, product4, produst5
-                        </a>
+                        <Link to="/shipment" className="text-primary">
+                          product1, product2, product3, product4, product5
+                        </Link>
                       </td>
                       <td>$234.00</td>
                       <td>
-                        <div style={{width: "70%"}}>
+                        <div style={{ width: "70%" }}>
                           <select id="inputState" class="form-select">
                             <option selected>Paid</option>
                             <option>Await Shipping</option>

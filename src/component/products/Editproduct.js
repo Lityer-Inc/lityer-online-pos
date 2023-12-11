@@ -173,6 +173,13 @@ function Editproduct() {
                 </div>
                 <div className="text-center">
                   <button
+                    id="cancelbut"
+                    type="submit"
+                    className="button button-a button-big button-rounded"
+                  >
+                    Delete
+                  </button>
+                  <button
                     id="submitbut"
                     type="submit"
                     className="button button-a button-big button-rounded"

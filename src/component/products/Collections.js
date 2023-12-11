@@ -102,13 +102,13 @@ function Collections() {
                         </div>
                       </td>
                       <td>
-                        <a href="/editcollection">
+                        <Link to="/editcollection">
                           <i
                             style={{ marginRight: "20px", cursor: "pointer" }}
                             className="bi bi-pencil"
                             title="Edit"
                           ></i>
-                        </a>
+                        </Link>
                         <i
                           style={{ cursor: "pointer" }}
                           className="bi bi-trash"
@@ -140,13 +140,14 @@ function Collections() {
                         </div>
                       </td>
                       <td>
-                        <a href="/editcollection">
+                        <Link to="/editcollection">
                           <i
                             style={{ marginRight: "20px", cursor: "pointer" }}
                             className="bi bi-pencil"
                             title="Edit"
                           ></i>
-                        </a>
+                        </Link>
+
                         <i
                           style={{ cursor: "pointer" }}
                           className="bi bi-trash"

@@ -13,7 +13,6 @@ import Purchaseorder from "./component/orders/Purchaseorder";
 import Collections from "./component/products/Collections";
 import Createcollection from "./component/products/Createcollection";
 import Nocustomer from "./component/customers/Nocustomer";
-import Nodriver from "./component/driver/Nodriver";
 import Noorder from "./component/orders/Noorder";
 import Noproduct from "./component/products/Noproduct";
 import Createsore from "./component/settings/Createsore";
@@ -28,6 +27,7 @@ import Inventory from "./component/products/Inventory.js";
 import Editproduct from "./component/products/Editproduct.js";
 import Pos from "./component/pos/Pos.js";
 import Shipment from "./component/orders/Shipment.js";
+import Onboard from "./component/products/Onboard.js";
 
 
 // Css files
@@ -45,7 +45,7 @@ import "./assets/css/dashboard.css";
 import "./assets/js/main.js";
 
 function App() {
-  const loggedIn = true;
+  const loggedIn = false;
 
   return (
     <div className="just">
@@ -69,6 +69,7 @@ function App() {
                   <Route path="/security" element={<Security />} />
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/products" element={<Products />} />
+                  <Route path="/onboard" element={<Onboard />} />
                   <Route path="/collections" element={<Collections />} />
                   <Route path="/editcollection" element={<Editcollection />} />
                   <Route
@@ -80,7 +81,6 @@ function App() {
                   <Route path="/notifications" element={<Notifications />} />
                   <Route path="/messages" element={<Messages />} />
                   <Route path="/nocustomer" element={<Nocustomer />} />
-                  <Route path="/nodriver" element={<Nodriver />} />
                   <Route path="/noorder" element={<Noorder />} />
                   <Route path="/noproduct" element={<Noproduct />} />
                 </Routes>
@@ -94,7 +94,7 @@ function App() {
       {!loggedIn && (
         <Router>
           <Routes>
-            {/* <Route path="/" element={<Login />} /> */}
+            <Route path="/" element={<Login />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Routes>

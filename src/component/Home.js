@@ -90,7 +90,7 @@ function Home() {
                     product you plan to sell
                   </p>
                   <div className="col-md-12 text-center">
-                    <Link to="/addproducts">
+                    <Link to="/onboard">
                       <button
                         id="submitbut"
                         type="button"

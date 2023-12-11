@@ -9,6 +9,7 @@ const Register = () => {
     email: "",
     password: "",
     confirmPassword: "",
+    userType: "",
   });
 
   const handleInputChange = (e) => {
@@ -90,6 +91,45 @@ const Register = () => {
               value={formData.confirmPassword}
               onChange={handleInputChange}
             />
+          </div>
+          <div className="form-group">
+            <label>Choose User Category</label>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  name="userType"
+                  value="Supplier"
+                  checked={formData.userType === "Supplier"}
+                  onChange={handleInputChange}
+                />
+                Supplier
+              </label>
+            </div>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  name="userType"
+                  value="Warehouse"
+                  checked={formData.userType === "Warehouse"}
+                  onChange={handleInputChange}
+                />
+                Warehouse
+              </label>
+            </div>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  name="userType"
+                  value="Logistics"
+                  checked={formData.userType === "Logistics"}
+                  onChange={handleInputChange}
+                />
+                Logistics
+              </label>
+            </div>
           </div>
           <button type="submit">Sign Up</button>
         </form>

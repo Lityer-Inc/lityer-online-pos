@@ -121,10 +121,10 @@ function Pos() {
         </div>
 
         <section className="section contact">
-          <div className="col-xl-12">
+          <div className="col-12">
             <div className="row">
               {categories.map((cat) => (
-                <div key={cat.id} className="col-lg-2 col-sm-2">
+                <div key={cat.id} className="col-2 col-2">
                   <div className="cat-box">
                     <img src={cat.img} alt="" id="poscat" />
                     <p>{cat.name}</p>

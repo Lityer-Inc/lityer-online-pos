@@ -26,7 +26,7 @@ function Products() {
       <div className="col-lg-12">
         <div className="row">
           <div className="col-12 text-right mb-3">
-            <Link to="/addproducts">
+            <Link to="/onboard">
               <button id="submitbut" className="btn btn-primary">Add Product</button>
             </Link>
           </div>
