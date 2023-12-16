@@ -413,6 +413,33 @@ input[type="radio"] {
   color: #012970;
   font-size: 16px;
 }
+
+/* List of store css */
+.storelist .icon-box {
+  padding-top: 10px;
+  min-width: 100%;
+}
+
+.storelist .storeimg {
+  float: left;
+  width: 40%;
+}
+
+.storelist .card-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 1px solid rgb(198, 193, 193);
+  display: block;
+}
+
+.storelist .storedes {
+  float: right;
+  width: 60%;
+  padding-right: 20px;
+  text-align: left;
+}
+
 /* Status CSS */
 .custom-dropdown {
   position: relative;

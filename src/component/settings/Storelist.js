@@ -1,28 +1,16 @@
+// Storelist.js
+
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo-full.png";
+import storeimg from "../../assets/images/pos-products.jpg";
 
 const Storelist = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    //send formData to your Node.js backend using a fetch or Axios to be done here.
-
-    console.log("Form Data:", formData);
-  };
+  const stores = [
+    { name: "Magni Dolores thsbs shjbdhd", description: "Delivery by 12:30pm", storeimg: storeimg },
+    { name: "Jane Smithwedjhue", description: "Delivery by 1:30pm", storeimg: storeimg },
+    { name: "Bob Johnson", description: "Delivery by 12:20am", storeimg: storeimg },
+  ];
 
   return (
     <div id="boxit">
@@ -30,38 +18,43 @@ const Storelist = () => {
         <img id="logoimg" src={logo} alt="Logo" />
       </div>
 
-      <div className="auth-box">
+      <div className="auth-box storelist">
         <h2>Your Stores</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
-              value={formData.email}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-              value={formData.password}
-              onChange={handleInputChange}
-            />
-          </div>
-          <Link to="/createsore">
-            <button type="submit">Create a New store</button>
+
+        {stores.map((creator, index) => (
+          <Link to="/" key={index}>
+            <div className="col-md-12 d-flex align-items-stretch card">
+              <div className="icon-box">
+                <div className="storeimg">
+                  <img
+                    className="card-image"
+                    src={creator.storeimg}
+                    alt={`Creator ${index + 1}`}
+                  />
+                </div>
+                <div className="storedes">
+                  <h3 className="card-title">{creator.name}</h3>
+                  <p className="card-paragraph" style={{ color: "green" }}>
+                    <i className="bi-cart"> </i>
+                    {creator.description}
+                  </p>
+                </div>
+              </div>
+            </div>
           </Link>
-        </form>
+        ))}
+        <div className="text-center">
+          <Link to="/createsore">
+            <button
+              id="submitbut"
+              className="button button-a button-big button-rounded"
+            >
+              Create a New Store
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
 };
-
 export default Storelist;
