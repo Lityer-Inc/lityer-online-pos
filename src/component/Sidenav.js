@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
 
 const Sidenav = () => {
   return (
@@ -20,22 +20,92 @@ const Sidenav = () => {
             data-toggle="collapse"
           >
             <i className="bi bi-cart3"></i>
-            <span>Orders</span>
+            <span>Orders(Warehouse)</span>
             <i className="bi bi-chevron-down ms-auto"></i>
           </Link>
-          <ul id="Orders-nav" className="nav-content collapse" data-parent="#sidebar-nav">
+          <ul
+            id="Orders-nav"
+            className="nav-content collapse"
+            data-parent="#sidebar-nav"
+          >
             <li>
               <NavLink to="/purchaseorder">
                 <i className="bi bi-circle"></i>
                 <span>Purchase Orders</span>
               </NavLink>
             </li>
-            {/* <li>
-              <NavLink to="/abandoncheck">
+            <li>
+              <NavLink to="/">
                 <i className="bi bi-circle"></i>
-                <span>Abandoned Checkout</span>
+                <span>Distribution Request</span>
               </NavLink>
-            </li> */}
+            </li>
+            <li>
+              <NavLink to="/">
+                <i className="bi bi-circle"></i>
+                <span>Your Orders</span>
+              </NavLink>
+            </li>
+          </ul>
+        </li>
+        <li className="nav-item">
+          <Link
+            to="/"
+            className="nav-link collapsed"
+            data-target="#Orders-nav"
+            data-toggle="collapse"
+          >
+            <i className="bi bi-cart3"></i>
+            <span>Orders(Supplier)</span>
+            <i className="bi bi-chevron-down ms-auto"></i>
+          </Link>
+          <ul
+            id="Orders-nav"
+            className="nav-content collapse"
+            data-parent="#sidebar-nav"
+          >
+            <li>
+              <NavLink to="/">
+                <i className="bi bi-circle"></i>
+                <span>Incoming Orders</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/">
+                <i className="bi bi-circle"></i>
+                <span>Sent Request</span>
+              </NavLink>
+            </li>
+          </ul>
+        </li>
+        <li className="nav-item">
+          <Link
+            to="/"
+            className="nav-link collapsed"
+            data-target="#Orders-nav"
+            data-toggle="collapse"
+          >
+            <i className="bi bi-cart3"></i>
+            <span>Orders(Logistics)</span>
+            <i className="bi bi-chevron-down ms-auto"></i>
+          </Link>
+          <ul
+            id="Orders-nav"
+            className="nav-content collapse"
+            data-parent="#sidebar-nav"
+          >
+            <li>
+              <NavLink to="/">
+                <i className="bi bi-circle"></i>
+                <span>Potential Orders</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/">
+                <i className="bi bi-circle"></i>
+                <span>Your Orders</span>
+              </NavLink>
+            </li>
           </ul>
         </li>
 
@@ -47,11 +117,14 @@ const Sidenav = () => {
             data-toggle="collapse"
           >
             <i className="bi bi-box"></i>
-            <span>Products</span>
+            <span>Products(Warehouse)</span>
             <i className="bi bi-chevron-down ms-auto"></i>
           </Link>
-          <ul id="Products-nav" className="nav-content collapse" data-parent="#sidebar-nav">
-            
+          <ul
+            id="Products-nav"
+            className="nav-content collapse"
+            data-parent="#sidebar-nav"
+          >
             <li>
               <NavLink to="/collections">
                 <i className="bi bi-circle"></i>
@@ -91,7 +164,7 @@ const Sidenav = () => {
         <li className="nav-item">
           <NavLink to="/pos" className="nav-link collapsed">
             <i className="bi bi-file-post"></i>
-            <span>POS</span>
+            <span>POS(Warehouse)</span>
           </NavLink>
         </li>
 

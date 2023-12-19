@@ -22,6 +22,334 @@ function Home() {
           </ol>
         </nav>
       </div>
+      {/* Logistics contents */}
+      <div className="col-lg-12">
+        <div className="row">
+          <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card customers-card">
+              <div className="card-body">
+                <h5 className="card-title">
+                  (Supplier)Create a Distribution Request
+                </h5>
+                <div id="content">
+                  <p>
+                    Enter details about your product and price. Other parties
+                    may counter-offer. Once an agreement is reached, your order
+                    will be moved to the logistics book where it can be
+                    fulfilled.
+                  </p>
+                  <div className="col-md-12 text-center">
+                    <Link to="/">
+                      <button
+                        id="submitbut"
+                        type="button"
+                        className="button button-a button-big button-rounded"
+                      >
+                        Enter
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="col-lg-12">
+        <div className="row">
+          <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card customers-card">
+              <div className="card-body">
+                <h5 className="card-title">
+                  (Supplier)View Incoming Purchase Orders
+                </h5>
+                <div id="content">
+                  <p>
+                    View orders that warehouses have sent to you. You can agree
+                    to the order terms or propose a counter offer. Once accepted
+                    the order will be pushed to the logistics book for
+                    fulfillment.
+                  </p>
+                  <div className="col-md-12 text-center">
+                    <Link to="/">
+                      <button
+                        id="submitbut"
+                        type="button"
+                        className="button button-a button-big button-rounded"
+                      >
+                        Enter
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="col-lg-12">
+        <div className="row">
+          <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card customers-card">
+              <div className="card-body">
+                <h5 className="card-title">(Supplier)View Sent Requests</h5>
+                <div id="content">
+                  <p>
+                    See the orders you have previously sent. You can choose to
+                    cancel or alter details here.
+                  </p>
+                  <div className="col-md-12 text-center">
+                    <Link to="/">
+                      <button
+                        id="submitbut"
+                        type="button"
+                        className="button button-a button-big button-rounded"
+                      >
+                        Enter
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="col-lg-12">
+        <div className="row">
+          <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card customers-card">
+              <div className="card-body">
+                <h5 className="card-title">
+                  (Supplier)Set your Profile information
+                </h5>
+                <div id="content">
+                  <p>Set your name, contact information, and address.</p>
+                  <div className="col-md-12 text-center">
+                    <Link to="/createprofile">
+                      <button
+                        id="submitbut"
+                        type="button"
+                        className="button button-a button-big button-rounded"
+                      >
+                        Set profile
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* End of Supplier content */}
+
+      {/* Logistics contents */}
+      <div className="col-lg-12">
+        <div className="row">
+          <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card customers-card">
+              <div className="card-body">
+                <h5 className="card-title">(Logistics)View Potential Orders</h5>
+                <div id="content">
+                  <p>
+                    View orders that are in need of transportation. You may
+                    accept or negotiate the fee you will receive here.
+                  </p>
+                  <div className="col-md-12 text-center">
+                    <Link to="/">
+                      <button
+                        id="submitbut"
+                        type="button"
+                        className="button button-a button-big button-rounded"
+                      >
+                        Enter
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="col-lg-12">
+        <div className="row">
+          <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card customers-card">
+              <div className="card-body">
+                <h5 className="card-title">
+                  (Logistics)View Your Transport Orders
+                </h5>
+                <div id="content">
+                  <p>
+                    View the transportation orders that you are responsible for
+                    fulfilling. See both current and past deliveries.
+                  </p>
+                  <div className="col-md-12 text-center">
+                    <Link to="/">
+                      <button
+                        id="submitbut"
+                        type="button"
+                        className="button button-a button-big button-rounded"
+                      >
+                        Enter
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="col-lg-12">
+        <div className="row">
+          <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card customers-card">
+              <div className="card-body">
+                <h5 className="card-title">
+                  (Logistics)Set your Profile information
+                </h5>
+                <div id="content">
+                  <p>Set your name, contact information, and address.</p>
+                  <div className="col-md-12 text-center">
+                    <Link to="/createprofile">
+                      <button
+                        id="submitbut"
+                        type="button"
+                        className="button button-a button-big button-rounded"
+                      >
+                        Set profile
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* End of Logistics content */}
+
+      {/* Warehouse contents */}
+      <div className="col-lg-12">
+        <div className="row">
+          <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card customers-card">
+              <div className="card-body">
+                <h5 className="card-title">View Purchase Orders</h5>
+                <div id="content">
+                  <p>
+                    See all Purchase Orders from customers from the Grocey
+                    Application
+                  </p>
+                  <div className="col-md-12 text-center">
+                    <Link to="/">
+                      <button
+                        id="submitbut"
+                        type="button"
+                        className="button button-a button-big button-rounded"
+                      >
+                        Purchase Orders
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="col-lg-12">
+        <div className="row">
+          <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card customers-card">
+              <div className="card-body">
+                <h5 className="card-title">View Your Orders</h5>
+                <div id="content">
+                  <p>
+                    See both open and closed orders. You can also see logistic
+                    information and financial data surrounding the transaction.
+                  </p>
+                  <div className="col-md-12 text-center">
+                    <Link to="/">
+                      <button
+                        id="submitbut"
+                        type="button"
+                        className="button button-a button-big button-rounded"
+                      >
+                        Enter
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="col-lg-12">
+        <div className="row">
+          <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card customers-card">
+              <div className="card-body">
+                <h5 className="card-title">View Distribution Requests</h5>
+                <div id="content">
+                  <p>
+                    See what suppliers are trying to push. You can counter-offer
+                    with your own bid. If you come to an agreement the order
+                    will be pushed to the logistics book to be filled.
+                  </p>
+                  <div className="col-md-12 text-center">
+                    <Link to="/">
+                      <button
+                        id="submitbut"
+                        type="button"
+                        className="button button-a button-big button-rounded"
+                      >
+                        Enter
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="col-lg-12">
+        <div className="row">
+          <div className="col-xxl-4 col-xl-12">
+            <div className="card info-card customers-card">
+              <div className="card-body">
+                <h5 className="card-title">Create a Purchase Request</h5>
+                <div id="content">
+                  <p>
+                    Enter details about your warehousing needs and issue an
+                    order to a supplier. They may counter-offer. Once an
+                    agreement is reached, your order will be moved to the
+                    logistics book where it can be fulfilled.
+                  </p>
+                  <div className="col-md-12 text-center">
+                    <Link to="/">
+                      <button
+                        id="submitbut"
+                        type="button"
+                        className="button button-a button-big button-rounded"
+                      >
+                        Enter
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div className="col-lg-12">
         <div className="row">
@@ -335,6 +663,7 @@ function Home() {
           {/* End Recent Sales */}
         </div>
       </div>
+      {/* End of warehouse content */}
     </>
   );
 }
