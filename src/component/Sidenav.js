@@ -35,15 +35,22 @@ const Sidenav = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/">
+              <NavLink to="/ware_distribution_request">
                 <i className="bi bi-circle"></i>
                 <span>Distribution Request</span>
               </NavLink>
             </li>
+
             <li>
-              <NavLink to="/">
+              <NavLink to="/warehouseorders">
                 <i className="bi bi-circle"></i>
                 <span>Your Orders</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/acceptedorder">
+                <i className="bi bi-circle"></i>
+                <span>Sent Orders</span>
               </NavLink>
             </li>
           </ul>
@@ -65,15 +72,21 @@ const Sidenav = () => {
             data-parent="#sidebar-nav"
           >
             <li>
-              <NavLink to="/">
+              <NavLink to="/supplierincomingorders">
                 <i className="bi bi-circle"></i>
                 <span>Incoming Orders</span>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/">
+              <NavLink to="/supplierdistrib">
                 <i className="bi bi-circle"></i>
-                <span>Sent Request</span>
+                <span>Distribution Request</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/acceptedrequest">
+                <i className="bi bi-circle"></i>
+                <span>Accepted Request</span>
               </NavLink>
             </li>
           </ul>
@@ -95,13 +108,13 @@ const Sidenav = () => {
             data-parent="#sidebar-nav"
           >
             <li>
-              <NavLink to="/">
+              <NavLink to="/potentiaorders">
                 <i className="bi bi-circle"></i>
                 <span>Potential Orders</span>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/">
+              <NavLink to="/yourpotentiaorders">
                 <i className="bi bi-circle"></i>
                 <span>Your Orders</span>
               </NavLink>

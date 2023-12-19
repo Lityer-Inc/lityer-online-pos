@@ -29,6 +29,15 @@ import Editproduct from "./component/products/Editproduct.js";
 import Pos from "./component/pos/Pos.js";
 import Shipment from "./component/orders/Shipment.js";
 import Onboard from "./component/products/Onboard.js";
+import Potentiaorders from "./component/orders/logisticsorder/Potentiaorders.js";
+import Yourorder from "./component/orders/logisticsorder/Yourorder.js";
+import Ware_distribution_request from "./component/orders/warehouseorders/ware_distribution_request.js";
+import Warehouseorders from "./component/orders/warehouseorders/Warehouseorders.js";
+import Supplierdistrib from "./component/orders/supplierorder/Supplierdistrib.js";
+import Acceptedrequest from "./component/orders/supplierorder/Acceptedrequest.js";
+import Supplierincomingorders from "./component/orders/supplierorder/Supplierincomingorders.js";
+import Acceptedorder from "./component/orders/warehouseorders/Acceptedorder.js";
+
 
 // Css files
 import "./assets/vendor/simple-datatables/style.css";
@@ -82,6 +91,14 @@ function App() {
                   <Route path="/nocustomer" element={<Nocustomer />} />
                   <Route path="/noorder" element={<Noorder />} />
                   <Route path="/noproduct" element={<Noproduct />} />
+                  <Route path="/potentiaorders" element={<Potentiaorders />} />
+                  <Route path="/yourpotentiaorders" element={<Yourorder />} />
+                  <Route path="/ware_distribution_request" element={<Ware_distribution_request />} />
+                  <Route path="/warehouseorders" element={<Warehouseorders />} />
+                  <Route path="/supplierdistrib" element={<Supplierdistrib />} />
+                  <Route path="/supplierincomingorders" element={<Supplierincomingorders />} />
+                  <Route path="/acceptedrequest" element={<Acceptedrequest />} />
+                  <Route path="/acceptedorder" element={<Acceptedorder />} />
                 </Routes>
               </div>
             </section>
