@@ -83,7 +83,7 @@ function Acceptedorder() {
                         <input type="checkbox" />
                       </td>
                       <td>
-                        <a href="#" className="text-primary">
+                        <a href="/vieworderbook" className="text-primary">
                           Litprod
                         </a>
                       </td>

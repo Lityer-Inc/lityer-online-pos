@@ -39,7 +39,7 @@ function Home() {
                     fulfilled.
                   </p>
                   <div className="col-md-12 text-center">
-                    <Link to="/">
+                    <Link to="/suprequest">
                       <button
                         id="submitbut"
                         type="button"
@@ -71,7 +71,7 @@ function Home() {
                     fulfillment.
                   </p>
                   <div className="col-md-12 text-center">
-                    <Link to="/">
+                    <Link to="/supplierincomingorders">
                       <button
                         id="submitbut"
                         type="button"
@@ -99,7 +99,7 @@ function Home() {
                     cancel or alter details here.
                   </p>
                   <div className="col-md-12 text-center">
-                    <Link to="/">
+                    <Link to="/supplierdistrib">
                       <button
                         id="submitbut"
                         type="button"
@@ -157,7 +157,7 @@ function Home() {
                     accept or negotiate the fee you will receive here.
                   </p>
                   <div className="col-md-12 text-center">
-                    <Link to="/">
+                    <Link to="/potentiaorders">
                       <button
                         id="submitbut"
                         type="button"
@@ -187,7 +187,7 @@ function Home() {
                     fulfilling. See both current and past deliveries.
                   </p>
                   <div className="col-md-12 text-center">
-                    <Link to="/">
+                    <Link to="/yourpotentiaorders">
                       <button
                         id="submitbut"
                         type="button"
@@ -245,41 +245,13 @@ function Home() {
                     Application
                   </p>
                   <div className="col-md-12 text-center">
-                    <Link to="/">
+                    <Link to="/purchaseorder">
                       <button
                         id="submitbut"
                         type="button"
                         className="button button-a button-big button-rounded"
                       >
                         Purchase Orders
-                      </button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="col-lg-12">
-        <div className="row">
-          <div className="col-xxl-4 col-xl-12">
-            <div className="card info-card customers-card">
-              <div className="card-body">
-                <h5 className="card-title">View Your Orders</h5>
-                <div id="content">
-                  <p>
-                    See both open and closed orders. You can also see logistic
-                    information and financial data surrounding the transaction.
-                  </p>
-                  <div className="col-md-12 text-center">
-                    <Link to="/">
-                      <button
-                        id="submitbut"
-                        type="button"
-                        className="button button-a button-big button-rounded"
-                      >
-                        Enter
                       </button>
                     </Link>
                   </div>
@@ -303,7 +275,7 @@ function Home() {
                     will be pushed to the logistics book to be filled.
                   </p>
                   <div className="col-md-12 text-center">
-                    <Link to="/">
+                    <Link to="/ware_distribution_request">
                       <button
                         id="submitbut"
                         type="button"
@@ -334,7 +306,7 @@ function Home() {
                     logistics book where it can be fulfilled.
                   </p>
                   <div className="col-md-12 text-center">
-                    <Link to="/">
+                    <Link to="/warerequest">
                       <button
                         id="submitbut"
                         type="button"

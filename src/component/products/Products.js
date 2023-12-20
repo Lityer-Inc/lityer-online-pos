@@ -86,7 +86,7 @@ function Products() {
                           alt="Product"
                           id="tableimg"
                         />
-                        <a href="#" className="text-primary">
+                        <a href="/viewproduct" className="text-primary">
                           product1
                         </a>
                       </td>

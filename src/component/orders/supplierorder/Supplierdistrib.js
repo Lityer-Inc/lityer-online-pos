@@ -30,7 +30,7 @@ function Supplierdistrib() {
       <div className="col-lg-12">
         <div className="row">
         <div className="col-12 text-right mb-3">
-            <Link to="/createcollection">
+            <Link to="/suprequest">
               <button id="submitbut" className="btn btn-primary">
                 Create&nbsp;Distribution
               </button>
@@ -91,7 +91,7 @@ function Supplierdistrib() {
                         <input type="checkbox" />
                       </td>
                       <td>
-                        <a href="#" className="text-primary">
+                        <a href="/vieworderbook" className="text-primary">
                           Litprod
                         </a>
                       </td>
@@ -110,7 +110,7 @@ function Supplierdistrib() {
                       </td>
 
                       <td>
-                        <Link to="/editcollection">
+                        <Link to="/editsupplierrequest">
                           <i
                             style={{ marginRight: "20px", cursor: "pointer" }}
                             className="bi bi-pencil"

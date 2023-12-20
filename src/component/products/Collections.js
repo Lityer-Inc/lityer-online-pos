@@ -124,7 +124,7 @@ function Collections() {
                       </td>
                       <td>
                         <img src={product} alt="Product" id="tableimg" />
-                        <a href="#" className="text-primary">
+                        <a href="/viewproduct" className="text-primary">
                           Catprod
                         </a>
                       </td>

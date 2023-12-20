@@ -57,7 +57,7 @@ const Sidenav = () => {
         </li>
         <li className="nav-item">
           <Link
-            to="/"
+            to="/supplierincomingorders"
             className="nav-link collapsed"
             data-target="#Orders-nav"
             data-toggle="collapse"
@@ -93,7 +93,7 @@ const Sidenav = () => {
         </li>
         <li className="nav-item">
           <Link
-            to="/"
+            to="/potentiaorders"
             className="nav-link collapsed"
             data-target="#Orders-nav"
             data-toggle="collapse"

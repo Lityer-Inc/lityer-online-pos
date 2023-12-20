@@ -37,6 +37,13 @@ import Supplierdistrib from "./component/orders/supplierorder/Supplierdistrib.js
 import Acceptedrequest from "./component/orders/supplierorder/Acceptedrequest.js";
 import Supplierincomingorders from "./component/orders/supplierorder/Supplierincomingorders.js";
 import Acceptedorder from "./component/orders/warehouseorders/Acceptedorder.js";
+import Suprequest from "./component/supplier/Suprequest.js";
+import Editsupplierrequest from "./component/supplier/Editsupplierrequest.js";
+import Warerequest from "./component/warehouse/Warerequest.js";
+import Editwarerequest from "./component/warehouse/Editwarerequest.js";
+import Viewproduct from "./component/Viewproduct.js";
+import Vieworderbook from "./component/Vieworderbook.js";
+
 
 
 // Css files
@@ -93,12 +100,36 @@ function App() {
                   <Route path="/noproduct" element={<Noproduct />} />
                   <Route path="/potentiaorders" element={<Potentiaorders />} />
                   <Route path="/yourpotentiaorders" element={<Yourorder />} />
-                  <Route path="/ware_distribution_request" element={<Ware_distribution_request />} />
-                  <Route path="/warehouseorders" element={<Warehouseorders />} />
-                  <Route path="/supplierdistrib" element={<Supplierdistrib />} />
-                  <Route path="/supplierincomingorders" element={<Supplierincomingorders />} />
-                  <Route path="/acceptedrequest" element={<Acceptedrequest />} />
+                  <Route
+                    path="/ware_distribution_request"
+                    element={<Ware_distribution_request />}
+                  />
+                  <Route
+                    path="/warehouseorders"
+                    element={<Warehouseorders />}
+                  />
+                  <Route
+                    path="/supplierdistrib"
+                    element={<Supplierdistrib />}
+                  />
+                  <Route
+                    path="/supplierincomingorders"
+                    element={<Supplierincomingorders />}
+                  />
+                  <Route
+                    path="/acceptedrequest"
+                    element={<Acceptedrequest />}
+                  />
                   <Route path="/acceptedorder" element={<Acceptedorder />} />
+                  <Route path="/suprequest" element={<Suprequest />} />
+                  <Route
+                    path="/editsupplierrequest"
+                    element={<Editsupplierrequest />}
+                  />
+                  <Route path="/warerequest" element={<Warerequest />} />
+                  <Route path="/editwarerequest" element={<Editwarerequest />} />
+                  <Route path="/viewproduct" element={<Viewproduct />} />
+                  <Route path="/vieworderbook" element={<Vieworderbook />} />
                 </Routes>
               </div>
             </section>
