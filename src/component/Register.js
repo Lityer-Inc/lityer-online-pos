@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "../assets/images/logo-full.png";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const Register = () => {
     confirmPassword: "",
     userType: "",
   });
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -20,12 +22,25 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // send formData to your Node.js backend using a fetch or Axios to be done here.
+    try {
+      const response = await axios.post("/user/register", formData);
+      console.log("Registration successful", response.data);
 
-    console.log("Form Data:", formData);
+      // Check if userType is "Retailer" and redirect to storelist if true
+      if (formData.userType === "Retailer") {
+        navigate.push("/storelist");
+      } else {
+        // Redirect to homepage after successful registration for other user types
+        navigate.push("/");
+      }
+    } catch (error) {
+      console.error("Registration failed", error.response.data);
+    }
+
+    // console.log("Form Data:", formData);
   };
 
   return (
@@ -34,7 +49,6 @@ const Register = () => {
         <img id="logoimg" src={logo} alt="Logo" />
       </div>
       <div className="auth-box">
-        
         <h2>Sign Up</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
@@ -111,11 +125,11 @@ const Register = () => {
                 <input
                   type="radio"
                   name="userType"
-                  value="Warehouse"
-                  checked={formData.userType === "Warehouse"}
+                  value="retailer"
+                  checked={formData.userType === "retailer"}
                   onChange={handleInputChange}
                 />
-                Warehouse
+                Retailer
               </label>
             </div>
             <div>

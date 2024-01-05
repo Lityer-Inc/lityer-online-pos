@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo-full.png";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import uploadicon from "../../assets/images/storeicon.png";
+import axios from "axios";
 
 const Createsore = () => {
   const [storeDetails, setStoreDetails] = useState({
@@ -14,9 +15,20 @@ const Createsore = () => {
     storeDescription: "",
     thumbnailImage: null,
   });
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      // Send store creation request to the backend
+      const response = await axios.post("/stores", storeDetails);
+      console.log("Store created successfully", response.data);
+
+      // Redirect to the storelist or homepage based on your logic
+      navigate.push("/");
+    } catch (error) {
+      console.error("Store creation failed", error.response.data);
+    }
     // Sending code to backend
   };
 
