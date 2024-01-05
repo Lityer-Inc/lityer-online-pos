@@ -61,7 +61,7 @@ import "./assets/css/dashboard.css";
 import "./assets/js/main.js";
 
 function App() {
-  const loggedIn = true;
+  const loggedIn = false;
 
   return (
     <div className="just">
