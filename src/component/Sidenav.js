@@ -20,7 +20,7 @@ const Sidenav = () => {
             data-toggle="collapse"
           >
             <i className="bi bi-cart3"></i>
-            <span>Orders(Warehouse)</span>
+            <span>Orders(Retailer)</span>
             <i className="bi bi-chevron-down ms-auto"></i>
           </Link>
           <ul
@@ -130,7 +130,7 @@ const Sidenav = () => {
             data-toggle="collapse"
           >
             <i className="bi bi-box"></i>
-            <span>Products(Warehouse)</span>
+            <span>Products(Retailer)</span>
             <i className="bi bi-chevron-down ms-auto"></i>
           </Link>
           <ul
@@ -177,7 +177,7 @@ const Sidenav = () => {
         <li className="nav-item">
           <NavLink to="/pos" className="nav-link collapsed">
             <i className="bi bi-file-post"></i>
-            <span>POS(Warehouse)</span>
+            <span>POS(Retailer)</span>
           </NavLink>
         </li>
 

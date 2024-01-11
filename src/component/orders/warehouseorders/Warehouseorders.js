@@ -14,6 +14,65 @@ function Warehouseorders() {
     // API call to delete the data
   };
 
+  const ordersData = [
+    {
+      id: 1,
+      product: "Litprod",
+      amount: "$500",
+      quantity: 6,
+      totalMileage: "8km",
+      logistics: "$15",
+      supplierName: "Neamont",
+      supplierAddress: "California Dc",
+      subTotal: "$515",
+      taxEstimate: "$5",
+      grandTotal: "$520",
+      status: "Accepted",
+    },
+    {
+      id: 2,
+      product: "Litprod1",
+      amount: "$500",
+      quantity: 6,
+      totalMileage: "8km",
+      logistics: "$15",
+      supplierName: "Neamont",
+      supplierAddress: "California Dc",
+      subTotal: "$515",
+      taxEstimate: "$5",
+      grandTotal: "$520",
+      status: "Accepted",
+    },
+    {
+      id: 2,
+      product: "Litprod2",
+      amount: "$500",
+      quantity: 6,
+      totalMileage: "8km",
+      logistics: "$15",
+      supplierName: "Neamont",
+      supplierAddress: "California Dc",
+      subTotal: "$515",
+      taxEstimate: "$5",
+      grandTotal: "$520",
+      status: "Accepted",
+    },
+    {
+      id: 3,
+      product: "Litprod3",
+      amount: "$500",
+      quantity: 6,
+      totalMileage: "8km",
+      logistics: "$15",
+      supplierName: "Neamont",
+      supplierAddress: "California Dc",
+      subTotal: "$515",
+      taxEstimate: "$5",
+      grandTotal: "$520",
+      status: "Accepted",
+    },
+  ];
+
   return (
     <>
       <div className="pagetitle">
@@ -29,7 +88,7 @@ function Warehouseorders() {
       </div>
       <div className="col-lg-12">
         <div className="row">
-        <div className="col-12 text-right mb-3">
+          <div className="col-12 text-right mb-3">
             <Link to="/warerequest">
               <button id="submitbut" className="btn btn-primary">
                 Create&nbsp;Request
@@ -65,7 +124,7 @@ function Warehouseorders() {
               </div>
               <div className="card-body">
                 <h5 className="card-title">
-                  Warehouse Oders <span>| Today</span>
+                  Warehouse Orders <span>| {filter}</span>
                 </h5>
                 <table className="table datatable">
                   <thead>
@@ -74,57 +133,59 @@ function Warehouseorders() {
                       <th scope="col">Product</th>
                       <th scope="col">Amount($)</th>
                       <th scope="col">Quantity</th>
-                      <th scope="col">Total Milage(km)</th>
+                      <th scope="col">Total Mileage(km)</th>
                       <th scope="col">Logistics($)</th>
-                      <th scope="col">Suplier Name</th>
-                      <th scope="col">Suplier Address</th>
+                      <th scope="col">Supplier Name</th>
+                      <th scope="col">Supplier Address</th>
                       <th scope="col">Sub Total</th>
-                      <th scope="col">Tax Extimate</th>
+                      <th scope="col">Tax Estimate</th>
                       <th scope="col">Grand Total</th>
                       <th scope="col">Status</th>
                       <th scope="col"></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <input type="checkbox" />
-                      </td>
-                      <td>
-                        <a href="/vieworderbook" className="text-primary">
-                          Litprod
-                        </a>
-                      </td>
-
-                      <td>$500</td>
-                      <td>6</td>
-                      <td>8km</td>
-                      <td>$15</td>
-                      <td>Neamont</td>
-                      <td>Califonia Dc</td>
-                      <td>$515</td>
-                      <td>$5</td>
-                      <td>$520</td>
-                      <td>
-                        <span className="badge bg-success">Accepted</span>
-                      </td>
-
-                      <td>
-                        <Link to="/editwarerequest">
+                    {ordersData.map((order) => (
+                      <tr key={order.id}>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <Link to="/vieworderbook" className="text-primary">
+                            {order.product}
+                          </Link>
+                        </td>
+                        <td>{order.amount}</td>
+                        <td>{order.quantity}</td>
+                        <td>{order.totalMileage}</td>
+                        <td>{order.logistics}</td>
+                        <td>{order.supplierName}</td>
+                        <td>{order.supplierAddress}</td>
+                        <td>{order.subTotal}</td>
+                        <td>{order.taxEstimate}</td>
+                        <td>{order.grandTotal}</td>
+                        <td>
+                          <span className="badge bg-success">
+                            {order.status}
+                          </span>
+                        </td>
+                        <td>
+                          <Link to="/editwarerequest">
+                            <i
+                              style={{ marginRight: "20px", cursor: "pointer" }}
+                              className="bi bi-pencil"
+                              title="Edit"
+                            ></i>
+                          </Link>
                           <i
-                            style={{ marginRight: "20px", cursor: "pointer" }}
-                            className="bi bi-pencil"
-                            title="Edit"
+                            style={{ cursor: "pointer" }}
+                            className="bi bi-trash"
+                            title="Delete"
+                            onClick={() => handleDelete(order.id)}
                           ></i>
-                        </Link>
-                        <i
-                          style={{ cursor: "pointer" }}
-                          className="bi bi-trash"
-                          title="Delete"
-                          onClick={() => handleDelete(1)}
-                        ></i>
-                      </td>
-                    </tr>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>

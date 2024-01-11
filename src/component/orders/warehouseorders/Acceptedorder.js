@@ -14,6 +14,48 @@ function Acceptedorder() {
     // API call to delete the data
   };
 
+  const ordersData = [
+    {
+      id: 1,
+      product: "Litprod",
+      amount: "$500",
+      quantity: 6,
+      totalMileage: "8km",
+      logistics: "$15",
+      warehouseName: "Neamont",
+      warehouseAddress: "California Dc",
+      subTotal: "$515",
+      taxEstimate: "$5",
+      grandTotal: "$520",
+    },
+    {
+      id: 2,
+      product: "Product2",
+      amount: "$300",
+      quantity: 4,
+      totalMileage: "6km",
+      logistics: "$10",
+      warehouseName: "Warehouse2",
+      warehouseAddress: "Address2",
+      subTotal: "$310",
+      taxEstimate: "$3",
+      grandTotal: "$313",
+    },
+    {
+      id: 3,
+      product: "Product3",
+      amount: "$700",
+      quantity: 8,
+      totalMileage: "10km",
+      logistics: "$20",
+      warehouseName: "Warehouse3",
+      warehouseAddress: "Address3",
+      subTotal: "$720",
+      taxEstimate: "$7",
+      grandTotal: "$727",
+    },
+  ];
+
   return (
     <>
       <div className="pagetitle">
@@ -57,55 +99,56 @@ function Acceptedorder() {
                 </ul>
               </div>
               <div className="card-body">
-                <h5 className="card-title">
-                  Sent orders <span>| Today</span>
-                </h5>
-                <table className="table datatable">
-                  <thead>
-                    <tr>
-                      <th scope="col">Select</th>
-                      <th scope="col">Product</th>
-                      <th scope="col">Amount($)</th>
-                      <th scope="col">Quantity</th>
-                      <th scope="col">Total Milage(km)</th>
-                      <th scope="col">Logistics($)</th>
-                      <th scope="col">Warehouse Name</th>
-                      <th scope="col">Warehouse Address</th>
-                      <th scope="col">Sub Total</th>
-                      <th scope="col">Tax Extimate</th>
-                      <th scope="col">Grand Total</th>
-                      <th scope="col">Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <input type="checkbox" />
-                      </td>
-                      <td>
-                        <a href="/vieworderbook" className="text-primary">
-                          Litprod
-                        </a>
-                      </td>
-
-                      <td>$500</td>
-                      <td>6</td>
-                      <td>8km</td>
-                      <td>$15</td>
-                      <td>Neamont</td>
-                      <td>Califonia Dc</td>
-                      <td>$515</td>
-                      <td>$5</td>
-                      <td>$520</td>
-                      <td>
-                        <button type="button" className="btn btn-primary">
-                          Received
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+        <h5 className="card-title">
+          Sent orders <span>| {filter}</span>
+        </h5>
+        <table className="table datatable">
+          <thead>
+            <tr>
+              <th scope="col">Select</th>
+              <th scope="col">Product</th>
+              <th scope="col">Amount($)</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total Mileage(km)</th>
+              <th scope="col">Logistics($)</th>
+              <th scope="col">Supplier Name</th>
+              <th scope="col">Supplier Address</th>
+              <th scope="col">Sub Total</th>
+              <th scope="col">Tax Estimate</th>
+              <th scope="col">Grand Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ordersData.map((order) => (
+              <tr key={order.id}>
+                <td>
+                  <input type="checkbox" />
+                </td>
+                <td>
+                  <Link to="/vieworderbook" className="text-primary">
+                    {order.product}
+                  </Link>
+                </td>
+                <td>{order.amount}</td>
+                <td>{order.quantity}</td>
+                <td>{order.totalMileage}</td>
+                <td>{order.logistics}</td>
+                <td>{order.warehouseName}</td>
+                <td>{order.warehouseAddress}</td>
+                <td>{order.subTotal}</td>
+                <td>{order.taxEstimate}</td>
+                <td>{order.grandTotal}</td>
+                <td>
+                  <button type="button" className="btn btn-primary">
+                    Received
+                  </button>
+                </td>
+                
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
             </div>
           </div>
         </div>

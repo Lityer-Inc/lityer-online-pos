@@ -3,7 +3,37 @@ import { Link } from "react-router-dom";
 
 function Purchaseorder() {
   const [selectAll, setSelectAll] = useState(false);
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState([
+    {
+      id: 1,
+      date: "Jan 23, 2023",
+      customer: "Brandon Jacob",
+      channel: "Website",
+      products: ["product1", "product2", "product3", "product4", "product5"],
+      total: "$234.00",
+      status: "Paid",
+    },
+
+    {
+      id: 2,
+      date: "Feb 14, 2023",
+      customer: "Alice Smith",
+      channel: "Mobile App",
+      products: ["product2", "product3", "product6"],
+      total: "$123.50",
+      status: "Await Shipping",
+    },
+    {
+      id: 3,
+      date: "Mar 5, 2023",
+      customer: "John Doe",
+      channel: "In-store",
+      products: ["product1", "product4"],
+      total: "$89.99",
+      status: "Shipped",
+    },
+    // Add more dummy data as needed
+  ]);
 
   const toggleSelectAll = () => {
     setSelectAll(!selectAll);
@@ -12,23 +42,13 @@ function Purchaseorder() {
   const handleSelectRow = () => {
     // Implement row selection logic here
   };
-
-  // useEffect(() => {
-  //   const fetchOrders = async () => {
-  //     try {
-  //       const response = await fetch('http://localhost:8000/orders/all_orders');
-  //       if (!response.ok) {
-  //         throw new Error('Network response has error.');
-  //       }
-  //      const data =  await response.json();
-  //      setOrders(data);
-  //     } catch (error) {
-  //       console.error('Error fetching orders:', error);
-  //     }
-  //   };
-
-  //   fetchOrders();
-  // }, []);
+  const handleStatusChange = (rowId, newStatus) => {
+    setOrders((prevRequests) =>
+      prevRequests.map((request) =>
+        request.id === rowId ? { ...request, status: newStatus } : request
+      )
+    );
+  };
 
   return (
     <div>
@@ -98,37 +118,53 @@ function Purchaseorder() {
                   </thead>
 
                   <tbody>
-                    <tr>
-                      <td>
-                        <input
-                          type="checkbox"
-                          checked={selectAll}
-                          onChange={handleSelectRow}
-                        />
-                      </td>
-                      <th scope="row">
-                        <a href="#">#1</a>
-                      </th>
-                      <td>Jan 23, 2023</td>
-                      <td>Brandon Jacob</td>
-                      <td>Website</td>
-                      <td>
-                        <Link to="/shipment" className="text-primary">
-                          product1, product2, product3, product4, product5
-                        </Link>
-                      </td>
-                      <td>$234.00</td>
-                      <td>
-                        <div style={{ width: "70%" }}>
-                          <select id="inputState" class="form-select">
-                            <option selected>Paid</option>
-                            <option>Await Shipping</option>
-                            <option>Shipped</option>
-                          </select>
-                        </div>
-                      </td>
-                    </tr>
-                    {/* More rows */}
+                    {orders.map((order) => (
+                      <tr key={order.id}>
+                        <td>
+                          <input
+                            type="checkbox"
+                            checked={selectAll}
+                            onChange={handleSelectRow}
+                          />
+                        </td>
+                        <th scope="row">
+                          <a href={`#${order.id}`}>{`#${order.id}`}</a>
+                        </th>
+                        <td>{order.date}</td>
+                        <td>{order.customer}</td>
+                        <td>{order.channel}</td>
+                        <td>
+                          <Link to="/shipment" className="text-primary">
+                            {order.products.join(", ")}
+                          </Link>
+                        </td>
+                        <td>{order.total}</td>
+                        <td>
+                          <span
+                            className={`badge bg-${getStatusColor(
+                              order.status
+                            )}`}
+                          >
+                            {order.status}
+                          </span>
+                        </td>
+                        <td>
+                          <div style={{ width: "70%" }}>
+                            <select
+                              id="inputState"
+                              className="form-select"
+                              value={order.status}
+                              onChange={(e) =>
+                                handleStatusChange(order.id, e.target.value)
+                              }
+                            >
+                              <option>Await Shipping</option>
+                              <option>Shipped</option>
+                            </select>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -139,5 +175,17 @@ function Purchaseorder() {
     </div>
   );
 }
+
+// function to determine badge color based on status
+const getStatusColor = (status) => {
+  switch (status) {
+    case "Await Shipping":
+      return "warning";
+    case "Shipped":
+      return "success";
+    default:
+      return "secondary";
+  }
+};
 
 export default Purchaseorder;
