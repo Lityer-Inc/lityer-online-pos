@@ -2,13 +2,65 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import product from "../../assets/images/bluewallet.png";
 
-
 function Products() {
   const [filter, setFilter] = useState("Today"); // Default filter
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
   };
+
+  const productsData = [
+    {
+      id: 1,
+      image: product,
+      name: "Product 1",
+      inventory: "5 in stock",
+      category: "Product Category",
+      vendor: "Vendor Name",
+      price: "$0",
+      status: "Received",
+    },
+    {
+      id: 2,
+      image: product,
+      name: "Product 2",
+      inventory: "10 in stock",
+      category: "Another Category",
+      vendor: "Another Vendor",
+      price: "$20",
+      status: "paid",
+    },
+    {
+      id: 3,
+      image: product,
+      name: "Product 3",
+      inventory: "3 in stock",
+      category: "New Category",
+      vendor: "New Vendor",
+      price: "$15",
+      status: "Shipped",
+    },
+    {
+      id: 4,
+      image: product,
+      name: "Product 4",
+      inventory: "8 in stock",
+      category: "Category 4",
+      vendor: "Vendor 4",
+      price: "$30",
+      status: "Delivered",
+    },
+    {
+      id: 5,
+      image: product,
+      name: "Product 4",
+      inventory: "8 in stock",
+      category: "Category 4",
+      vendor: "Vendor 4",
+      price: "$30",
+      status: "Listed",
+    },
+  ];
 
   return (
     <>
@@ -27,7 +79,9 @@ function Products() {
         <div className="row">
           <div className="col-12 text-right mb-3">
             <Link to="/onboard">
-              <button id="submitbut" className="btn btn-primary">Add Product</button>
+              <button id="submitbut" className="btn btn-primary">
+                Add Product
+              </button>
             </Link>
           </div>
 
@@ -61,12 +115,14 @@ function Products() {
               </div>
               <div className="card-body">
                 <h5 className="card-title">
-                  Recent Sales <span>| Today</span>
+                  Recent Sales <span>| {filter}</span>
                 </h5>
                 <table className="table datatable">
                   <thead>
                     <tr>
-                      <th scope="col"><input type="checkbox" /></th>
+                      <th scope="col">
+                        <input type="checkbox" />
+                      </th>
                       <th scope="col">Product</th>
                       <th scope="col">Inventory</th>
                       <th scope="col">Category</th>
@@ -76,53 +132,36 @@ function Products() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <input type="checkbox" />
-                      </td>
-                      <td>
-                        <img
-                          src={product}
-                          alt="Product"
-                          id="tableimg"
-                        />
-                        <a href="/viewproduct" className="text-primary">
-                          product1
-                        </a>
-                      </td>
-                      
-                      <td>5 in stock</td>
-                      <td>Product Category</td>
-                      <td>Vendor Name</td>
-                      <td>$0</td>
-                      <td>
-                        <span className="badge bg-success">Received</span>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        <input type="checkbox" />
-                      </td>
-                      <td>
-                        <img
-                          src={product}
-                          alt="Product"
-                          id="tableimg"
-                        />
-                        <a href="#" className="text-primary">
-                          product1
-                        </a>
-                      </td>
-                      
-                      <td>5 in stock</td>
-                      <td>Product Category</td>
-                      <td>Vendor Name</td>
-                      <td>$0</td>
-                      <td>
-                        <span className="badge bg-warning">Paid</span>
-                      </td>
-                    </tr>
+                    {productsData.map((product) => (
+                      <tr key={product.id}>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <img
+                            src={product.image}
+                            alt="Product"
+                            id="tableimg"
+                          />
+                          <a href="/viewproduct" className="text-primary">
+                            {product.name}
+                          </a>
+                        </td>
+                        <td>{product.inventory}</td>
+                        <td>{product.category}</td>
+                        <td>{product.vendor}</td>
+                        <td>{product.price}</td>
+                        <td>
+                          <span
+                            className={`badge bg-${getStatusColor(
+                              product.status
+                            )}`}
+                          >
+                            {product.status}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -134,5 +173,22 @@ function Products() {
     </>
   );
 }
+// function to determine badge color based on status
+const getStatusColor = (status) => {
+  switch (status) {
+    case "Received":
+      return "success";
+    case "Delivered":
+      return "warning";
+    case "Shipped":
+      return "warning";
+    case "paid":
+      return "secondary";
+    case "Listed":
+      return "secondary";
+    default:
+      return "secondary";
+  }
+};
 
 export default Products;

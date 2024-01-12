@@ -14,6 +14,61 @@ function Acceptedrequest() {
     // API call to delete the data
   };
 
+  const acceptedRequests = [
+    {
+      id: 1,
+      product: "Litprod",
+      amount: "$500",
+      quantity: 6,
+      totalMilage: "8km",
+      logistics: "$15",
+      warehouseName: "Neamont",
+      warehouseAddress: "Califonia Dc",
+      subTotal: "$515",
+      taxEstimate: "$5",
+      grandTotal: "$520",
+    },
+    {
+      id: 2,
+      product: "Productss",
+      amount: "$300",
+      quantity: 4,
+      totalMilage: "5km",
+      logistics: "$10",
+      warehouseName: "Warehouse2",
+      warehouseAddress: "Address2",
+      subTotal: "$310",
+      taxEstimate: "$3",
+      grandTotal: "$313",
+    },
+    {
+      id: 3,
+      product: "AnotherProduct",
+      amount: "$700",
+      quantity: 8,
+      totalMilage: "10km",
+      logistics: "$20",
+      warehouseName: "Warehouse3",
+      warehouseAddress: "Address3",
+      subTotal: "$720",
+      taxEstimate: "$7",
+      grandTotal: "$727",
+    },
+    {
+      id: 4,
+      product: "NewProduct",
+      amount: "$400",
+      quantity: 5,
+      totalMilage: "7km",
+      logistics: "$12",
+      warehouseName: "Warehouse4",
+      warehouseAddress: "Address4",
+      subTotal: "$412",
+      taxEstimate: "$4",
+      grandTotal: "$416",
+    },
+  ];
+
   return (
     <>
       <div className="pagetitle">
@@ -58,7 +113,7 @@ function Acceptedrequest() {
               </div>
               <div className="card-body">
                 <h5 className="card-title">
-                  Accepted request <span>| Today</span>
+                  Accepted request <span>| {filter}</span>
                 </h5>
                 <table className="table datatable">
                   <thead>
@@ -72,37 +127,37 @@ function Acceptedrequest() {
                       <th scope="col">Warehouse Name</th>
                       <th scope="col">Warehouse Address</th>
                       <th scope="col">Sub Total</th>
-                      <th scope="col">Tax Extimate</th>
+                      <th scope="col">Tax Estimate</th>
                       <th scope="col">Grand Total</th>
-                      <th scope="col">Status</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <input type="checkbox" />
-                      </td>
-                      <td>
-                        <a href="/vieworderbook" className="text-primary">
-                          Litprod
-                        </a>
-                      </td>
-
-                      <td>$500</td>
-                      <td>6</td>
-                      <td>8km</td>
-                      <td>$15</td>
-                      <td>Neamont</td>
-                      <td>Califonia Dc</td>
-                      <td>$515</td>
-                      <td>$5</td>
-                      <td>$520</td>
-                      <td>
-                        <button type="button" className="btn btn-primary">
-                          Sent
-                        </button>
-                      </td>
-                    </tr>
+                    {acceptedRequests.map((request) => (
+                      <tr key={request.id}>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <a href="/vieworderbook" className="text-primary">
+                            {request.product}
+                          </a>
+                        </td>
+                        <td>{request.amount}</td>
+                        <td>{request.quantity}</td>
+                        <td>{request.totalMilage}</td>
+                        <td>{request.logistics}</td>
+                        <td>{request.warehouseName}</td>
+                        <td>{request.warehouseAddress}</td>
+                        <td>{request.subTotal}</td>
+                        <td>{request.taxEstimate}</td>
+                        <td>{request.grandTotal}</td>
+                        <td>
+                          <button type="button" className="btn btn-primary">
+                            Sent
+                          </button>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>

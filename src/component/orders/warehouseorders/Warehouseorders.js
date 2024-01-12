@@ -41,7 +41,7 @@ function Warehouseorders() {
       subTotal: "$515",
       taxEstimate: "$5",
       grandTotal: "$520",
-      status: "Accepted",
+      status: "Rejected",
     },
     {
       id: 2,
@@ -69,7 +69,7 @@ function Warehouseorders() {
       subTotal: "$515",
       taxEstimate: "$5",
       grandTotal: "$520",
-      status: "Accepted",
+      status: "Pending",
     },
   ];
 
@@ -165,7 +165,11 @@ function Warehouseorders() {
                         <td>{order.taxEstimate}</td>
                         <td>{order.grandTotal}</td>
                         <td>
-                          <span className="badge bg-success">
+                          <span
+                            className={`badge bg-${getStatusColor(
+                              order.status
+                            )}`}
+                          >
                             {order.status}
                           </span>
                         </td>
@@ -196,5 +200,19 @@ function Warehouseorders() {
     </>
   );
 }
+// function to determine badge color based on status
+const getStatusColor = (status) => {
+  switch (status) {
+    case "Accepted":
+      return "success";
+    case "Pending":
+      return "warning";
+    case "Rejected":
+      return "danger";
+    default:
+      return "secondary";
+  }
+};
+
 
 export default Warehouseorders;

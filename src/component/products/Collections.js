@@ -15,6 +15,37 @@ function Collections() {
     // API call to delete the data
   };
 
+  const collectionsData = [
+    {
+      id: 1,
+      image: product,
+      title: "Litprod",
+      productCount: 5,
+      productCondition: "Quantity control",
+    },
+    {
+      id: 2,
+      image: product,
+      title: "Catprod",
+      productCount: 5,
+      productCondition: "Damaged",
+    },
+    {
+      id: 3,
+      image: product,
+      title: "Dogprod",
+      productCount: 3,
+      productCondition: "New condition",
+    },
+    {
+      id: 4,
+      image: product,
+      title: "Birdprod",
+      productCount: 8,
+      productCondition: "Old condition",
+    },
+  ];
+
   return (
     <>
       <div className="pagetitle">
@@ -33,7 +64,7 @@ function Collections() {
           <div className="col-12 text-right mb-3">
             <Link to="/createcollection">
               <button id="submitbut" className="btn btn-primary">
-                Create&nbsp;Collection
+                Create Collection
               </button>
             </Link>
           </div>
@@ -49,17 +80,29 @@ function Collections() {
                     <h6>Filter</h6>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a
+                      className="dropdown-item"
+                      href="#"
+                      onClick={() => handleFilterChange("Today")}
+                    >
                       Today
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a
+                      className="dropdown-item"
+                      href="#"
+                      onClick={() => handleFilterChange("This Month")}
+                    >
                       This Month
                     </a>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
+                    <a
+                      className="dropdown-item"
+                      href="#"
+                      onClick={() => handleFilterChange("This Year")}
+                    >
                       This Year
                     </a>
                   </li>
@@ -67,7 +110,7 @@ function Collections() {
               </div>
               <div className="card-body">
                 <h5 className="card-title">
-                  Recent Sales <span>| Today</span>
+                  Recent Sales <span>| {filter}</span>
                 </h5>
                 <table className="table datatable">
                   <thead>
@@ -80,82 +123,56 @@ function Collections() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <input type="checkbox" />
-                      </td>
-                      <td>
-                        <img src={product} alt="Product" id="tableimg" />
-                        <a href="#" className="text-primary">
-                          Litprod
-                        </a>
-                      </td>
+                    {collectionsData.map((collection) => (
+                      <tr key={collection.id}>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>
+                          <img
+                            src={collection.image}
+                            alt="Product"
+                            id="tableimg"
+                          />
+                          <a href="#" className="text-primary">
+                            {collection.title}
+                          </a>
+                        </td>
 
-                      <td>5</td>
-                      <td>
-                        <div style={{ width: "60%" }}>
-                          <select id="inputState" class="form-select">
-                            <option selected>...</option>
-                            <option>Quantity control</option>
-                            <option>Damaged</option>
-                          </select>
-                        </div>
-                      </td>
-                      <td>
-                        <Link to="/editcollection">
+                        <td>{collection.productCount}</td>
+                        <td>
+                          <div style={{ width: "60%" }}>
+                            <select
+                              id="inputState"
+                              className="form-select"
+                              value={collection.productCondition}
+                              onChange={() => {}}
+                            >
+                              <option value="Quantity control">
+                                Quantity control
+                              </option>
+                              <option value="Damaged">Damaged</option>
+                              <option value="New condition">Expired</option>
+                            </select>
+                          </div>
+                        </td>
+                        <td>
+                          <Link to="/editcollection">
+                            <i
+                              style={{ marginRight: "20px", cursor: "pointer" }}
+                              className="bi bi-pencil"
+                              title="Edit"
+                            ></i>
+                          </Link>
                           <i
-                            style={{ marginRight: "20px", cursor: "pointer" }}
-                            className="bi bi-pencil"
-                            title="Edit"
+                            style={{ cursor: "pointer" }}
+                            className="bi bi-trash"
+                            title="Delete"
+                            onClick={() => handleDelete(collection.id)}
                           ></i>
-                        </Link>
-                        <i
-                          style={{ cursor: "pointer" }}
-                          className="bi bi-trash"
-                          title="Delete"
-                          onClick={() => handleDelete(1)}
-                        ></i>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        <input type="checkbox" />
-                      </td>
-                      <td>
-                        <img src={product} alt="Product" id="tableimg" />
-                        <a href="/viewproduct" className="text-primary">
-                          Catprod
-                        </a>
-                      </td>
-
-                      <td>5</td>
-                      <td>
-                        <div style={{ width: "60%" }}>
-                          <select id="inputState" class="form-select">
-                            <option selected>...</option>
-                            <option>Quantity control</option>
-                            <option>Damaged</option>
-                          </select>
-                        </div>
-                      </td>
-                      <td>
-                        <Link to="/editcollection">
-                          <i
-                            style={{ marginRight: "20px", cursor: "pointer" }}
-                            className="bi bi-pencil"
-                            title="Edit"
-                          ></i>
-                        </Link>
-
-                        <i
-                          style={{ cursor: "pointer" }}
-                          className="bi bi-trash"
-                          title="Delete"
-                          onClick={() => handleDelete(2)}
-                        ></i>
-                      </td>
-                    </tr>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>

@@ -8,7 +8,7 @@ function Inventory() {
 
   useEffect(() => {
     // Fetch products data from your backend API and set it to the state
-    // Example API call using fetch:
+
     // fetch('/api/products')
     //   .then(response => response.json())
     //   .then(data => setProducts(data))
@@ -31,7 +31,6 @@ function Inventory() {
 
   const handleDelete = (productId) => {
     // Implement the logic to delete the product with the specified productId
-    // Example API call using fetch:
     // fetch(`/api/products/${productId}`, { method: 'DELETE' })
     //   .then(response => response.json())
     //   .then(data => {
@@ -49,7 +48,7 @@ function Inventory() {
       )
     );
     // Implement the logic to update the product quantity in the database
-    // Example API call using fetch:
+
     // fetch(`/api/products/${productId}`, {
     //   method: 'PATCH',
     //   headers: {
@@ -73,7 +72,7 @@ function Inventory() {
       )
     );
     // Implement the logic to update the product availability in the database
-    // Example API call using fetch:
+
     // fetch(`/api/products/${productId}`, {
     //   method: 'PATCH',
     //   headers: {
@@ -97,7 +96,7 @@ function Inventory() {
       )
     );
     // Implement the logic to update the product unavailable quantity in the database
-    // Example API call using fetch:
+
     // fetch(`/api/products/${productId}`, {
     //   method: 'PATCH',
     //   headers: {
@@ -117,7 +116,7 @@ function Inventory() {
       {/* ... Your existing JSX code ... */}
 
       <div className="col-12">
-      <div className="pagetitle">
+        <div className="pagetitle">
           <h1>Inventory</h1>
           <nav>
             <ol className="breadcrumb">
