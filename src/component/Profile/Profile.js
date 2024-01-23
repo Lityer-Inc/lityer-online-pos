@@ -135,7 +135,7 @@ function Profile() {
                       className="tab-pane fade show active profile-overview"
                       id="profile-overview"
                     >
-                      <h5 className="card-title">Store information</h5>
+                      <h5 className="card-title">Store information (IF Retailer)</h5>
                       <p className="small fst-italic">
                         Sunt est soluta temporibus accusantium neque nam maiores
                         cumque temporibus. Tempora libero non est unde veniam

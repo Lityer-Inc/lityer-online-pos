@@ -25,7 +25,7 @@ function Headnav() {
       <div className="d-flex align-items-center justify-content-between">
         <Link to="/" className="logo d-flex align-items-center">
           <img src={logo} alt="logo" />
-          <span className="d-none d-lg-block">Allsats</span>
+          <span className="d-none d-lg-block">Orderbook</span>
         </Link>
         {sidebar ? (
           <MdClose onClick={toggleSidebar}
@@ -104,9 +104,11 @@ function Headnav() {
           </li>
 
           <li className="nav-item pe-3">
-            <button type="button" className="btn btn-primary">
-              Logout
-            </button>
+            <a href="/logout">
+              <button type="button" className="btn btn-danger">
+                Logout
+              </button>
+            </a>
           </li>
         </ul>
       </nav>

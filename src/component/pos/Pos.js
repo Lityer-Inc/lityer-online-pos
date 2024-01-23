@@ -121,10 +121,10 @@ function Pos() {
         </div>
 
         <section className="section contact">
-          <div className="col-xl-12">
+          <div className="col-12">
             <div className="row">
               {categories.map((cat) => (
-                <div key={cat.id} className="col-lg-2 col-sm-2">
+                <div key={cat.id} className="col-2 col-2">
                   <div className="cat-box">
                     <img src={cat.img} alt="" id="poscat" />
                     <p>{cat.name}</p>
@@ -283,6 +283,43 @@ function Pos() {
                         <div className="pos-summary-cell">Total:</div>
                         <div className="pos-summary-cell pos-summary-cell-right">
                           ${calculateTotalPrice() + 5}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-xl-12">
+                    <div className="row">
+                      <div className="col-lg-4 col-sm-4">
+                        <div className="cat-box">
+                          <i
+                            className="bi bi-cash"
+                            style={{
+                              fontWeight: "12px",
+                            }}
+                          ></i>
+                          <p>Cash</p>
+                        </div>
+                      </div>
+                      <div className="col-lg-4 col-sm-4">
+                        <div className="cat-box">
+                          <i
+                            className="bi bi-credit-card"
+                            style={{
+                              fontWeight: "12px",
+                            }}
+                          ></i>
+                          <p>Debit</p>
+                        </div>
+                      </div>
+                      <div className="col-lg-4 col-sm-4">
+                        <div className="cat-box">
+                          <i
+                            className="bi bi-qr-code-scan"
+                            style={{
+                              fontWeight: "12px",
+                            }}
+                          ></i>
+                          <p>Scan</p>
                         </div>
                       </div>
                     </div>

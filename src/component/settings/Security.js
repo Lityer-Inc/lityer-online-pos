@@ -40,7 +40,7 @@ function Security() {
                         data-toggle="tab"
                         data-target="#store-edit"
                       >
-                        Edit Store
+                        Edit Store(If retailer)
                       </button>
                     </li>
 
