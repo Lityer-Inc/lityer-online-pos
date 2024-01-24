@@ -62,6 +62,7 @@ import "./assets/js/main.js";
 
 axios.defaults.baseURL = "http://localhost:8000";
 
+
 function App() {
   //track user authentication and user information
   const [user, setUser] = useState(null);

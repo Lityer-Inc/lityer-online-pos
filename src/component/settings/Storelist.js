@@ -12,11 +12,15 @@ const Storelist = () => {
     { name: "Bob Johnson", description: "Delivery by 12:20am", storeimg: storeimg },
   ];
 
+  const user = localStorage.getItem("user");
+
   return (
     <div id="boxit">
       <div id="logodiv">
         <img id="logoimg" src={logo} alt="Logo" />
       </div>
+
+      <h3 className='text-gray-600 float-right top-3 right-2 absolute'>{user!==undefined && user}</h3>
 
       <div className="auth-box storelist">
         <h2>Your Stores</h2>
