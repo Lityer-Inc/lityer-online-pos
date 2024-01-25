@@ -6,7 +6,7 @@ import nocustomer from "../../assets/images/insurance.png";
 function Noproduct() {
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Sending code to backend
+    // handling submission
   };
 
   return (
