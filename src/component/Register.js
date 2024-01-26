@@ -7,12 +7,12 @@ import { Toaster, toast } from "sonner";
 const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
-    // firstName: "",
-    // lastName: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
-    userType: ""
+    userCategory: ""
   });
   const navigate = useNavigate();
 
@@ -28,22 +28,20 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("/user/admin/register", formData);
+      const response = await axios.post("/user/register", formData);
       toast.success("Succesfully Registered !");
-      setTimeout(() => {
-        navigate("/storelist");
-      }, 2000);
 
-      localStorage.setItem("user", String(response.data.newAdmin.name));
+      localStorage.setItem("user", String(response.data.newUser.name));
       localStorage.setItem("token", String(response.data.token));
+      // Check if userCategory is "Retailer" and redirect to storelist if true
+      setTimeout(() => {
+        if (formData.userCategory === "retailer") {
+          navigate("/storelist");
+        } else {
+          navigate("/");
+        }
+      }, 2000);
       return;
-
-      // Check if userType is "Retailer" and redirect to storelist if true
-      // if (formData.userType === "Retailer") {
-      //   navigate("/storelist");
-      // } else {
-      //   navigate("/");
-      // }
     } catch (error) {
       toast.error(String(error.response.data.error));
       console.error("Registration failed", error.response.data);
@@ -54,7 +52,7 @@ const Register = () => {
 
   let token = localStorage.getItem("token");
 
-  if (token !== undefined || null) {
+  if (token) {
     return <Navigate to="/storelist" />;
   }
 
@@ -68,7 +66,7 @@ const Register = () => {
         <h2> Sign Up </h2>{" "}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="name"> Full Name </label>{" "}
+            <label htmlFor="name"> First Name </label>{" "}
             <input
               type="text"
               id="name"
@@ -78,17 +76,17 @@ const Register = () => {
               onChange={handleInputChange}
             />{" "}
           </div>{" "}
-          {/* <div className="form-group">
-                        <label htmlFor="lastName">Last Name</label>
-                        <input
-                          type="text"
-                          id="lastName"
-                          name="lastName"
-                          placeholder="Enter your last name"
-                          value={formData.lastName}
-                          onChange={handleInputChange}
-                        />
-                      </div> */}{" "}
+          <div className="form-group">
+            <label htmlFor="lastName">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              placeholder="Enter your last name"
+              value={formData.lastName}
+              onChange={handleInputChange}
+            />
+          </div>
           <div className="form-group">
             <label htmlFor="email"> Email </label>{" "}
             <input
@@ -128,9 +126,9 @@ const Register = () => {
               <label>
                 <input
                   type="radio"
-                  name="userType"
-                  value="Supplier"
-                  checked={formData.userType === "Supplier"}
+                  name="userCategory"
+                  value="supplier"
+                  checked={formData.userCategory === "supplier"}
                   onChange={handleInputChange}
                 />
                 Supplier{" "}
@@ -140,9 +138,9 @@ const Register = () => {
               <label>
                 <input
                   type="radio"
-                  name="userType"
+                  name="userCategory"
                   value="retailer"
-                  checked={formData.userType === "retailer"}
+                  checked={formData.userCategory === "retailer"}
                   onChange={handleInputChange}
                 />
                 Retailer{" "}
@@ -152,9 +150,9 @@ const Register = () => {
               <label>
                 <input
                   type="radio"
-                  name="userType"
-                  value="Logistics"
-                  checked={formData.userType === "Logistics"}
+                  name="userCategory"
+                  value="logistics"
+                  checked={formData.userCategory === "logistics"}
                   onChange={handleInputChange}
                 />
                 Logistics{" "}
