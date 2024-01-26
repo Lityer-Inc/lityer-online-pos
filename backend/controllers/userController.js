@@ -1,5 +1,6 @@
 import userModel from "../models/User.js";
 import bcrypt from 'bcrypt';
+import jwt from "jsonwebtoken";
 // user Register
 export const userRegister = async (req, res) =>{
     try{
@@ -26,7 +27,11 @@ export const userRegister = async (req, res) =>{
         userCategory: req.body.userCategory
      })
      const newUser = await user.save();
-     return res.status(200).json({ newUser});
+    //  JWT
+    const token = jwt.sign({
+      email: newUser.email, id: newUser._id}, process.env.ACCESS_TOKEN,
+      { expiresIn: "4d" })
+     return res.status(200).json({ newUser, token});
 
     }
     catch (error) {
@@ -46,7 +51,7 @@ export const userLogin = async (req, res)=>{
   if(!user){
     return res.status(400).json({error: "User not found"})
   }
-  
+
    // Compare Secured (hashed) Password with provided password
    const isPasswordMatch = await bcrypt.compare(password, user.password);
 
