@@ -1,26 +1,28 @@
 import userModel from "../models/User.js";
-
+import bcrypt from 'bcrypt';
 // user Register
 export const userRegister = async (req, res) =>{
     try{
-      if (!req.body.firstName || !req.body.email || !req.body.password || !req.body.secondName) {
+      const {firstName, email, password, secondName} = req.body;
+      if (!firstName || !email || !password || !secondName) {
             return res.status(400).json({ error: "Required fields are missing." });
           }
     //  check if user is already exist
      const existingUserWithEmail = await userModel.findOne({
-            email: req.body.email,
+            email: email,
           });
     if (existingUserWithEmail) {
             return res
               .status(400)
               .json({ error: "User with the same email already exists." });
           }
+     const hashPassword = await bcrypt.hash(password, 10)     
 
      const user = new userModel({
-        firstName: req.body.firstName,
-        secondName: req.body.secondName,
-        email: req.body.email,
-        password: req.body.password,
+        firstName: firstName,
+        secondName: secondName,
+        email: email,
+        password: hashPassword,
         userCategory: req.body.userCategory
      })
      const newUser = await user.save();
@@ -44,8 +46,9 @@ export const userLogin = async (req, res)=>{
   if(!user){
     return res.status(400).json({error: "User not found"})
   }
-  // Compare passwords
-  const isPasswordMatch = user.email === email;
+  
+   // Compare Secured (hashed) Password with provided password
+   const isPasswordMatch = await bcrypt.compare(password, user.password);
 
   if (!isPasswordMatch) {
     return res.status(401).json({ error: "Invalid password" });
