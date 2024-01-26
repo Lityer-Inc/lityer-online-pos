@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import logo from "../assets/images/logo-full.png";
@@ -11,7 +12,7 @@ const Login = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
-      ...formData,
+      ...formData, 
       [name]: value,
     });
   };
