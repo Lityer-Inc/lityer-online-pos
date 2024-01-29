@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
     },
     userCategory: {
         type: String,
-        enum: ['supplier', 'retailers', 'logistics'],
+        enum: ['supplier', 'retailer', 'logistic'],
         required: true,
     },
 });
