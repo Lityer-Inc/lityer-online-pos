@@ -6,9 +6,8 @@ import { Toaster, toast } from "sonner";
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    name: "",
     firstName: "",
-    lastName: "",
+    secondName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -30,7 +29,7 @@ const Register = () => {
     try {
       const response = await axios.post("/user/register", formData);
       toast.success("Succesfully Registered !");
-
+      
       localStorage.setItem("user", String(response.data.newUser.name));
       localStorage.setItem("token", String(response.data.token));
       // Check if userCategory is "Retailer" and redirect to storelist if true
@@ -66,24 +65,24 @@ const Register = () => {
         <h2> Sign Up </h2>{" "}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="name"> First Name </label>{" "}
+            <label htmlFor="firstName"> First Name </label>{" "}
             <input
               type="text"
-              id="name"
-              name="name"
+              id="firstName"
+              name="firstName"
               placeholder="Enter your first name"
-              value={formData.name}
+              value={formData.firstName}
               onChange={handleInputChange}
             />{" "}
           </div>{" "}
           <div className="form-group">
-            <label htmlFor="lastName">Last Name</label>
+            <label htmlFor="secondName">Last Name</label>
             <input
               type="text"
               id="lastName"
-              name="lastName"
+              name="secondName"
               placeholder="Enter your last name"
-              value={formData.lastName}
+              value={formData.secondName}
               onChange={handleInputChange}
             />
           </div>
@@ -151,8 +150,8 @@ const Register = () => {
                 <input
                   type="radio"
                   name="userCategory"
-                  value="logistics"
-                  checked={formData.userCategory === "logistics"}
+                  value="logistic"
+                  checked={formData.userCategory === "logistic"}
                   onChange={handleInputChange}
                 />
                 Logistics{" "}

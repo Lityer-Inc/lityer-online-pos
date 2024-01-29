@@ -1,7 +1,7 @@
 // Storelist.js
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import logo from "../../assets/images/logo-full.png";
 import storeimg from "../../assets/images/pos-products.jpg";
 
@@ -23,6 +23,12 @@ const Storelist = () => {
       storeimg: storeimg
     }
   ];
+
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return <Navigate to='/register' />
+  }
 
   return (
     <div id="boxit">
