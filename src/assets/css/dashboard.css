@@ -332,6 +332,8 @@ input[type="radio"] {
 #logodiv {
   text-align: center;
   margin-bottom: 20px;
+  display:flex;
+  justify-items: center;
   align-items: center;
 }
 #noimg {

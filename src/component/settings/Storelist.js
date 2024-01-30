@@ -33,7 +33,7 @@ const Storelist = () => {
   return (
     <div id="boxit">
       <div id="logodiv">
-        <img id="logoimg" src={logo} alt="Logo" />
+        <img id="logoimg" className='mx-auto' src={logo} alt="Logo" />
       </div>
 
       <div className="auth-box storelist">

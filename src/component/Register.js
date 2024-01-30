@@ -59,7 +59,7 @@ const Register = () => {
     <div id="boxit">
       <Toaster />
       <div id="logodiv">
-        <img id="logoimg" src={logo} alt="Logo" />
+        <img id="logoimg" className='mx-auto' src={logo} alt="Logo" />
       </div>{" "}
       <div className="auth-box">
         <h2> Sign Up </h2>{" "}
