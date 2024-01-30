@@ -22,7 +22,7 @@ mongoose.connect("mongodb+srv://lityer:123@cluster0.jla8m8u.mongodb.net/orderboo
    })
 .catch((e)=>{console.log(e)});
 
- // Use the userRouter as middleware
+ // Use the userRouter & storeRouter as middleware
  app.use('/user', userRouter);
  app.use('/store', storeRouter)
 
@@ -30,7 +30,6 @@ mongoose.connect("mongodb+srv://lityer:123@cluster0.jla8m8u.mongodb.net/orderboo
  app.get('/', (req, res)=>{
    res.json({msg: 'app is running'})
  })
-console.log(process.env.JWT_SECRET_KEY)
 // listen for req
 app.listen(4000, function () {
    console.log('listening on port 4000')

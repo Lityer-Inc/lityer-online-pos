@@ -56,7 +56,7 @@ export const AddStore = async (req, res) => {
 
     // Use Cloudinary to upload the avatar
     const avatarResult = await cloudinary.uploader.upload(req.file.path);
-
+   console.log(req.file.path)
     // Create a new store instance
     const newStore = new storeModel({
       name: req.body.name,
