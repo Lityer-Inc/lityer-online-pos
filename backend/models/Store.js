@@ -46,6 +46,10 @@ const storeSchema = new mongoose.Schema({
     type: [{type: String}],
     default: ["Accepts EBT", "In-store prices"]
   },
+  userId: {
+    type: String,
+    required: true,
+  },
   orders: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Order',
