@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import userRouter from "./routes/user.js";
+import storeRouter from "./routes/store.js";
 import dotenv from "dotenv"; // Import dotenv
 
 // Load environment variables from .env file
@@ -21,14 +22,14 @@ mongoose.connect("mongodb+srv://lityer:123@cluster0.jla8m8u.mongodb.net/orderboo
    })
 .catch((e)=>{console.log(e)});
 
- // Use the userRouter as middleware
+ // Use the userRouter & storeRouter as middleware
  app.use('/user', userRouter);
+ app.use('/store', storeRouter)
 
 
  app.get('/', (req, res)=>{
    res.json({msg: 'app is running'})
  })
-console.log(process.env.JWT_SECRET_KEY)
 // listen for req
 app.listen(4000, function () {
    console.log('listening on port 4000')

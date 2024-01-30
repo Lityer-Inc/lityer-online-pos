@@ -4,8 +4,8 @@ import jwt from "jsonwebtoken";
 // user Register
 export const userRegister = async (req, res) =>{
     try{
-      const {firstName, email, password, secondName} = req.body;
-      if (!firstName || !email || !password || !secondName) {
+      const {firstName, email, password, lastName} = req.body;
+      if (!firstName || !email || !password || !lastName) {
             return res.status(400).json({ error: "Required fields are missing." });
           }
     //  check if user is already exist
@@ -21,7 +21,7 @@ export const userRegister = async (req, res) =>{
 
      const user = new userModel({
         firstName: firstName,
-        secondName: secondName,
+        lastName: lastName,
         email: email,
         password: hashPassword,
         userCategory: req.body.userCategory
