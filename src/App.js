@@ -59,8 +59,7 @@ import "./assets/css/dashboard.css";
 
 // js
 import "./assets/js/main.js";
-
-axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = "http://localhost:4000";
 
 function App() {
   //track user authentication and user information

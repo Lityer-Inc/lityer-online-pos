@@ -1,21 +1,39 @@
 // Storelist.js
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import logo from "../../assets/images/logo-full.png";
 import storeimg from "../../assets/images/pos-products.jpg";
 
 const Storelist = () => {
   const stores = [
-    { name: "Magni Dolores thsbs shjbdhd", description: "Delivery by 12:30pm", storeimg: storeimg },
-    { name: "Jane Smithwedjhue", description: "Delivery by 1:30pm", storeimg: storeimg },
-    { name: "Bob Johnson", description: "Delivery by 12:20am", storeimg: storeimg },
+    {
+      name: "Magni Dolores thsbs shjbdhd",
+      description: "Delivery by 12:30pm",
+      storeimg: storeimg
+    },
+    {
+      name: "Jane Smithwedjhue",
+      description: "Delivery by 1:30pm",
+      storeimg: storeimg
+    },
+    {
+      name: "Bob Johnson",
+      description: "Delivery by 12:20am",
+      storeimg: storeimg
+    }
   ];
+
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    return <Navigate to='/register' />
+  }
 
   return (
     <div id="boxit">
       <div id="logodiv">
-        <img id="logoimg" src={logo} alt="Logo" />
+        <img id="logoimg" className='mx-auto' src={logo} alt="Logo" />
       </div>
 
       <div className="auth-box storelist">

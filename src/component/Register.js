@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import logo from "../assets/images/logo-full.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { Toaster, toast } from "sonner";
 
 const Register = () => {
   const [formData, setFormData] = useState({
     firstName: "",
-    lastName: "",
+    secondName: "",
     email: "",
     password: "",
     confirmPassword: "",
-    userType: "",
+    userCategory: ""
   });
   const navigate = useNavigate();
 
@@ -18,7 +19,7 @@ const Register = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: value
     });
   };
 
@@ -27,32 +28,44 @@ const Register = () => {
 
     try {
       const response = await axios.post("/user/register", formData);
-      console.log("Registration successful", response.data);
-
-      // Check if userType is "Retailer" and redirect to storelist if true
-      if (formData.userType === "Retailer") {
-        navigate.push("/storelist");
-      } else {
-        // Redirect to homepage after successful registration for other user types
-        navigate.push("/");
-      }
+      toast.success("Succesfully Registered !");
+      
+      localStorage.setItem("user", String(response.data.newUser.name));
+      localStorage.setItem("token", String(response.data.token));
+      // Check if userCategory is "Retailer" and redirect to storelist if true
+      setTimeout(() => {
+        if (formData.userCategory === "retailer") {
+          navigate("/storelist");
+        } else {
+          navigate("/");
+        }
+      }, 2000);
+      return;
     } catch (error) {
+      toast.error(String(error.response.data.error));
       console.error("Registration failed", error.response.data);
     }
 
     // console.log("Form Data:", formData);
   };
 
+  let token = localStorage.getItem("token");
+
+  if (token) {
+    return <Navigate to="/storelist" />;
+  }
+
   return (
     <div id="boxit">
+      <Toaster />
       <div id="logodiv">
-        <img id="logoimg" src={logo} alt="Logo" />
-      </div>
+        <img id="logoimg" className='mx-auto' src={logo} alt="Logo" />
+      </div>{" "}
       <div className="auth-box">
-        <h2>Sign Up</h2>
+        <h2> Sign Up </h2>{" "}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="firstName">First Name</label>
+            <label htmlFor="firstName"> First Name </label>{" "}
             <input
               type="text"
               id="firstName"
@@ -60,21 +73,21 @@ const Register = () => {
               placeholder="Enter your first name"
               value={formData.firstName}
               onChange={handleInputChange}
-            />
-          </div>
+            />{" "}
+          </div>{" "}
           <div className="form-group">
-            <label htmlFor="lastName">Last Name</label>
+            <label htmlFor="secondName">Last Name</label>
             <input
               type="text"
               id="lastName"
-              name="lastName"
+              name="secondName"
               placeholder="Enter your last name"
-              value={formData.lastName}
+              value={formData.secondName}
               onChange={handleInputChange}
             />
           </div>
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email"> Email </label>{" "}
             <input
               type="email"
               id="email"
@@ -82,10 +95,10 @@ const Register = () => {
               placeholder="Enter your email"
               value={formData.email}
               onChange={handleInputChange}
-            />
-          </div>
+            />{" "}
+          </div>{" "}
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password"> Password </label>{" "}
             <input
               type="password"
               id="password"
@@ -93,10 +106,10 @@ const Register = () => {
               placeholder="Enter your password"
               value={formData.password}
               onChange={handleInputChange}
-            />
-          </div>
+            />{" "}
+          </div>{" "}
           <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password</label>
+            <label htmlFor="confirmPassword"> Confirm Password </label>{" "}
             <input
               type="password"
               id="confirmPassword"
@@ -104,53 +117,53 @@ const Register = () => {
               placeholder="Confirm your password"
               value={formData.confirmPassword}
               onChange={handleInputChange}
-            />
-          </div>
+            />{" "}
+          </div>{" "}
           <div className="form-group">
-            <label>Choose User Category</label>
+            <label> Choose User Category </label>{" "}
             <div>
               <label>
                 <input
                   type="radio"
-                  name="userType"
-                  value="Supplier"
-                  checked={formData.userType === "Supplier"}
+                  name="userCategory"
+                  value="supplier"
+                  checked={formData.userCategory === "supplier"}
                   onChange={handleInputChange}
                 />
-                Supplier
-              </label>
-            </div>
+                Supplier{" "}
+              </label>{" "}
+            </div>{" "}
             <div>
               <label>
                 <input
                   type="radio"
-                  name="userType"
+                  name="userCategory"
                   value="retailer"
-                  checked={formData.userType === "retailer"}
+                  checked={formData.userCategory === "retailer"}
                   onChange={handleInputChange}
                 />
-                Retailer
-              </label>
-            </div>
+                Retailer{" "}
+              </label>{" "}
+            </div>{" "}
             <div>
               <label>
                 <input
                   type="radio"
-                  name="userType"
-                  value="Logistics"
-                  checked={formData.userType === "Logistics"}
+                  name="userCategory"
+                  value="logistic"
+                  checked={formData.userCategory === "logistic"}
                   onChange={handleInputChange}
                 />
-                Logistics
-              </label>
-            </div>
-          </div>
-          <button type="submit">Sign Up</button>
-        </form>
+                Logistics{" "}
+              </label>{" "}
+            </div>{" "}
+          </div>{" "}
+          <button type="submit"> Sign Up </button>{" "}
+        </form>{" "}
         <p>
-          Already have an account? <Link to="/login">Login</Link>
-        </p>
-      </div>
+          Already have an account ? <Link to="/login"> Login </Link>{" "}
+        </p>{" "}
+      </div>{" "}
     </div>
   );
 };
