@@ -1,5 +1,7 @@
 import express from "express"
-import { upload } from "../middleWare/multer.js";
+import { upload } from "../middleware/multer.js";
+import { AddStore, addStoreProduct, deleteProduct, deleteStore, updateProductController, updateStoreController } from "../controllers/storeController.js";
+import { authentication } from "../middleware/authentication.js";
 
 
 const storeRouter = express.Router();
