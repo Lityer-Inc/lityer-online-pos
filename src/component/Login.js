@@ -1,6 +1,9 @@
+
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from "../assets/images/logo-full.png";
+import axios from "axios";
+import { Toaster, toast } from "sonner";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -8,18 +11,40 @@ const Login = () => {
     password: "",
   });
 
+  const navigate = useNavigate();
+  
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
-      ...formData,
+      ...formData, 
       [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    //send formData to your Node.js backend using a fetch or Axios to be done here.
+    try {
+      const response = await axios.post("/user/login", formData);
+      toast.success("Succesfully Logged in  !");
+      localStorage.setItem("token", String(response.data.token));
+      // Check if userCategory is "Retailer" and redirect to storelist if true
+      setTimeout(() => {
+        if (formData.userCategory === "retailer") {
+          navigate("/storelist");
+        } else {
+          navigate("/");
+        }
+      }, 2000);
+      return;
+    } catch (error) {
+      toast.error(String(error.response.data.error));
+      console.error("Registration failed", error.response.data);
+    }
+
+
 
     console.log("Form Data:", formData);
   };
@@ -27,7 +52,7 @@ const Login = () => {
   return (
     <div id="boxit">
       <div id="logodiv">
-        <img id="logoimg" src={logo} alt="Logo" />
+        <img id="logoimg" className='mx-auto' src={logo} alt="Logo" />
       </div>
       
       <div className="auth-box">
@@ -61,6 +86,7 @@ const Login = () => {
           Don't have an account? <Link to="/register">Sign Up</Link>
         </p>
       </div>
+      <Toaster />
     </div>
   );
 };

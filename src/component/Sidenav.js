@@ -1,9 +1,13 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { sidebarState } from '../atoms/atom/sidebarState';
 
 const Sidenav = () => {
+  const sidebarValue = useRecoilValue(sidebarState);
+
   return (
-    <aside className="sidebar">
+    <aside className={`sidebar lg:block ${sidebarValue ? "block": "hidden"}`}>
       <ul className="sidebar-nav" id="sidebar-nav">
         <li className="nav-item">
           <NavLink to="/" className="nav-link">
