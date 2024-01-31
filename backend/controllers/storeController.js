@@ -56,8 +56,6 @@ export const AddStore = async (req, res) => {
 
     // Use Cloudinary to upload the avatar
     const avatarResult = await cloudinary.uploader.upload(req.file.path);
-   console.log(req.file.path)
-   console.log("Decoded Information in AddStore:", req.decoded);
     // Extract userId from the decoded JWT token
     const userId = req.decoded.id;
     console.log(userId)
