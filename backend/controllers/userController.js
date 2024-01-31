@@ -4,8 +4,8 @@ import jwt from "jsonwebtoken";
 // user Register
 export const userRegister = async (req, res) =>{
     try{
-      const {firstName, email, password, secondName} = req.body;
-      if (!firstName || !email || !password || !secondName) {
+      const {firstName, email, password, lastName} = req.body;
+      if (!firstName || !email || !password || !lastName) {
             return res.status(400).json({ error: "Required fields are missing." });
           }
     //  check if user is already exist
@@ -21,7 +21,7 @@ export const userRegister = async (req, res) =>{
 
      const user = new userModel({
         firstName: firstName,
-        secondName: secondName,
+        lastName: lastName,
         email: email,
         password: hashPassword,
         userCategory: req.body.userCategory
@@ -68,3 +68,14 @@ export const userLogin = async (req, res)=>{
     return res.status(500).json({ error: "Internal Server Error" });
   }
 }
+
+// userLogoutController
+export const userLogout = (req, res) => {
+  try {
+    // after log out successfully
+    return res.status(200).json({ message: "Logout Successfully" });
+  } catch (error) {
+    console.error;
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
