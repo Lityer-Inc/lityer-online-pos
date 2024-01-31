@@ -24,7 +24,7 @@ mongoose.connect("mongodb+srv://lityer:123@cluster0.jla8m8u.mongodb.net/orderboo
 
  // Use the userRouter & storeRouter as middleware
  app.use('/user', userRouter);
- app.use('/store', storeRouter)
+ app.use('/stores', storeRouter)
 
 
  app.get('/', (req, res)=>{

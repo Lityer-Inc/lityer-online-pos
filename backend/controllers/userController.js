@@ -68,3 +68,14 @@ export const userLogin = async (req, res)=>{
     return res.status(500).json({ error: "Internal Server Error" });
   }
 }
+
+// userLogoutController
+export const userLogout = (req, res) => {
+  try {
+    // after log out successfully
+    return res.status(200).json({ message: "Logout Successfully" });
+  } catch (error) {
+    console.error;
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
