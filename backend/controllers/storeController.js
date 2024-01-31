@@ -228,7 +228,17 @@ export const updateProductController = async (req, res) => {
   }
 };
 
- 
+// get stores with userId:
+export const getStoresWithUserId = async (req, res) =>{
+  try{
+   const userId = req.params.userId;
+   //  Find all stores with userID
+   const stores = await storeModel.find({userId});
 
-
-
+  return res.status(200).json(stores)
+  }
+  catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+}
