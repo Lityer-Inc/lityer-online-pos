@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
 import Addproduct from "./component/products/Addproduct";
 import Footer from "./component/Footer";
 import Headnav from "./component/Headnav";
@@ -59,31 +59,28 @@ import "./assets/css/dashboard.css";
 
 // js
 import "./assets/js/main.js";
+import { useJwt } from "./hooks/useJwt.js";
 axios.defaults.baseURL = "http://localhost:4000";
 
 function App() {
-  //track user authentication and user information
-  const [user, setUser] = useState(null);
-
-  // handle user login
-  const handleLogin = (userData) => {
-    setUser(userData);
-  };
-
   // handle user logout
   const handleLogout = () => {
-    setUser(null);
+    localStorage.setItem("token", null);
+    window.location.reload();
   };
+
+  const response = useJwt();
+  // const user = response.user;
 
   return (
     <div className="just">
-      {user ? (
-        <LoggedInRoutes user={user} onLogout={handleLogout} />
+      {response ? (
+        <LoggedInRoutes user={response.user} onLogout={handleLogout} />
       ) : (
         <Router>
           <Routes>
-            <Route path="/" element={<Login onLogin={handleLogin} />} />
-            <Route path="/login" element={<Login onLogin={handleLogin} />} />
+            <Route path="/" element={<Login />} />
+            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/createsore" element={<Createsore />} />
             <Route path="/storelist" element={<Storelist />} />
