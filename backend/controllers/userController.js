@@ -29,7 +29,7 @@ export const userRegister = async (req, res) =>{
      const newUser = await user.save();
     //  JWT
     const token = jwt.sign({
-      email: newUser.email, id: newUser._id}, process.env.ACCESS_TOKEN,
+      email: newUser.email, id: newUser._id, userCategory: newUser.userCategory}, process.env.ACCESS_TOKEN,
       { expiresIn: "4d" })
      return res.status(200).json({ newUser, token});
 
@@ -75,7 +75,7 @@ export const userLogout = (req, res) => {
     // after log out successfully
     return res.status(200).json({ message: "Logout Successfully" });
   } catch (error) {
-    console.error;
+    console.log(error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
