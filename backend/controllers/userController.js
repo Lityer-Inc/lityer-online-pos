@@ -59,7 +59,7 @@ export const userLogin = async (req, res)=>{
     return res.status(401).json({ error: "Invalid password" });
   }
   // JWT
-  const token = jwt.sign({email: user.email, id: user._id},  process.env.ACCESS_TOKEN,
+  const token = jwt.sign({email: user.email, id: user._id, userCategory: user.userCategory},  process.env.ACCESS_TOKEN,
     { expiresIn: "4d" })
   return res.status(200).json({token, message: "Login successful" });
   }
