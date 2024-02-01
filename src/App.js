@@ -74,7 +74,7 @@ function App() {
 
   return (
     <div className="just">
-      {response ? (
+      {response && response.user.userCategory === 'retailer' ? (
         <LoggedInRoutes user={response.user} onLogout={handleLogout} />
       ) : (
         <Router>
