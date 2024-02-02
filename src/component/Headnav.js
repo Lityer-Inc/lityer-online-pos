@@ -7,18 +7,17 @@ import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { sidebarState } from "../atoms/atom/sidebarState";
 
-function Headnav() {
+function Headnav({ onLogout, user }) {
   const [isSearchBarVisible, setSearchBarVisible] = useState(false);
   const [sidebar, setSidebar] = useRecoilState(sidebarState);
-
 
   const toggleSearchBar = () => {
     setSearchBarVisible(!isSearchBarVisible);
   };
 
   const toggleSidebar = () => {
-    setSidebar((prev)=> !prev);
-  }
+    setSidebar((prev) => !prev);
+  };
 
   return (
     <header className="header fixed-top d-flex align-items-center">
@@ -28,13 +27,16 @@ function Headnav() {
           <span className="d-none d-lg-block">Orderbook</span>
         </Link>
         {sidebar ? (
-          <MdClose onClick={toggleSidebar}
-          className={`text-[2rem] lg:hidden`} />
+          <MdClose
+            onClick={toggleSidebar}
+            className={`text-[2rem] lg:hidden`}
+          />
         ) : (
-          <MdOutlineMenu onClick={toggleSidebar}
-          className={`text-[2rem] lg:hidden`} />
+          <MdOutlineMenu
+            onClick={toggleSidebar}
+            className={`text-[2rem] lg:hidden`}
+          />
         )}
-        
       </div>
 
       <div
@@ -69,26 +71,26 @@ function Headnav() {
             </a>
           </li>
 
-          <li class="nav-item">
+          <li className="nav-item">
             <Link
               class="nav-link nav-icon"
               to="/notifications"
               data-bs-toggle="dropdown"
             >
-              <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span>
+              <i className="bi bi-bell"></i>
+              <span className="badge bg-primary badge-number">4</span>
             </Link>
           </li>
           {/* End Notification Nav */}
 
-          <li class="nav-item">
+          <li className="nav-item">
             <Link
               class="nav-link nav-icon"
               to="/messages"
               data-bs-toggle="dropdown"
             >
-              <i class="bi bi-chat-left-text"></i>
-              <span class="badge bg-success badge-number">3</span>
+              <i className="bi bi-chat-left-text"></i>
+              <span className="badge bg-success badge-number">3</span>
             </Link>
           </li>
 
@@ -99,13 +101,17 @@ function Headnav() {
               data-bs-toggle="dropdown"
             >
               <img src={profile} alt="Profile" className="rounded-circle" />
-              <span className="d-none d-md-block ps-2">Username</span>
+              <span className="d-none d-md-block ps-2">{user.email}</span>
             </Link>
           </li>
 
           <li className="nav-item pe-3">
-            <a href="/logout">
-              <button type="button" className="btn btn-danger">
+            <a href="/login">
+              <button
+                type="button"
+                onClick={onLogout}
+                className="btn btn-danger"
+              >
                 Logout
               </button>
             </a>

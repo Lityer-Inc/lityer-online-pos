@@ -2,7 +2,7 @@ import React from "react";
 import profile from "../../assets/images/bitcoin.png";
 import { Link } from "react-router-dom";
 
-function Profile() {
+function Profile({user}) {
   return (
     <>
       <div className="col-lg-12">
@@ -38,7 +38,7 @@ function Profile() {
               <div className="card">
                 <div className="card-body profile-card pt-4 d-flex flex-column align-items-center">
                   <img src={profile} alt="Profile" className="rounded-circle" />
-                  <h2>Tolu John</h2>
+                  <h2>{user.email}</h2>
                   <h3>Retailer</h3>
                   <div className="social-links mt-2">
                     <a href="#" className="twitter" target="_blank">
