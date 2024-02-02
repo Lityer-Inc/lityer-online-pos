@@ -29,7 +29,7 @@ export const userRegister = async (req, res) =>{
      const newUser = await user.save();
     //  JWT
     const token = jwt.sign({
-      email: newUser.email, id: newUser._id}, process.env.ACCESS_TOKEN,
+      email: newUser.email, id: newUser._id, userCategory: newUser.userCategory}, process.env.ACCESS_TOKEN,
       { expiresIn: "4d" })
      return res.status(200).json({ newUser, token});
 
@@ -59,7 +59,7 @@ export const userLogin = async (req, res)=>{
     return res.status(401).json({ error: "Invalid password" });
   }
   // JWT
-  const token = jwt.sign({email: user.email, id: user._id},  process.env.ACCESS_TOKEN,
+  const token = jwt.sign({email: user.email, id: user._id, userCategory: user.userCategory},  process.env.ACCESS_TOKEN,
     { expiresIn: "4d" })
   return res.status(200).json({token, message: "Login successful" });
   }
@@ -75,7 +75,7 @@ export const userLogout = (req, res) => {
     // after log out successfully
     return res.status(200).json({ message: "Logout Successfully" });
   } catch (error) {
-    console.error;
+    console.log(error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
