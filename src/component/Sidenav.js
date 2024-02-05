@@ -18,7 +18,7 @@ const Sidenav = () => {
 
         <li className="nav-item">
           <Link
-            to="/purchaseorder"
+            to="purchaseorder"
             className="nav-link collapsed"
             data-target="#Orders-nav"
             data-toggle="collapse"
@@ -33,26 +33,26 @@ const Sidenav = () => {
             data-parent="#sidebar-nav"
           >
             <li>
-              <NavLink to="/purchaseorder">
+              <NavLink to="purchaseorder">
                 <i className="bi bi-circle"></i>
                 <span>Purchase Orders</span>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/ware_distribution_request">
+              <NavLink to="ware_distribution_request">
                 <i className="bi bi-circle"></i>
                 <span>Distribution Request</span>
               </NavLink>
             </li>
 
             <li>
-              <NavLink to="/warehouseorders">
+              <NavLink to="warehouseorders">
                 <i className="bi bi-circle"></i>
                 <span>Your Orders</span>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/acceptedorder">
+              <NavLink to="acceptedorder">
                 <i className="bi bi-circle"></i>
                 <span>Sent Orders</span>
               </NavLink>
@@ -61,7 +61,7 @@ const Sidenav = () => {
         </li>
         <li className="nav-item">
           <Link
-            to="/supplierincomingorders"
+            to="supplierincomingorders"
             className="nav-link collapsed"
             data-target="#Orders-nav"
             data-toggle="collapse"
@@ -76,7 +76,7 @@ const Sidenav = () => {
             data-parent="#sidebar-nav"
           >
             <li>
-              <NavLink to="/supplierincomingorders">
+              <NavLink to="supplierincomingorders">
                 <i className="bi bi-circle"></i>
                 <span>Incoming Orders</span>
               </NavLink>
@@ -112,13 +112,13 @@ const Sidenav = () => {
             data-parent="#sidebar-nav"
           >
             <li>
-              <NavLink to="/potentiaorders">
+              <NavLink to="potentiaorders">
                 <i className="bi bi-circle"></i>
                 <span>Potential Orders</span>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/yourpotentiaorders">
+              <NavLink to="yourpotentiaorders">
                 <i className="bi bi-circle"></i>
                 <span>Your Orders</span>
               </NavLink>
@@ -143,13 +143,13 @@ const Sidenav = () => {
             data-parent="#sidebar-nav"
           >
             <li>
-              <NavLink to="/collections">
+              <NavLink to="collections">
                 <i className="bi bi-circle"></i>
                 <span>Collections</span>
               </NavLink>
             </li>
             <li>
-              <NavLink to="/inventory">
+              <NavLink to="inventory">
                 <i className="bi bi-circle"></i>
                 <span>Inventory</span>
               </NavLink>
@@ -179,20 +179,20 @@ const Sidenav = () => {
         </li> */}
 
         <li className="nav-item">
-          <NavLink to="/pos" className="nav-link collapsed">
+          <NavLink to="pos" className="nav-link collapsed">
             <i className="bi bi-file-post"></i>
             <span>POS(Retailer)</span>
           </NavLink>
         </li>
 
         <li className="nav-item">
-          <NavLink to="/messages" className="nav-link collapsed">
+          <NavLink to="messages" className="nav-link collapsed">
             <i className="bi bi-chat-left-text"></i>
             <span>Messages</span>
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/notifications" className="nav-link collapsed">
+          <NavLink to="notifications" className="nav-link collapsed">
             <i className="bi bi-bell"></i>
             <span>Notification</span>
           </NavLink>
