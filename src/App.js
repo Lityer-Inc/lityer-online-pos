@@ -1,10 +1,16 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  useNavigate,
+  Navigate
+} from "react-router-dom";
 import Addproduct from "./component/products/Addproduct";
 import Footer from "./component/Footer";
 import Headnav from "./component/Headnav";
 import Sidenav from "./component/Sidenav";
-import Home from "./component/Home";
+import Home from "./component/Dashboard.js";
 import Register from "./component/Register";
 import Contact from "./component/Contact";
 import Login from "./component/Login";
@@ -69,136 +75,157 @@ function App() {
     window.location.reload();
   };
 
-  const response = useJwt();
+  const jwt = useJwt();
   // const user = response.user;
+
+  console.log("response : ", jwt);
 
   return (
     <div className="just">
-      {response && response.user.userCategory === 'retailer' ? (
+      {/* {response && response.user.userCategory === "retailer" ? (
         <LoggedInRoutes user={response.user} onLogout={handleLogout} />
-      ) : (
-        <Router>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/createsore" element={<Createsore />} />
-            <Route path="/storelist" element={<Storelist />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
-        </Router>
-      )}
+      ) : ( */}
+      <Router>
+        <Routes>
+          <Route path='/' element={<h1>Landing Page</h1>} />
+          <Route
+            path="/home/*"
+            element={<LoggedInRoutes user={null} onLogout={handleLogout} />}
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </Router>
+      {/* )} */}
     </div>
   );
 }
 
 // logged-in user routes
 function LoggedInRoutes({ user, onLogout }) {
+  const token = localStorage.getItem("token");
+  const jwt = useJwt();
+
+  if (!token || token === null) {
+    return <Navigate to='/login' />
+  }
+
+  if (jwt.isLoading) {
+    return <h1 className='text-green-400 text-center p-10 text-2xl'>Loading .... </h1>;
+  }
+
+
   return (
-    <Router>
-      <Headnav user={user} onLogout={onLogout} />
+    <main>
+      <h1 className="text-red-400 text-2xl">hiiii</h1>
+      <Headnav user={jwt.user} onLogout={onLogout} />
       <Sidenav />
       <main id="main" className="main">
         <section className="section dashboard">
           <div className="row">
             <Routes>
-              <Route path="/" element={<Home user={user} />} />
-              <Route path="/pos" element={<Pos user={user} />} />
-              <Route path="/shipment" element={<Shipment user={user} />} />
-              <Route path="/addproducts" element={<Addproduct user={user} />} />
+              <Route path="/" element={<Home user={jwt.user} />} />
+              <Route path="createsore" element={<Createsore />} />
+              <Route path="storelist" element={<Storelist />} />
+              <Route path="pos" element={<Pos user={jwt.user} />} />
+              <Route path="shipment" element={<Shipment user={jwt.user} />} />
               <Route
-                path="/editproduct"
+                path="addproducts"
+                element={<Addproduct user={jwt.user} />}
+              />
+              <Route
+                path="editproduct"
                 element={<Editproduct user={user} />}
               />
-              <Route path="/inventory" element={<Inventory user={user} />} />
-              <Route path="/profile" element={<Profile user={user} />} />
+              <Route path="inventory" element={<Inventory user={user} />} />
+              <Route path="profile" element={<Profile user={user} />} />
               <Route
-                path="/createprofile"
+                path="createprofile"
                 element={<Createprofile user={user} />}
               />
-              <Route path="/security" element={<Security user={user} />} />
-              <Route path="/contact" element={<Contact user={user} />} />
-              <Route path="/products" element={<Products user={user} />} />
-              <Route path="/onboard" element={<Onboard user={user} />} />
+              <Route path="security" element={<Security user={user} />} />
+              <Route path="contact" element={<Contact user={user} />} />
+              <Route path="products" element={<Products user={user} />} />
+              <Route path="onboard" element={<Onboard user={user} />} />
               <Route
-                path="/collections"
+                path="collections"
                 element={<Collections user={user} />}
               />
               <Route
-                path="/editcollection"
+                path="editcollection"
                 element={<Editcollection user={user} />}
               />
               <Route
-                path="/createcollection"
+                path="createcollection"
                 element={<Createcollection user={user} />}
               />
               <Route
-                path="/purchaseorder"
+                path="purchaseorder"
                 element={<Purchaseorder user={user} />}
               />
               <Route
-                path="/abandoncheck"
+                path="abandoncheck"
                 element={<Abandoncheck user={user} />}
               />
               <Route
                 path="/notifications"
                 element={<Notifications user={user} />}
               />
-              <Route path="/messages" element={<Messages user={user} />} />
-              <Route path="/nocustomer" element={<Nocustomer user={user} />} />
-              <Route path="/noorder" element={<Noorder user={user} />} />
-              <Route path="/noproduct" element={<Noproduct user={user} />} />
+              <Route path="messages" element={<Messages user={user} />} />
+              <Route path="nocustomer" element={<Nocustomer user={user} />} />
+              <Route path="noorder" element={<Noorder user={user} />} />
+              <Route path="noproduct" element={<Noproduct user={user} />} />
               <Route
-                path="/potentiaorders"
+                path="potentiaorders"
                 element={<Potentiaorders user={user} />}
               />
               <Route
-                path="/yourpotentiaorders"
+                path="yourpotentiaorders"
                 element={<Yourorder user={user} />}
               />
               <Route
-                path="/ware_distribution_request"
+                path="ware_distribution_request"
                 element={<Ware_distribution_request user={user} />}
               />
               <Route
-                path="/warehouseorders"
+                path="warehouseorders"
                 element={<Warehouseorders user={user} />}
               />
               <Route
-                path="/supplierdistrib"
+                path="supplierdistrib"
                 element={<Supplierdistrib user={user} />}
               />
               <Route
-                path="/supplierincomingorders"
+                path="supplierincomingorders"
                 element={<Supplierincomingorders user={user} />}
               />
               <Route
-                path="/acceptedrequest"
+                path="acceptedrequest"
                 element={<Acceptedrequest user={user} />}
               />
               <Route
-                path="/acceptedorder"
+                path="acceptedorder"
                 element={<Acceptedorder user={user} />}
               />
-              <Route path="/suprequest" element={<Suprequest user={user} />} />
+              <Route path="suprequest" element={<Suprequest user={user} />} />
               <Route
-                path="/editsupplierrequest"
+                path="editsupplierrequest"
                 element={<Editsupplierrequest user={user} />}
               />
               <Route
-                path="/warerequest"
+                path="warerequest"
                 element={<Warerequest user={user} />}
               />
               <Route
-                path="/editwarerequest"
+                path="editwarerequest"
                 element={<Editwarerequest user={user} />}
               />
               <Route
-                path="/viewproduct"
+                path="viewproduct"
                 element={<Viewproduct user={user} />}
               />
               <Route
-                path="/vieworderbook"
+                path="vieworderbook"
                 element={<Vieworderbook user={user} />}
               />
             </Routes>
@@ -206,7 +233,7 @@ function LoggedInRoutes({ user, onLogout }) {
         </section>
       </main>
       <Footer />
-    </Router>
+    </main>
   );
 }
 

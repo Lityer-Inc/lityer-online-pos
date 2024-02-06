@@ -228,6 +228,23 @@ export const updateProductController = async (req, res) => {
   }
 };
 
+// Get Specific store with storeId:
+export const getSpecificStore = async (req, res) =>{
+  try{
+    const stores = await storeModel.findOne({_id: req.params.storeId});
+    
+    if (!stores) {
+      return res.status(404).json({ message: "Store Does not Exist" });
+    }
+
+    res.json(stores);
+  }
+  catch (error) {
+    console.error("Error fetching store:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+}
+
 // get stores with userId:
 export const getStoresWithUserId = async (req, res) =>{
   try{

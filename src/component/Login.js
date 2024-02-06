@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import logo from "../assets/images/logo-full.png";
 import axios from "axios";
 import { Toaster, toast } from "sonner";
+import { useJwt } from "../hooks/useJwt";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const Login = () => {
   });
 
   const navigate = useNavigate();
+  const jwt = useJwt();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -28,22 +30,27 @@ const Login = () => {
       toast.success("Succesfully Logged in  !");
       localStorage.setItem("token", String(response.data.token));
       // Check if userCategory is "Retailer" and redirect to storelist if true
-      setTimeout(() => {
-        if (formData.userCategory === "retailer") {
-          navigate("/storelist");
-        } else {
-          window.location.reload();
-          navigate("/");
-        }
-      }, 2000);
-      return;
+
+      // return;
+      window.location.reload();
     } catch (error) {
       toast.error(String(error.response.data.error));
       console.error("Registration failed", error.response.data);
     }
-
-    console.log("Form Data:", formData);
   };
+
+  useEffect(() => {}, [jwt.user]);
+
+  if (jwt.user && jwt.user.userCategory === "retailers") {
+    console.log("working !");
+    return <Navigate to="/home/storelist" />;
+  } else if (
+    jwt.user &&
+    (jwt.user.userCategory === "supplier" ||
+      jwt.user.userCategory === "logistic")
+  ) {
+    return <Navigate to="/home" />;
+  }
 
   return (
     <div id="boxit">
