@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import userRouter from "./routes/user.js";
-import storeRouter from "./routes/store.js";
+import {storeRouter} from "./routes/store.js";
 import dotenv from "dotenv"; // Import dotenv
 
 // Load environment variables from .env file
@@ -24,7 +24,7 @@ mongoose.connect("mongodb+srv://lityer:123@cluster0.jla8m8u.mongodb.net/orderboo
 
  // Use the userRouter & storeRouter as middleware
  app.use('/user', userRouter);
- app.use('/stores', storeRouter)
+ app.use('/', storeRouter)
 
 
  app.get('/', (req, res)=>{

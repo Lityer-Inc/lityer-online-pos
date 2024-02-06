@@ -46,7 +46,7 @@ const storeSchema = new mongoose.Schema({
     type: [{type: String}],
     default: ["Accepts EBT", "In-store prices"]
   },
-  userId: {
+  retailerId: {
     type: String,
     required: true,
   },

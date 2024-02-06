@@ -17,8 +17,8 @@ export const authentication = async (req, res, next) =>{
             req.decoded = decoded;
             next();
         });
-
     }
+    
     catch (err) {
         console.error(err);
         return res.status(500).json({ error: 'Internal server error'});
