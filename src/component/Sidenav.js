@@ -1,161 +1,180 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import { useRecoilValue } from 'recoil';
-import { sidebarState } from '../atoms/atom/sidebarState';
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { sidebarState } from "../atoms/atom/sidebarState";
+import { useJwt } from "../hooks/useJwt";
 
 const Sidenav = () => {
   const sidebarValue = useRecoilValue(sidebarState);
+  const jwt = useJwt();
 
   return (
-    <aside className={`sidebar lg:block ${sidebarValue ? "block": "hidden"}`}>
+    <aside className={`sidebar lg:block ${sidebarValue ? "block" : "hidden"}`}>
       <ul className="sidebar-nav" id="sidebar-nav">
         <li className="nav-item">
-          <NavLink to="/" className="nav-link">
+          <NavLink to="/home" className="nav-link">
             <i className="bi bi-house"></i>
             <span>Home</span>
           </NavLink>
         </li>
 
-        <li className="nav-item">
-          <Link
-            to="purchaseorder"
-            className="nav-link collapsed"
-            data-target="#Orders-nav"
-            data-toggle="collapse"
-          >
-            <i className="bi bi-cart3"></i>
-            <span>Orders(Retailer)</span>
-            <i className="bi bi-chevron-down ms-auto"></i>
-          </Link>
-          <ul
-            id="Orders-nav"
-            className="nav-content collapse"
-            data-parent="#sidebar-nav"
-          >
-            <li>
-              <NavLink to="purchaseorder">
-                <i className="bi bi-circle"></i>
-                <span>Purchase Orders</span>
-              </NavLink>
+        {jwt.user && jwt.user.userCategory === "retailers" ? (
+          <>
+            <li className="nav-item">
+              <Link
+                to="purchaseorder"
+                className="nav-link collapsed"
+                data-target="#Orders-nav"
+                data-toggle="collapse"
+              >
+                <i className="bi bi-cart3"></i>
+                <span>Orders(Retailer)</span>
+                <i className="bi bi-chevron-down ms-auto"></i>
+              </Link>
+              <ul
+                id="Orders-nav"
+                className="nav-content collapse"
+                data-parent="#sidebar-nav"
+              >
+                <li>
+                  <NavLink to="purchaseorder">
+                    <i className="bi bi-circle"></i>
+                    <span>Purchase Orders</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="ware_distribution_request">
+                    <i className="bi bi-circle"></i>
+                    <span>Distribution Request</span>
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink to="warehouseorders">
+                    <i className="bi bi-circle"></i>
+                    <span>Your Orders</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="acceptedorder">
+                    <i className="bi bi-circle"></i>
+                    <span>Sent Orders</span>
+                  </NavLink>
+                </li>
+              </ul>
             </li>
-            <li>
-              <NavLink to="ware_distribution_request">
-                <i className="bi bi-circle"></i>
-                <span>Distribution Request</span>
-              </NavLink>
+          </>
+        ) : jwt.user && jwt.user.userCategory === "supplier" ? (
+          <li className="nav-item">
+            <Link
+              to="supplierincomingorders"
+              className="nav-link collapsed"
+              data-target="#Orders-nav"
+              data-toggle="collapse"
+            >
+              <i className="bi bi-cart3"></i>
+              <span>Orders(Supplier)</span>
+              <i className="bi bi-chevron-down ms-auto"></i>
+            </Link>
+            <ul
+              id="Orders-nav"
+              className="nav-content collapse"
+              data-parent="#sidebar-nav"
+            >
+              <li>
+                <NavLink to="supplierincomingorders">
+                  <i className="bi bi-circle"></i>
+                  <span>Incoming Orders</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/supplierdistrib">
+                  <i className="bi bi-circle"></i>
+                  <span>Distribution Request</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/acceptedrequest">
+                  <i className="bi bi-circle"></i>
+                  <span>Accepted Request</span>
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+        ) : (
+          <li className="nav-item">
+            <Link
+              to="/potentiaorders"
+              className="nav-link collapsed"
+              data-target="#Orders-nav"
+              data-toggle="collapse"
+            >
+              <i className="bi bi-cart3"></i>
+              <span>Orders(Logistics)</span>
+              <i className="bi bi-chevron-down ms-auto"></i>
+            </Link>
+            <ul
+              id="Orders-nav"
+              className="nav-content collapse"
+              data-parent="#sidebar-nav"
+            >
+              <li>
+                <NavLink to="potentiaorders">
+                  <i className="bi bi-circle"></i>
+                  <span>Potential Orders</span>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="yourpotentiaorders">
+                  <i className="bi bi-circle"></i>
+                  <span>Your Orders</span>
+                </NavLink>
+              </li>
+            </ul>
+          </li>
+        )}
+
+        {jwt.user && jwt.user.userCategory === "retailers" && (
+          <>
+            <li className="nav-item">
+              <Link
+                to="/products"
+                className="nav-link collapsed"
+                data-target="#Products-nav"
+                data-toggle="collapse"
+              >
+                <i className="bi bi-box"></i>
+                <span>Products(Retailer)</span>
+                <i className="bi bi-chevron-down ms-auto"></i>
+              </Link>
+              <ul
+                id="Products-nav"
+                className="nav-content collapse"
+                data-parent="#sidebar-nav"
+              >
+                <li>
+                  <NavLink to="collections">
+                    <i className="bi bi-circle"></i>
+                    <span>Collections</span>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="inventory">
+                    <i className="bi bi-circle"></i>
+                    <span>Inventory</span>
+                  </NavLink>
+                </li>
+              </ul>
             </li>
 
-            <li>
-              <NavLink to="warehouseorders">
-                <i className="bi bi-circle"></i>
-                <span>Your Orders</span>
+            <li className="nav-item">
+              <NavLink to="pos" className="nav-link collapsed">
+                <i className="bi bi-file-post"></i>
+                <span>POS(Retailer)</span>
               </NavLink>
             </li>
-            <li>
-              <NavLink to="acceptedorder">
-                <i className="bi bi-circle"></i>
-                <span>Sent Orders</span>
-              </NavLink>
-            </li>
-          </ul>
-        </li>
-        <li className="nav-item">
-          <Link
-            to="supplierincomingorders"
-            className="nav-link collapsed"
-            data-target="#Orders-nav"
-            data-toggle="collapse"
-          >
-            <i className="bi bi-cart3"></i>
-            <span>Orders(Supplier)</span>
-            <i className="bi bi-chevron-down ms-auto"></i>
-          </Link>
-          <ul
-            id="Orders-nav"
-            className="nav-content collapse"
-            data-parent="#sidebar-nav"
-          >
-            <li>
-              <NavLink to="supplierincomingorders">
-                <i className="bi bi-circle"></i>
-                <span>Incoming Orders</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/supplierdistrib">
-                <i className="bi bi-circle"></i>
-                <span>Distribution Request</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/acceptedrequest">
-                <i className="bi bi-circle"></i>
-                <span>Accepted Request</span>
-              </NavLink>
-            </li>
-          </ul>
-        </li>
-        <li className="nav-item">
-          <Link
-            to="/potentiaorders"
-            className="nav-link collapsed"
-            data-target="#Orders-nav"
-            data-toggle="collapse"
-          >
-            <i className="bi bi-cart3"></i>
-            <span>Orders(Logistics)</span>
-            <i className="bi bi-chevron-down ms-auto"></i>
-          </Link>
-          <ul
-            id="Orders-nav"
-            className="nav-content collapse"
-            data-parent="#sidebar-nav"
-          >
-            <li>
-              <NavLink to="potentiaorders">
-                <i className="bi bi-circle"></i>
-                <span>Potential Orders</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="yourpotentiaorders">
-                <i className="bi bi-circle"></i>
-                <span>Your Orders</span>
-              </NavLink>
-            </li>
-          </ul>
-        </li>
-
-        <li className="nav-item">
-          <Link
-            to="/products"
-            className="nav-link collapsed"
-            data-target="#Products-nav"
-            data-toggle="collapse"
-          >
-            <i className="bi bi-box"></i>
-            <span>Products(Retailer)</span>
-            <i className="bi bi-chevron-down ms-auto"></i>
-          </Link>
-          <ul
-            id="Products-nav"
-            className="nav-content collapse"
-            data-parent="#sidebar-nav"
-          >
-            <li>
-              <NavLink to="collections">
-                <i className="bi bi-circle"></i>
-                <span>Collections</span>
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="inventory">
-                <i className="bi bi-circle"></i>
-                <span>Inventory</span>
-              </NavLink>
-            </li>
-          </ul>
-        </li>
+          </>
+        )}
 
         {/* <li className="nav-item">
           <Link
@@ -177,13 +196,6 @@ const Sidenav = () => {
             </li>
           </ul>
         </li> */}
-
-        <li className="nav-item">
-          <NavLink to="pos" className="nav-link collapsed">
-            <i className="bi bi-file-post"></i>
-            <span>POS(Retailer)</span>
-          </NavLink>
-        </li>
 
         <li className="nav-item">
           <NavLink to="messages" className="nav-link collapsed">

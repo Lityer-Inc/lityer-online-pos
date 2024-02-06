@@ -87,11 +87,11 @@ function App() {
       ) : ( */}
       <Router>
         <Routes>
+          <Route path='/' element={<h1>Landing Page</h1>} />
           <Route
             path="/home/*"
             element={<LoggedInRoutes user={null} onLogout={handleLogout} />}
           />
-
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>

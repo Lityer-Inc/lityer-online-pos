@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import product from "../assets/images/bluewallet.png";
 import { Link } from "react-router-dom";
+import { useJwt } from "../hooks/useJwt";
 
 const CustomCard = ({ title, description, linkTo, buttonText }) => {
   return (
@@ -48,13 +49,35 @@ const getStatusColor = (status) => {
 
 // table data array
 const salesData = [
-  { id: 1, product: "product1", customer: "Brandon Jacob", price: "$0", status: "Received", link: "/product1" },
-  { id: 2, product: "product1", customer: "Bridie Kessler", price: "$0", status: "Delivered", link: "/product1" },
-  { id: 3, product: "product1", customer: "Angus Grady", price: "$0", status: "Shipped", link: "/product1" },
+  {
+    id: 1,
+    product: "product1",
+    customer: "Brandon Jacob",
+    price: "$0",
+    status: "Received",
+    link: "/product1"
+  },
+  {
+    id: 2,
+    product: "product1",
+    customer: "Bridie Kessler",
+    price: "$0",
+    status: "Delivered",
+    link: "/product1"
+  },
+  {
+    id: 3,
+    product: "product1",
+    customer: "Angus Grady",
+    price: "$0",
+    status: "Shipped",
+    link: "/product1"
+  }
 ];
 
 function Home() {
   const [filter, setFilter] = useState("Today"); // Default filter
+  const jwt = useJwt();
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
@@ -75,101 +98,110 @@ function Home() {
       </div>
 
       {/* suplier contents */}
-      <CustomCard
-        title="(Supplier)Create a Distribution Request"
-        description="Enter details about your product and price. Other parties may counter-offer. Once an agreement is reached, your order will be moved to the logistics book where it can be fulfilled."
-        linkTo="/suprequest"
-        buttonText="Enter"
-      />
+      {jwt.user && jwt.user.userCategory === "supplier" ? (
+        <>
+          <CustomCard
+            title="(Supplier)Create a Distribution Request"
+            description="Enter details about your product and price. Other parties may counter-offer. Once an agreement is reached, your order will be moved to the logistics book where it can be fulfilled."
+            linkTo="/suprequest"
+            buttonText="Enter"
+          />
 
-      <CustomCard
-        title="(Supplier)View Incoming Purchase Orders"
-        description="View orders that warehouses have sent to you. You can agree
+          <CustomCard
+            title="(Supplier)View Incoming Purchase Orders"
+            description="View orders that warehouses have sent to you. You can agree
         to the order terms or propose a counter offer. Once accepted
         the order will be pushed to the logistics book for
         fulfillment."
-        linkTo="/supplierincomingorders"
-        buttonText="Enter"
-      />
+            linkTo="/supplierincomingorders"
+            buttonText="Enter"
+          />
 
-      <CustomCard
-        title="(Supplier)View Sent Requests"
-        description="See the orders you have previously sent. You can choose to
+          <CustomCard
+            title="(Supplier)View Sent Requests"
+            description="See the orders you have previously sent. You can choose to
         cancel or alter details here."
-        linkTo="/supplierdistrib"
-        buttonText="Enter"
-      />
-      <CustomCard
-        title="(Supplier)Set your Profile information"
-        description="Set your name, contact information, and address."
-        linkTo="/createprofile"
-        buttonText="Set profile"
-      />
-      {/* End of Supplier content */}
-
-      {/* Logistics contents */}
-      <CustomCard
-        title="(Logistics)View Potential Orders"
-        description="View orders that are in need of transportation. You may
+            linkTo="/supplierdistrib"
+            buttonText="Enter"
+          />
+          <CustomCard
+            title="(Supplier)Set your Profile information"
+            description="Set your name, contact information, and address."
+            linkTo="/createprofile"
+            buttonText="Set profile"
+          />
+        </>
+      ) : jwt.user && jwt.user.userCategory === "supplier" ? (
+        <>
+          <CustomCard
+            title="(Logistics)View Potential Orders"
+            description="View orders that are in need of transportation. You may
         accept or negotiate the fee you will receive here."
-        linkTo="/potentiaorders"
-        buttonText="Enter"
-      />
-      <CustomCard
-        title="(Logistics)View Your Transport Orders"
-        description="View the transportation orders that you are responsible for
+            linkTo="/potentiaorders"
+            buttonText="Enter"
+          />
+          <CustomCard
+            title="(Logistics)View Your Transport Orders"
+            description="View the transportation orders that you are responsible for
         fulfilling. See both current and past deliveries."
-        linkTo="/yourpotentiaorders"
-        buttonText="Enter"
-      />
-      <CustomCard
-        title=" (Logistics)Set your Profile information"
-        description="Set your name, contact information, and address."
-        linkTo="/createprofile"
-        buttonText="Set profile"
-      />
+            linkTo="/yourpotentiaorders"
+            buttonText="Enter"
+          />
+          <CustomCard
+            title=" (Logistics)Set your Profile information"
+            description="Set your name, contact information, and address."
+            linkTo="/createprofile"
+            buttonText="Set profile"
+          />
 
-      {/* End of Logistics content */}
-
-      {/* Other content downward is for the retailer */}
-      <CustomCard
-        title="View Purchase Orders"
-        description="See all Purchase Orders from customers from the Grocey
+          {/* End of Logistics content */}
+        </>
+      ) : (
+        <>
+          <CustomCard
+            title="View Purchase Orders"
+            description="See all Purchase Orders from customers from the Grocey
         Application"
-        linkTo="/purchaseorder"
-        buttonText="Purchase Orders"
-      />
-      <CustomCard
-        title="View Distribution Requests"
-        description="See what suppliers are trying to push. You can counter-offer
+            linkTo="/purchaseorder"
+            buttonText="Purchase Orders"
+          />
+          <CustomCard
+            title="View Distribution Requests"
+            description="See what suppliers are trying to push. You can counter-offer
         with your own bid. If you come to an agreement the order
         will be pushed to the logistics book to be filled."
-        linkTo="/ware_distribution_request"
-        buttonText="Enter"
-      />
-      <CustomCard
-        title="Create a Purchase Request"
-        description="Enter details about your warehousing needs and issue an
+            linkTo="/ware_distribution_request"
+            buttonText="Enter"
+          />
+          <CustomCard
+            title="Create a Purchase Request"
+            description="Enter details about your warehousing needs and issue an
         order to a supplier. They may counter-offer. Once an
         agreement is reached, your order will be moved to the
         logistics book where it can be fulfilled."
-        linkTo="/warerequest"
-        buttonText="Enter"
-      />
-      <CustomCard
-        title="Set your Profile information"
-        description="Set your name, contact information, and address."
-        linkTo="/createprofile"
-        buttonText="Set profile"
-      />
+            linkTo="/warerequest"
+            buttonText="Enter"
+          />
+          <CustomCard
+            title="Set your Profile information"
+            description="Set your name, contact information, and address."
+            linkTo="/createprofile"
+            buttonText="Set profile"
+          />
 
-      <CustomCard
-        title="Add product"
-        description="Write a description, add photos, and set pricing for the
+          <CustomCard
+            title="Add product"
+            description="Write a description, add photos, and set pricing for the
         product you plan to sell"
-        linkTo="/onboard"
-        buttonText="Add product"
-      />
+            linkTo="/onboard"
+            buttonText="Add product"
+          />
+        </>
+      )}
+
+      {/* End of Supplier content */}
+
+      {/* Logistics contents */}
 
       <div className="col-lg-12">
         <div className="row">
