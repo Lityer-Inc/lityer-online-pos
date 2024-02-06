@@ -15,6 +15,8 @@ function Headnav({ onLogout, user }) {
     setSearchBarVisible(!isSearchBarVisible);
   };
 
+  console.log('user : ', user);
+
   const toggleSidebar = () => {
     setSidebar((prev) => !prev);
   };
@@ -101,7 +103,7 @@ function Headnav({ onLogout, user }) {
               data-bs-toggle="dropdown"
             >
               <img src={profile} alt="Profile" className="rounded-circle" />
-              <span className="d-none d-md-block ps-2">{user.email}</span>
+              <span className="d-none d-md-block ps-2">{user?.email}</span>
             </Link>
           </li>
 

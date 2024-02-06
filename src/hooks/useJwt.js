@@ -1,26 +1,33 @@
-import axios from "axios";
-import { useEffect,useState,  useCallback } from "react";
+import { useState, useEffect, useCallback } from 'react';
+import axios from 'axios';
 
 export const useJwt = () => {
-    const token = localStorage.getItem("token");
-    const [user, setUser] = useState(null);
+  const token = localStorage.getItem('token');
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-    const getUserJwt = useCallback(async () => {
-        try {
-            const response = await axios.get('/user/jwt', {
-              headers: {'Authorization': `Bearer ${token}`}
-            });
-            setUser(response.data);
-            return response;
-        } catch (error) {
-            console.log('error : ', error);
-            return error;
-        }
-      }, [token]);
+  const getUserJwt = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      const response = await axios.get('/user/jwt', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setUser(response.data.user);
+      setError(null);
+    } catch (error) {
+      setError(error);
+      setUser(null);
+    } finally {
+      setIsLoading(false);
+    }
+  }, [token]);
 
-    useEffect(() => {
-        getUserJwt();
-    }, [getUserJwt, token])
+  useEffect(() => {
+    if (token) {
+      getUserJwt();
+    }
+  }, [token, getUserJwt]);
 
-    return user;
-}
+  return { user, error, isLoading };
+};

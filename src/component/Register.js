@@ -35,9 +35,9 @@ const Register = () => {
       // Check if userCategory is "Retailer" and redirect to storelist if true
       setTimeout(() => {
         if (formData.userCategory === "retailer") {
-          navigate("/storelist");
+          navigate("/home/storelist");
         } else {
-          navigate("/");
+          navigate("/home");
         }
       }, 2000);
       return;
