@@ -10,37 +10,37 @@ const Storelist = () => {
     {
       name: "Magni Dolores thsbs shjbdhd",
       description: "Delivery by 12:30pm",
-      storeimg: storeimg
+      storeimg: storeimg,
     },
     {
       name: "Jane Smithwedjhue",
       description: "Delivery by 1:30pm",
-      storeimg: storeimg
+      storeimg: storeimg,
     },
     {
       name: "Bob Johnson",
       description: "Delivery by 12:20am",
-      storeimg: storeimg
-    }
+      storeimg: storeimg,
+    },
   ];
 
   const token = localStorage.getItem("token");
 
   if (!token) {
-    return <Navigate to='/register' />
+    return <Navigate to="/register" />;
   }
 
   return (
     <div id="boxit">
       <div id="logodiv">
-        <img id="logoimg" className='mx-auto' src={logo} alt="Logo" />
+        <img id="logoimg" className="mx-auto" src={logo} alt="Logo" />
       </div>
 
       <div className="auth-box storelist">
         <h2>Your Stores</h2>
 
         {stores.map((creator, index) => (
-          <Link to="/" key={index}>
+          <Link to="/home" key={index}>
             <div className="col-md-12 d-flex align-items-stretch card">
               <div className="icon-box">
                 <div className="storeimg">
@@ -62,7 +62,7 @@ const Storelist = () => {
           </Link>
         ))}
         <div className="text-center">
-          <Link to="/createsore">
+          <Link to="/home/createsore">
             <button
               id="submitbut"
               className="button button-a button-big button-rounded"
