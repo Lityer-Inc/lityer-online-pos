@@ -77,13 +77,13 @@ const Register = () => {
             />{" "}
           </div>{" "}
           <div className="form-group">
-            <label htmlFor="secondName">Last Name</label>
+            <label htmlFor="lastName">Last Name</label>
             <input
               type="text"
               id="lastName"
-              name="secondName"
+              name="lastName"
               placeholder="Enter your last name"
-              value={formData.secondName}
+              value={formData.lastName}
               onChange={handleInputChange}
             />
           </div>
