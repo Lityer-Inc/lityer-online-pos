@@ -3,7 +3,7 @@ import { cloudinary } from "../utils/cloudinary.js";
 
 export const addStoreProduct = async (req, res) => {
   try {
-      const id = req.params.id;
+      const storeId = req.params.storeId;
 
       // Use Cloudinary to upload the image
       const imageResult = await cloudinary.uploader.upload(req.file.path);
@@ -16,11 +16,11 @@ export const addStoreProduct = async (req, res) => {
           weight: req.body.weight,
           category: req.body.category,
           tags: req.body.tags || [],
-          storeId:id,
+          storeId:storeId,
       }; 
 
       // Check if the store with the given ID exists
-      const store = await storeModel.findOne({ _id: id });
+      const store = await storeModel.findOne({ _id: storeId });
 
       if (!store) {
           return res.status(404).json({ error: "Store not found." });
@@ -57,12 +57,12 @@ export const AddStore = async (req, res) => {
     // Use Cloudinary to upload the avatar
     const avatarResult = await cloudinary.uploader.upload(req.file.path);
     // Extract userId from the decoded JWT token
-    const userId = req.decoded.id;
-    console.log(userId)
+    const retailerId = req.decoded.id;
+    console.log(retailerId)
     // Create a new store instance
     const newStore = new storeModel({
       name: req.body.name,
-      userId: userId,
+      retailerId: retailerId,
       store_email: req.body.store_email,
       deliveryTime: req.body.deliveryTime,
       description: req.body.description || null,

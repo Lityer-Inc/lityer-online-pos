@@ -7,7 +7,7 @@ export const storeRouter = express.Router();
 
 storeRouter.post("/:retailerId/stores", authentication, upload.single('avatar'), AddStore); // Add a new store
 
-storeRouter.post("/:id/products", upload.single('img'), addStoreProduct);// adds the product to the store as per the store_id
+storeRouter.post("/stores/:storeId/products", upload.single('img'), addStoreProduct);// adds the product to the store as per the store_id
 storeRouter.delete("/:storeId", authentication, deleteStore);//deletes the whole store along with the products
 storeRouter.delete("/:storeId/products/:productId", authentication, deleteProduct);//deletes a specific product of a specific store
 storeRouter.put("/:storeId", authentication, upload.single('avatar'), updateStoreController);//updates the details of the store
