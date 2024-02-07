@@ -4,7 +4,7 @@ import {
   Route,
   Routes,
   useNavigate,
-  Navigate
+  Navigate,
 } from "react-router-dom";
 import Addproduct from "./component/products/Addproduct";
 import Footer from "./component/Footer";
@@ -87,7 +87,7 @@ function App() {
       ) : ( */}
       <Router>
         <Routes>
-          <Route path='/' element={<h1>Landing Page</h1>} />
+          <Route path="/" element={<h1>Landing Page</h1>} />
           <Route
             path="/home/*"
             element={<LoggedInRoutes user={null} onLogout={handleLogout} />}
@@ -107,13 +107,16 @@ function LoggedInRoutes({ user, onLogout }) {
   const jwt = useJwt();
 
   if (!token || token === null) {
-    return <Navigate to='/login' />
+    return <Navigate to="/login" />;
   }
 
   if (jwt.isLoading) {
-    return <h1 className='text-green-400 text-center p-10 text-2xl'>Loading .... </h1>;
+    return (
+      <h1 className="text-green-400 text-center p-10 text-2xl">
+        Loading ....{" "}
+      </h1>
+    );
   }
-
 
   return (
     <main>
@@ -133,10 +136,7 @@ function LoggedInRoutes({ user, onLogout }) {
                 path="addproducts"
                 element={<Addproduct user={jwt.user} />}
               />
-              <Route
-                path="editproduct"
-                element={<Editproduct user={user} />}
-              />
+              <Route path="editproduct" element={<Editproduct user={user} />} />
               <Route path="inventory" element={<Inventory user={user} />} />
               <Route path="profile" element={<Profile user={user} />} />
               <Route
@@ -147,10 +147,7 @@ function LoggedInRoutes({ user, onLogout }) {
               <Route path="contact" element={<Contact user={user} />} />
               <Route path="products" element={<Products user={user} />} />
               <Route path="onboard" element={<Onboard user={user} />} />
-              <Route
-                path="collections"
-                element={<Collections user={user} />}
-              />
+              <Route path="collections" element={<Collections user={user} />} />
               <Route
                 path="editcollection"
                 element={<Editcollection user={user} />}
@@ -212,18 +209,12 @@ function LoggedInRoutes({ user, onLogout }) {
                 path="editsupplierrequest"
                 element={<Editsupplierrequest user={user} />}
               />
-              <Route
-                path="warerequest"
-                element={<Warerequest user={user} />}
-              />
+              <Route path="warerequest" element={<Warerequest user={user} />} />
               <Route
                 path="editwarerequest"
                 element={<Editwarerequest user={user} />}
               />
-              <Route
-                path="viewproduct"
-                element={<Viewproduct user={user} />}
-              />
+              <Route path="viewproduct" element={<Viewproduct user={user} />} />
               <Route
                 path="vieworderbook"
                 element={<Vieworderbook user={user} />}

@@ -7,11 +7,11 @@ import { Toaster, toast } from "sonner";
 const Register = () => {
   const [formData, setFormData] = useState({
     firstName: "",
-    secondName: "",
+    lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
-    userCategory: ""
+    userCategory: "",
   });
   const navigate = useNavigate();
 
@@ -19,7 +19,7 @@ const Register = () => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value
+      [name]: value,
     });
   };
 
@@ -29,8 +29,9 @@ const Register = () => {
     try {
       const response = await axios.post("/user/register", formData);
       toast.success("Succesfully Registered !");
-      
+
       localStorage.setItem("user", String(response.data.newUser.name));
+      localStorage.setItem("retailerId", String(response.data.retailerId));
       localStorage.setItem("token", String(response.data.token));
       // Check if userCategory is "Retailer" and redirect to storelist if true
       setTimeout(() => {
@@ -59,7 +60,7 @@ const Register = () => {
     <div id="boxit">
       <Toaster />
       <div id="logodiv">
-        <img id="logoimg" className='mx-auto' src={logo} alt="Logo" />
+        <img id="logoimg" className="mx-auto" src={logo} alt="Logo" />
       </div>{" "}
       <div className="auth-box">
         <h2> Sign Up </h2>{" "}

@@ -5,6 +5,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import uploadicon from "../../assets/images/storeicon.png";
 import axios from "axios";
+import { Toaster, toast } from "sonner";
 
 const Createsore = () => {
   const [storeDetails, setStoreDetails] = useState({
@@ -20,16 +21,16 @@ const Createsore = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Send store creation request to the backend
-      const response = await axios.post("/stores", storeDetails);
+      const retailerId = localStorage.getItem("retailerId");
+      const response = await axios.post(`/${retailerId}/stores`, storeDetails);
       console.log("Store created successfully", response.data);
-
-      // Redirect to the storelist or homepage based on your logic
-      navigate.push("/");
+  
+      toast.success("Store created successfully");
+      navigate("/home");
     } catch (error) {
+      toast.error("Store creation failed");
       console.error("Store creation failed", error.response.data);
     }
-    // Sending code to backend
   };
 
   const handleThumbnailImageSelect = () => {
