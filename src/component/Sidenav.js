@@ -33,7 +33,7 @@ const Sidenav = () => {
               </Link>
               <ul
                 id="Orders-nav"
-                className="nav-content collapse"
+                className="nav-content"
                 data-parent="#sidebar-nav"
               >
                 <li>
@@ -78,7 +78,7 @@ const Sidenav = () => {
             </Link>
             <ul
               id="Orders-nav"
-              className="nav-content collapse"
+              className="nav-content"
               data-parent="#sidebar-nav"
             >
               <li>
@@ -115,7 +115,7 @@ const Sidenav = () => {
             </Link>
             <ul
               id="Orders-nav"
-              className="nav-content collapse"
+              className="nav-content"
               data-parent="#sidebar-nav"
             >
               <li>
@@ -138,7 +138,7 @@ const Sidenav = () => {
           <>
             <li className="nav-item">
               <Link
-                to="/products"
+                to="/home/products"
                 className="nav-link collapsed"
                 data-target="#Products-nav"
                 data-toggle="collapse"
@@ -149,7 +149,7 @@ const Sidenav = () => {
               </Link>
               <ul
                 id="Products-nav"
-                className="nav-content collapse"
+                className="nav-content"
                 data-parent="#sidebar-nav"
               >
                 <li>

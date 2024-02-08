@@ -131,11 +131,24 @@ function Addproduct() {
                     required
                   />
                 </div>
+
                 <div className="form-group">
                   <label htmlFor="productQuantity">Product Quantity</label>
+
+
                   <input
-                    type="number"
+                    type="number"ffffff
+
+
+
+
+
+
                     className="form-control"
+
+
+
+
                     id="productQuantity"
                     placeholder="Enter product quantity"
                     value={productDetails.productQuantity}
@@ -150,6 +163,12 @@ function Addproduct() {
                 </div>
               </div>
               <div className="col-md-6">
+
+
+
+
+
+
                 <div id="uploadpic" className="form-group">
                   <img
                     src={
