@@ -7,7 +7,7 @@ import { Toaster, toast } from "sonner";
 const Register = () => {
   const [formData, setFormData] = useState({
     firstName: "",
-    secondName: "",
+    lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -76,13 +76,13 @@ const Register = () => {
             />{" "}
           </div>{" "}
           <div className="form-group">
-            <label htmlFor="secondName">Last Name</label>
+            <label htmlFor="lastName">Last Name</label>
             <input
               type="text"
               id="lastName"
-              name="secondName"
+              name="lastName"
               placeholder="Enter your last name"
-              value={formData.secondName}
+              value={formData.lastName}
               onChange={handleInputChange}
             />
           </div>

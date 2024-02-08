@@ -6,57 +6,60 @@ import uploadicon from "../../assets/images/uploadpic.png";
 function Addproduct() {
   const [productDetails, setProductDetails] = useState({
     productName: "",
-    productPrice: "",
+    storeId: "",
     productimgs: "",
     productcategory: "",
     productQuantity: "",
     productDescription: "",
     barcode: "",
-    thumbnailImage: null,
+    thumbnailImage: null
   });
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
- 
-  const productData = {
-  name: productDetails.productName,
-  price: productDetails.productPrice,
-  quantity: productDetails.productQuantity,
-  category: productDetails.productcategory,
-  description: productDetails.productDescription,
-  barcode: productDetails.barcode
-};
- 
-// Convert to FormData for sending
-const formData = new FormData();
-for (const key in productData) {
-  formData.append(key, productData[key]);
-}
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
+    const productData = {
+      title: productDetails.productName,
+      price: productDetails.productPrice,
+      weight: productDetails.productQuantity,
+      category: productDetails.productcategory,
+      description: productDetails.productDescription,
+      // barcode: productDetails.barcode,
+    };
 
- if (productDetails.thumbnailImage) {
-    formData.append('image', productDetails.thumbnailImage);
-  }
-  
-  
-  try {
-    const response = await fetch('http://localhost:8000/products/add_product', {
-      method: 'POST',
-      body: formData,
-    });
-
-    if (response.ok) {
-      const responseData = await response.json();
-      alert("Product added to the database.");
-    } else {
-    const errorResponse = await response.json();
-      alert("Failed to add product. Error: " + JSON.stringify(errorResponse));
+    // Convert to FormData for sending
+    const formData = new FormData();
+    for (const key in productData) {
+      formData.append(key, productData[key]);
     }
-  } catch (error) {
-    console.error('Error:', error);
-  }
-};
- 
+
+    if (productDetails.thumbnailImage) {
+      formData.append("img",productDetails.thumbnailImage);
+    }
+
+    try {
+      const response = await fetch(
+        `http://localhost:4000/stores/${productDetails.storeId}/products`,
+        {
+          method: "POST",
+          body: formData
+        }
+      );
+
+      if (response.ok) {
+        // const responseData = await response.json();
+        setProductDetails('');
+        alert("Product added to the database.");
+      } else {
+        const errorResponse = await response.json();
+        alert("Failed to add product. Error: " + JSON.stringify(errorResponse));
+      }
+    } catch (error) {
+      alert('Server Error');
+      console.error("Error:", error);
+    }
+  };
+
 
   return (
     <>
@@ -88,7 +91,24 @@ for (const key in productData) {
                     onChange={(e) =>
                       setProductDetails({
                         ...productDetails,
-                        productName: e.target.value,
+                        productName: e.target.value
+                      })
+                    }
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="storeID">StoreID</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="storeID"
+                    placeholder="Enter StoreId"
+                    value={productDetails.storeId}
+                    onChange={(e) =>
+                      setProductDetails({
+                        ...productDetails,
+                        storeId: e.target.value
                       })
                     }
                     required
@@ -105,7 +125,7 @@ for (const key in productData) {
                     onChange={(e) =>
                       setProductDetails({
                         ...productDetails,
-                        productPrice: e.target.value,
+                        productPrice: e.target.value
                       })
                     }
                     required
@@ -122,7 +142,7 @@ for (const key in productData) {
                     onChange={(e) =>
                       setProductDetails({
                         ...productDetails,
-                        productQuantity: e.target.value,
+                        productQuantity: e.target.value
                       })
                     }
                     required
@@ -130,11 +150,7 @@ for (const key in productData) {
                 </div>
               </div>
               <div className="col-md-6">
-                <div
-                  id="uploadpic"
-                  className="form-group"
-                  
-                >
+                <div id="uploadpic" className="form-group">
                   <img
                     src={
                       productDetails.thumbnailImage
@@ -151,28 +167,28 @@ for (const key in productData) {
                 </div>
               </div>
 
-         <div className="col-md-6">
-  <div className="form-group">
-    <label htmlFor="productimgs">Products Images</label>
-    <input
-      type="file"
-      className="form-control"
-      id="productimgs"
-      onChange={(e) => {
-        // Handle the file selection
-        const file = e.target.files[0];
-        if (file) {
-          setProductDetails({
-            ...productDetails,
-            thumbnailImage: file, // Set the file object directly
-          });
-          // Optionally, update productimgs to display the file name or similar
-        }
-      }}
-      required
-    />
-  </div>
-</div>
+              <div className="col-md-6">
+                <div className="form-group">
+                  <label htmlFor="productimgs">Products Images</label>
+                  <input
+                    type="file"
+                    className="form-control"
+                    id="productimgs"
+                    onChange={(e) => {
+                      // Handle the file selection
+                      const file = e.target.files[0];
+                      if (file) {
+                        setProductDetails({
+                          ...productDetails,
+                          thumbnailImage: file // Set the file object directly
+                        });
+                        // Optionally, update productimgs to display the file name or similar
+                      }
+                    }}
+                    required
+                  />
+                </div>
+              </div>
 
               <div className="col-md-6">
                 <div className="form-group">
@@ -186,11 +202,11 @@ for (const key in productData) {
                     onChange={(e) =>
                       setProductDetails({
                         ...productDetails,
-                        productcategory: e.target.value,
+                        productcategory: e.target.value
                       })
                     }
                     required
-                    readOnly
+                    // readOnly
                   />
                 </div>
               </div>
@@ -206,7 +222,7 @@ for (const key in productData) {
                     onChange={(value) =>
                       setProductDetails({
                         ...productDetails,
-                        productDescription: value,
+                        productDescription: value
                       })
                     }
                   />
@@ -226,7 +242,7 @@ for (const key in productData) {
                     onChange={(e) =>
                       setProductDetails({
                         ...productDetails,
-                        barcode: e.target.value,
+                        barcode: e.target.value
                       })
                     }
                   />
