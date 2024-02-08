@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import logo from "../../assets/images/logo-full.png";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -18,15 +18,16 @@ const Createsore = () => {
   });
   const navigate = useNavigate();
 
+  const retailerId = localStorage.getItem("retailerId");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const retailerId = localStorage.getItem("retailerId");
       const response = await axios.post(`/${retailerId}/stores`, storeDetails);
       console.log("Store created successfully", response.data);
-  
       toast.success("Store created successfully");
-      navigate("/home");
+      return <Navigate to="/home" />;
+
     } catch (error) {
       toast.error("Store creation failed");
       console.error("Store creation failed", error.response.data);
@@ -161,6 +162,7 @@ const Createsore = () => {
               <button
                 id="submitbut"
                 type="submit"
+                onClick={handleSubmit}
                 className="button button-a button-big button-rounded"
               >
                 Create Store
