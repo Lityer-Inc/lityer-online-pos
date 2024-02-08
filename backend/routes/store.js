@@ -1,6 +1,6 @@
 import express from "express"
 import { upload } from "../middleware/multer.js";
-import { AddStore, addStoreProduct, deleteProduct, deleteStore, getSpecificStore, getStoresWithUserId, updateProductController, updateStoreController } from "../controllers/storeController.js";
+import { AddStore, addStoreProduct, deleteProduct, deleteStore, getAllProductsByRetailerId, getSpecificStore, getStoresWithUserId, updateProductController, updateStoreController } from "../controllers/storeController.js";
 import { authentication } from "../middleware/authentication.js";
 
 export const storeRouter = express.Router();
@@ -15,6 +15,10 @@ storeRouter.put("/:storeId/products/:productId", authentication, upload.single('
 
 // Get details of a specific store
 storeRouter.get("/:retailerId/stores/:storeId", getSpecificStore); 
+
+// Add route to get all products by retailerId
+storeRouter.get("/:retailerId/Products", getAllProductsByRetailerId);
+
 
 // get stores with userId
 storeRouter.get('/:retailerId/stores', getStoresWithUserId)

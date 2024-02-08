@@ -258,3 +258,30 @@ export const getStoresWithUserId = async (req, res) =>{
     res.status(500).json({ error: "Internal Server Error" });
   }
 }
+
+// Controller function to get all products by retailerId
+export const getAllProductsByRetailerId = async (req, res) => {
+  try {
+    // Extract the retailerId from the request parameters
+    const retailerId = req.params.retailerId;
+
+    // Find all stores belonging to the retailer
+    const stores = await storeModel.find({ retailerId });
+   console.log(stores)
+    // Initialize an array to store all products
+    let allProducts = [];
+
+    // Iterate through each store and collect its products
+    stores.forEach(store => {
+      if (store.products && store.products.length > 0) {
+        allProducts = allProducts.concat(store.products);
+      }
+    });
+
+    // Respond with the collected products
+    res.status(200).json(allProducts);
+  } catch (error) {
+    console.error("Error fetching products by retailerId:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
