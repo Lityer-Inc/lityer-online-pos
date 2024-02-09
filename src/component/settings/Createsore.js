@@ -6,6 +6,7 @@ import "react-quill/dist/quill.snow.css";
 import uploadicon from "../../assets/images/storeicon.png";
 import axios from "axios";
 import { Toaster, toast } from "sonner";
+import { useJwt } from "../../hooks/useJwt";
 
 const Createsore = () => {
   const [storeDetails, setStoreDetails] = useState({
@@ -16,17 +17,41 @@ const Createsore = () => {
     storeDescription: "",
     thumbnailImage: null,
   });
-  const navigate = useNavigate();
 
-  const retailerId = localStorage.getItem("retailerId");
+  const token = localStorage.getItem('token');
+  const navigate = useNavigate();
+  const jwt = useJwt();
+  const retailerId = jwt.user ? jwt.user.id : null;
+  // const retailerId = localStorage.getItem("retailerId"); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    //log things to console to check what they contain
+    console.log("i just created a store");
+    console.log(jwt.user);
+    console.log(retailerId);
+    console.log(token);
+
+    //verifiy token
+    if (!token) {
+      console.error('No token found');
+      // Handle the case where the token is not found (e.g., redirect to login)
+      return;
+    }
+
     try {
-      const response = await axios.post(`/${retailerId}/stores`, storeDetails);
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`, // Assuming the JWT token is stored in user.token
+        },
+      };
+
+      const response = await axios.post(`/${retailerId}/stores`, storeDetails, config);
       console.log("Store created successfully", response.data);
       toast.success("Store created successfully");
-      return <Navigate to="/home" />;
+      navigate('/home');
 
     } catch (error) {
       toast.error("Store creation failed");

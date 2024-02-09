@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const Storelist = () => {
     const [stores, setStores] = useState([]);
-    const retailerId = localStorage.getItem("retailerId");; 
+    const retailerId = localStorage.getItem("retailerId"); 
 
     useEffect(() => {
       const fetchData = async () => {
