@@ -1,66 +1,78 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import product from "../../assets/images/bluewallet.png";
+import axios from "axios";
+import { useJwt } from "../../hooks/useJwt";
 
 function Products() {
   const [filter, setFilter] = useState("Today"); // Default filter
+  const jwt = useJwt();
+  const [productsData, setProductsData] = useState([]); 
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
   };
 
-  const productsData = [
-    {
-      id: 1,
-      image: product,
-      name: "Product 1",
-      inventory: "5 in stock",
-      category: "Product Category",
-      vendor: "Vendor Name",
-      price: "$0",
-      status: "Received",
-    },
-    {
-      id: 2,
-      image: product,
-      name: "Product 2",
-      inventory: "10 in stock",
-      category: "Another Category",
-      vendor: "Another Vendor",
-      price: "$20",
-      status: "paid",
-    },
-    {
-      id: 3,
-      image: product,
-      name: "Product 3",
-      inventory: "3 in stock",
-      category: "New Category",
-      vendor: "New Vendor",
-      price: "$15",
-      status: "Shipped",
-    },
-    {
-      id: 4,
-      image: product,
-      name: "Product 4",
-      inventory: "8 in stock",
-      category: "Category 4",
-      vendor: "Vendor 4",
-      price: "$30",
-      status: "Delivered",
-    },
-    {
-      id: 5,
-      image: product,
-      name: "Product 4",
-      inventory: "8 in stock",
-      category: "Category 4",
-      vendor: "Vendor 4",
-      price: "$30",
-      status: "Listed",
-    },
-  ];
+  useEffect(() => {
+    const id = jwt.user && jwt.user.id;
+
+    let response = axios.get(`${id}/Products`);
+    console.log('products : ', response.data);
+    setProductsData(response.data);
+  }, [jwt]);
+
+  // const productsData = [
+  //   {
+  //     id: 1,
+  //     image: product,
+  //     name: "Product 1",
+  //     inventory: "5 in stock",
+  //     category: "Product Category",
+  //     vendor: "Vendor Name",
+  //     price: "$0",
+  //     status: "Received",
+  //   },
+  //   {
+  //     id: 2,
+  //     image: product,
+  //     name: "Product 2",
+  //     inventory: "10 in stock",
+  //     category: "Another Category",
+  //     vendor: "Another Vendor",
+  //     price: "$20",
+  //     status: "paid",
+  //   },
+  //   {
+  //     id: 3,
+  //     image: product,
+  //     name: "Product 3",
+  //     inventory: "3 in stock",
+  //     category: "New Category",
+  //     vendor: "New Vendor",
+  //     price: "$15",
+  //     status: "Shipped",
+  //   },
+  //   {
+  //     id: 4,
+  //     image: product,
+  //     name: "Product 4",
+  //     inventory: "8 in stock",
+  //     category: "Category 4",
+  //     vendor: "Vendor 4",
+  //     price: "$30",
+  //     status: "Delivered",
+  //   },
+  //   {
+  //     id: 5,
+  //     image: product,
+  //     name: "Product 4",
+  //     inventory: "8 in stock",
+  //     category: "Category 4",
+  //     vendor: "Vendor 4",
+  //     price: "$30",
+  //     status: "Listed",
+  //   },
+  // ];
 
   return (
     <>
@@ -132,7 +144,7 @@ function Products() {
                     </tr>
                   </thead>
                   <tbody>
-                    {productsData.map((product) => (
+                    {productsData && productsData.length > 0 && productsData.map((product) => (
                       <tr key={product.id}>
                         <td>
                           <input type="checkbox" />
@@ -192,3 +204,76 @@ const getStatusColor = (status) => {
 };
 
 export default Products;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
