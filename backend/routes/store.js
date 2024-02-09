@@ -17,7 +17,7 @@ storeRouter.put("/:storeId/products/:productId", authentication, upload.single('
 storeRouter.get("/:retailerId/stores/:storeId", getSpecificStore); 
 
 // Add route to get all products by retailerId
-storeRouter.get("/:retailerId/Products", getAllProductsByRetailerId);
+storeRouter.get("/:retailerId/products", getAllProductsByRetailerId);
 
 
 // get stores with userId
