@@ -22,7 +22,6 @@ const Createsore = () => {
   const navigate = useNavigate();
   const jwt = useJwt();
   const retailerId = jwt.user ? jwt.user.id : null;
-  // const retailerId = localStorage.getItem("retailerId"); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
