@@ -2,8 +2,8 @@ import { v2 as cloudinary } from 'cloudinary';
 
 cloudinary.config({
   cloud_name: 'dtr6bmdzo',
-  api_key: '816372122613965',
-  api_secret: 'xttbEG7iruNn0Mo_y4vQyUdsqcU'
+  api_key: '194826878114233',
+  api_secret: 'Z6WcvPkAQOIyRjfAD_2WtKquHF4'
 });
 
 export {cloudinary}
