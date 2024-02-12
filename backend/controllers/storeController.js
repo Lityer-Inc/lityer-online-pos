@@ -63,6 +63,7 @@ export const AddStore = async (req, res) => {
     // Extract userId from the decoded JWT token
     const retailerId = req.decoded.id;
     console.log(retailerId)
+    
     // Create a new store instance
     const newStore = new storeModel({
       name: req.body.name,
