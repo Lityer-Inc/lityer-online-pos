@@ -23,13 +23,20 @@ const Createsore = () => {
     try {
       const retailerId = localStorage.getItem("retailerId");
       const response = await axios.post(`/${retailerId}/stores`, storeDetails);
-      console.log("Store created successfully", response.data);
-  
-      toast.success("Store created successfully");
-      navigate("/home");
+      if (response && response.data) {
+        console.log("Store created successfully", response.data);
+        toast.success("Store created successfully");
+        navigate("/home");
+      } else {
+        toast.error("Failed to create store");
+        console.error("Failed to create store. Response:", response);
+      }
     } catch (error) {
       toast.error("Store creation failed");
-      console.error("Store creation failed", error.response.data);
+      console.error(
+        "Store creation failed",
+        error.response?.data || error.message
+      );
     }
   };
 

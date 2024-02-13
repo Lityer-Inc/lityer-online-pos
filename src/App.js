@@ -49,6 +49,7 @@ import Warerequest from "./component/warehouse/Warerequest.js";
 import Editwarerequest from "./component/warehouse/Editwarerequest.js";
 import Viewproduct from "./component/Viewproduct.js";
 import Vieworderbook from "./component/Vieworderbook.js";
+import Landingpage from "./component/Landingpage.js";
 
 import axios from "axios";
 
@@ -87,7 +88,7 @@ function App() {
       ) : ( */}
       <Router>
         <Routes>
-          <Route path="/" element={<h1>Landing Page</h1>} />
+          <Route path="/" element={<Landingpage />} />
           <Route
             path="/home/*"
             element={<LoggedInRoutes user={null} onLogout={handleLogout} />}

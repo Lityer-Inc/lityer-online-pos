@@ -31,7 +31,10 @@ const Register = () => {
       toast.success("Succesfully Registered !");
 
       localStorage.setItem("user", String(response.data.newUser.name));
-      localStorage.setItem("retailerId", String(response.data.retailerId));
+      localStorage.setItem(
+        "retailerId",
+        String(response.data.newUser.retailerId)
+      );
       localStorage.setItem("token", String(response.data.token));
       // Check if userCategory is "Retailer" and redirect to storelist if true
       setTimeout(() => {
