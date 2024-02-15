@@ -1,6 +1,6 @@
 import Header from "./lp/Header";
 import Hero from "./lp/Hero";
-import Footer from "./lp/Footer";
+import Lpfooter from "./lp/Lpfooter";
 import Features from "./lp/Features";
 import Imagesection from "./lp/Imagesection";
 import Join from "./lp/Join";
@@ -18,12 +18,10 @@ function Landingpage() {
     <>
       <Header />
       <Hero />
-      <main id="main">
-        <Features />
-        <Imagesection />
-        <Join />
-      </main>
-      <Footer />
+      <Features />
+      <Imagesection />
+      <Join />
+      <Lpfooter />
     </>
   );
 }

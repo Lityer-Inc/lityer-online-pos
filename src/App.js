@@ -89,6 +89,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Landingpage />} />
+
           <Route
             path="/home/*"
             element={<LoggedInRoutes user={null} onLogout={handleLogout} />}

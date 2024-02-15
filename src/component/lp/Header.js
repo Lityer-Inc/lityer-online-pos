@@ -36,13 +36,13 @@ function Header() {
               </a>
             </li> */}
             <li>
-              <a href="https://poe-solana-beta.vercel.app/" target="_blank">
+              <a href="/home" target="_blank">
                 <button
                   type="button"
                   className="btn btn-warning"
                   style={{ background: "deeppink", color: "whitesmoke" }}
                 >
-                  Launch App
+                  Get Started
                 </button>
               </a>
             </li>
