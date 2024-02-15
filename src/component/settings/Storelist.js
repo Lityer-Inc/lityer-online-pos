@@ -1,28 +1,45 @@
 // Storelist.js
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import logo from "../../assets/images/logo-full.png";
-import storeimg from "../../assets/images/pos-products.jpg";
+// import storeimg from "../../assets/images/pos-products.jpg";
+import axios from 'axios';
 
 const Storelist = () => {
-  const stores = [
-    {
-      name: "Magni Dolores thsbs shjbdhd",
-      description: "Delivery by 12:30pm",
-      storeimg: storeimg,
-    },
-    {
-      name: "Jane Smithwedjhue",
-      description: "Delivery by 1:30pm",
-      storeimg: storeimg,
-    },
-    {
-      name: "Bob Johnson",
-      description: "Delivery by 12:20am",
-      storeimg: storeimg,
-    },
-  ];
+    const [stores, setStores] = useState([]);
+    const retailerId = localStorage.getItem("retailerId"); 
+
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(`/${retailerId}/stores`);
+          setStores(response.data); // Update the state with the fetched data
+        } catch (error) {
+          console.error('There was a problem with the request:', error);
+        }
+      };
+  
+      fetchData();
+    }, [retailerId]);
+
+  // const stores = [
+  //   {
+  //     name: "Magni Dolores thsbs shjbdhd",
+  //     description: "Delivery by 12:30pm",
+  //     storeimg: storeimg,
+  //   },
+  //   {
+  //     name: "Jane Smithwedjhue",
+  //     description: "Delivery by 1:30pm",
+  //     storeimg: storeimg,
+  //   },
+  //   {
+  //     name: "Bob Johnson",
+  //     description: "Delivery by 12:20am",
+  //     storeimg: storeimg,
+  //   },
+  // ];
 
   const token = localStorage.getItem("token");
 

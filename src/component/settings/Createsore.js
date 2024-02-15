@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import logo from "../../assets/images/logo-full.png";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import uploadicon from "../../assets/images/storeicon.png";
 import axios from "axios";
 import { Toaster, toast } from "sonner";
+import { useJwt } from "../../hooks/useJwt";
 
 const Createsore = () => {
   const [storeDetails, setStoreDetails] = useState({
@@ -16,21 +17,43 @@ const Createsore = () => {
     storeDescription: "",
     thumbnailImage: null,
   });
+
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const jwt = useJwt();
+  const retailerId = jwt.user ? jwt.user.id : null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    //log things to console to check what they contain
+    console.log("i just created a store");
+    console.log(jwt.user);
+    console.log(retailerId);
+    console.log(token);
+
+    //verifiy token
+    if (!token) {
+      console.error("No token found");
+      // Handle the case where the token is not found (e.g., redirect to login)
+      return;
+    }
+
     try {
-      const retailerId = localStorage.getItem("retailerId");
-      const response = await axios.post(`/${retailerId}/stores`, storeDetails);
-      if (response && response.data) {
-        console.log("Store created successfully", response.data);
-        toast.success("Store created successfully");
-        navigate("/home");
-      } else {
-        toast.error("Failed to create store");
-        console.error("Failed to create store. Response:", response);
-      }
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const response = await axios.post(
+        `/${retailerId}/stores`,
+        storeDetails,
+        config
+      );
+      console.log("Store created successfully", response.data);
+      toast.success("Store created successfully");
+      navigate("/home");
     } catch (error) {
       toast.error("Store creation failed");
       console.error(
@@ -168,6 +191,7 @@ const Createsore = () => {
               <button
                 id="submitbut"
                 type="submit"
+                onClick={handleSubmit}
                 className="button button-a button-big button-rounded"
               >
                 Create Store

@@ -21,6 +21,9 @@ export const addStoreProduct = async (req, res) => {
 
       // Check if the store with the given ID exists
       const store = await storeModel.findOne({ _id: storeId });
+      
+      const retailerId = store.retailerId;
+      product.retailerId = retailerId;
 
       if (!store) {
           return res.status(404).json({ error: "Store not found." });
@@ -56,9 +59,11 @@ export const AddStore = async (req, res) => {
 
     // Use Cloudinary to upload the avatar
     const avatarResult = await cloudinary.uploader.upload(req.file.path);
+    console.log(avatarResult.secure_url)
     // Extract userId from the decoded JWT token
     const retailerId = req.decoded.id;
     console.log(retailerId)
+    
     // Create a new store instance
     const newStore = new storeModel({
       name: req.body.name,
@@ -258,3 +263,30 @@ export const getStoresWithUserId = async (req, res) =>{
     res.status(500).json({ error: "Internal Server Error" });
   }
 }
+
+// Controller function to get all products by retailerId
+export const getAllProductsByRetailerId = async (req, res) => {
+  try {
+    // Extract the retailerId from the request parameters
+    const retailerId = req.params.retailerId;
+
+    // Find all stores belonging to the retailer
+    const stores = await storeModel.find({ retailerId });
+   console.log(stores)
+    // Initialize an array to store all products
+    let allProducts = [];
+
+    // Iterate through each store and collect its products
+    stores.forEach(store => {
+      if (store.products && store.products.length > 0) {
+        allProducts = allProducts.concat(store.products);
+      }
+    });
+
+    // Respond with the collected products
+    res.status(200).json(allProducts);
+  } catch (error) {
+    console.error("Error fetching products by retailerId:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
